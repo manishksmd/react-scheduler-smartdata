@@ -1,15 +1,15 @@
-react-big-calendar
-========================
+react-scheduler-smartdata
+=========================
 
 An events calendar component built for React and made for modern browsers (read: IE10+) and uses flexbox over the classic tables-ception approach.
 
-[__DEMO and Docs__](http://intljusticemission.github.io/react-big-calendar/examples/index.html)
+[__DEMO and Docs__](https://github.com/manishksmd/react-scheduler.git)
 
-Inspired by [Full Calendar](http://fullcalendar.io/).
+Inspired by [Full Calendar](http://intljusticemission.github.io/react-big-calendar/examples/index.html and http://fullcalendar.io/).
 
 ## Use and Setup
 
-`npm install react-big-calendar --save`
+`npm install react-scheduler-smartdata --save`
 
 Include `react-big-calendar/lib/css/react-big-calendar.css` for styles.
 
