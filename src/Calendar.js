@@ -270,6 +270,7 @@ class Calendar extends React.Component {
     * @type {(func|string)}
     */
    titleAccessor: accessor,
+   patientNameAccessor: accessor,
 
    /**
     * Determines whether the event should be considered an "all day" event and ignore time.
@@ -489,6 +490,7 @@ class Calendar extends React.Component {
    drilldownView: views.DAY,
 
    titleAccessor: 'title',
+   patientNameAccessor: 'patientName',
    allDayAccessor: 'allDay',
    startAccessor: 'start',
    endAccessor: 'end'

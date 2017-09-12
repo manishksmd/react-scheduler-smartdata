@@ -84,7 +84,7 @@ class Dnd extends React.Component {
         events={resources.events}
         resources={resources.list}
         onEventDrop={this.moveEvent}
-        defaultView='resource'
+        defaultView='month'
         defaultDate={new Date(2017, 8, 1)}
         onSelectEvent={event => alert(event.title)}
         onSelectSlot={(slotInfo) => alert(

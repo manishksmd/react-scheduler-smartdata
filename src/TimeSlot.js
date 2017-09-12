@@ -43,6 +43,7 @@ export default class TimeSlot extends Component {
             <span>{this.props.content}</span>
           }
           </div>
+          {/* <div className="calender-custom-box">MKS----</div>*/}
         </div>
       </Wrapper>
     )

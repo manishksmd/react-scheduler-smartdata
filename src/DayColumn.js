@@ -35,6 +35,7 @@ class DaySlot extends React.Component {
 
     rtl: PropTypes.bool,
     titleAccessor: accessor,
+    patientNameAccessor: accessor,
     allDayAccessor: accessor.isRequired,
     startAccessor: accessor.isRequired,
     endAccessor: accessor.isRequired,
@@ -136,7 +137,7 @@ class DaySlot extends React.Component {
       , eventWrapperComponent: EventWrapper
       , rtl: isRtl
       , step
-      , startAccessor, endAccessor, titleAccessor } = this.props;
+      , startAccessor, endAccessor, titleAccessor, patientNameAccessor } = this.props;
 
     let EventComponent = eventComponent
 
@@ -152,6 +153,7 @@ class DaySlot extends React.Component {
       let continuesAfter = startsAfter(end, max)
 
       let title = get(event, titleAccessor)
+      let patientName = get(event, patientNameAccessor);
       let label = localizer.format({ start, end }, eventTimeRangeFormat, culture)
       let _isSelected = isSelected(event, selected)
 
@@ -185,7 +187,7 @@ class DaySlot extends React.Component {
                 : title
               }
             </div>
-            <div className="custom-box-view-schedule"></div>
+            <div className="custom-box-day-view">Patient Name: {patientName}</div>
           </div>
         </EventWrapper>
       )

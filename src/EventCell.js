@@ -60,6 +60,7 @@ class EventCell extends React.Component {
           onClick={(e) => onSelect(event, e)}
         >
           <div className='rbc-event-content' title={title}>
+            <div className='custom-box-month-view'></div>
             { Event
               ? <Event event={event} title={title}/>
               : title

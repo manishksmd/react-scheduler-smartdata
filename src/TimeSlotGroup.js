@@ -56,7 +56,6 @@ export default class TimeSlotGroup extends Component {
   render() {
     return (
       <div className="rbc-timeslot-group">
-        {/* <div className="custom-box-add-schedule"></div>*/}
         {this.renderSlices()}
       </div>
     )
