@@ -1,7 +1,10 @@
 @import './variables.less';
 @import './reset.less';
 
-
+body{
+  font-family: 'Roboto', sans-serif;
+  color: #2a3134;
+}
 .rbc-calendar {
   box-sizing: border-box;
   height: 100%;
@@ -69,6 +72,139 @@
   background-color: @today-highlight-bg;
 }
 
+.appointment_box {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.02);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.02);
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: 0px auto;
+  max-width: 320px;
+  position: absolute;
+  display: none;
+  z-index: 1000;
+}
+.rbc-day-slot .rbc-event, .rbc-month-row {
+  overflow: inherit !important;
+}
+.topbar {
+  background-color:#09A8DC;
+  padding: 5px 10px;
+  overflow: hidden;
+}
+.info-title {
+  float: left;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 400;
+}
+.icons {
+  float: right;
+}
+.icons ul{
+  padding: 0px;
+  margin: 0px;
+  text-align: right;
+}
+
+  .icons ul li {
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+  list-style: none;
+}
+.icons ul li a {
+  display: inline-block;
+  color: #fff;
+  font-size: 14px;
+  vertical-align: top;
+  padding: 2px 5px 0px;
+}
+.icons ul li a.edit {
+  font-size: 17px;
+}
+.icons ul li a.trash {
+  font-size: 16px;
+}
+.icons ul li a.cut {
+  font-size: 18px;
+  opacity: 0.6;
+  padding: 2px 0 0 15px;
+}
+.icons ul li a:hover {
+  opacity: 0.7;
+}
+.icons ul li a:hover.cut{opacity: 1;}
+.info-content {
+  padding: 10px;
+  overflow: hidden;
+}
+.info-pic {
+  text-align: center;
+  width: 100%;
+  margin-bottom:3px;
+}
+.personal-info img {
+  border: 1px solid #ddd;
+  border-radius: 50%;
+
+}
+.info-p {
+  color: #000;
+  width: 100%;
+  text-align: center;
+}
+.name {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.about-event{padding:10px 0px 0px;float: left; width: 100%;}
+.personal-info{border-bottom: 1px solid #ddd; float: left; width: 100%; padding:10px 0;}
+.info-p p {
+  margin: 0px 0px 5px;
+  padding: 0;
+}
+.info-p p b {
+  color: #7a7a7a;
+  font-weight: 400;
+}
+.info-p p span {
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+}
+.info-p a {
+  color: #09a8dc;
+  display: inline-block;
+  padding-top: 5px;
+}
+.rbc-event{cursor: default;}
+.rbc-event:hover .appointment_box {
+  display: block;
+}
+/*for month*/
+.rbc-row-segment{position: relative;}
+.appointment_box.month_box {
+  left: 100%;
+  right: inherit;
+}
+.appointment_box.month_box::before {
+  border-bottom: 10px solid transparent;
+  border-right: 15px solid #09a8dc;
+  border-top: 10px solid transparent;
+  content: "";
+  left: -15px;
+  position: absolute;
+  top: 5px;
+  z-index: 11;
+}
+
+.rbc-row-content
+{
+  z-index: inherit;
+}
 
 @import './toolbar.less';
 @import './event.less';

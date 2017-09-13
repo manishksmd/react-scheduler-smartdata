@@ -11,7 +11,7 @@ import localizer from './localizer'
 import { notify } from './utils/helpers';
 import { accessor, elementType, dateFormat } from './utils/propTypes';
 import { accessor as get } from './utils/accessors';
-
+import Img from './img/doctor.png';
 import getStyledEvents, { positionFromDate, startsBefore } from './utils/dayViewLayout'
 
 import TimeColumn from './TimeColumn'
@@ -173,7 +173,7 @@ class DaySlot extends React.Component {
               width: `${width}%`
             }}
             title={label + ': ' + title }
-            onClick={(e) => this._select(event, e)}
+            //onClick={(e) => this._select(event, e)}
             className={cn('rbc-event', className, {
               'rbc-selected': _isSelected,
               'rbc-event-continues-earlier': continuesPrior,
@@ -187,8 +187,39 @@ class DaySlot extends React.Component {
                 : title
               }
             </div>
-            <div className="custom-box-day-view">Patient Name: {patientName}</div>
-          </div>
+            <div className="appointment_box">
+              <div className="topbar">
+                <div className="info-title">Appointment info</div>
+                <div className="icons">
+                    <ul>
+                      <li><a className="edit" href="#"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></a></li>
+                      {/*<li><a className="calender" href="#"><i className="fa fa-calendar" aria-hidden="true"></i></a></li>*/}
+                      <li><a className="trash" href="#"><i className="fa fa-trash-o" aria-hidden="true"></i></a></li>
+                      <li><a className="cut" href="#"><i className="fa fa-times" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+              </div>
+              <div className="info-content">
+                  <div className="personal-info">
+                      <div className="info-pic">
+                        <img src={Img} width="80px" height="80px" />
+                        </div>
+                      <div className="info-p">
+                        <div className="name">Dr Karan Kapoor</div>
+                        {/*<p><b>Phone: </b><span>897-876-6543</span></p>*/}
+                        <a href="#">View Pateint Profile</a>
+                      </div>
+                  </div>
+                  <div className="about-event">
+                      <div className="info-p">
+                        <p><b>Appointment: </b><span>New Patient Consultation</span></p>
+                        <p><b>Time: </b><span>02:00-02:30 p.m</span></p>
+                        <p><b>Co-Pay: </b><span><i className="fa fa-usd" aria-hidden="true"></i> 00.00</span></p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+            </div>
         </EventWrapper>
       )
     })
