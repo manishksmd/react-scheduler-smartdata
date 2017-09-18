@@ -342,6 +342,7 @@ class DaySlot extends React.Component {
   };
 
   hoverDialogActions(event, e, action) {
+    e.preventDefault();
     event.action = action;
     this._select(event, e);
   }

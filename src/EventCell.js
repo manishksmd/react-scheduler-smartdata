@@ -57,7 +57,7 @@ class EventCell extends React.Component {
             'rbc-event-continues-prior': continuesPrior,
             'rbc-event-continues-after': continuesAfter
           })}
-          onClick={(e) => onSelect(event, e)}
+          // onClick={(e) => onSelect(event, e)}
         >
           <div className='rbc-event-content' title={title}>
             { Event
@@ -69,10 +69,8 @@ class EventCell extends React.Component {
                 <div className="info-title">Appointment info</div>
                 <div className="icons">
                     <ul>
-                      <li><a className="edit" href="#"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></a></li>
-                      {/*<li><a className="calender" href="#"><i className="fa fa-calendar" aria-hidden="true"></i></a></li>*/}
-                      <li><a className="trash" href="#"><i className="fa fa-trash-o" aria-hidden="true"></i></a></li>
-                      <li><a className="cut" href="#"><i className="fa fa-times" aria-hidden="true"></i></a></li>
+                      <li><a className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></a></li>
+                      <li><a className="trash" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'delete')}><i className="fa fa-trash-o" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
               </div>
@@ -82,7 +80,7 @@ class EventCell extends React.Component {
                       <div className="info-p">
                         <div className="name">Dr Karan Kapoor</div>
                         {/*<p><b>Phone: </b><span>897-876-6543</span></p>*/}
-                        <a href="#">View Pateint Profile</a>
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view')}>View Pateint Profile</a>
                       </div>
                   </div>
                   <div className="about-event">
@@ -98,6 +96,11 @@ class EventCell extends React.Component {
         </div>
       </EventWrapper>
     );
+  }
+  hoverDialogActions(event, e, action) {
+    e.preventDefault();
+    event.action = action;
+    this.props.onSelect(event, e);
   }
 }
 
