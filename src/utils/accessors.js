@@ -1,5 +1,5 @@
 
-export function accessor(data, field){console.log(field)
+export function accessor(data, field){
   var value = null;
 
   if (typeof field === 'function')

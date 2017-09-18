@@ -86,7 +86,7 @@ class Dnd extends React.Component {
         onEventDrop={this.moveEvent}
         defaultView='month'
         defaultDate={new Date(2017, 8, 1)}
-        onSelectEvent={event => alert(event.title)}
+        onSelectEvent={event => console.log(event)}
         onSelectSlot={(slotInfo) => alert(
             `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
             `\nend: ${slotInfo.end.toLocaleString()}`

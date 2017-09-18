@@ -192,10 +192,8 @@ class DaySlot extends React.Component {
                 <div className="info-title">Appointment info</div>
                 <div className="icons">
                     <ul>
-                      <li><a className="edit" href="#"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></a></li>
-                      {/*<li><a className="calender" href="#"><i className="fa fa-calendar" aria-hidden="true"></i></a></li>*/}
-                      <li><a className="trash" href="#"><i className="fa fa-trash-o" aria-hidden="true"></i></a></li>
-                      <li><a className="cut" href="#"><i className="fa fa-times" aria-hidden="true"></i></a></li>
+                      <li><a className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></a></li>
+                      <li><a className="trash" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'delete')}><i className="fa fa-trash-o" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
               </div>
@@ -205,9 +203,9 @@ class DaySlot extends React.Component {
                         <img src={Img} width="80px" height="80px" />
                         </div>
                       <div className="info-p">
-                        <div className="name">Dr Karan Kapoor</div>
+                        <div className="name">Dr {patientName}</div>
                         {/*<p><b>Phone: </b><span>897-876-6543</span></p>*/}
-                        <a href="#">View Pateint Profile</a>
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view')}>View Pateint Profile</a>
                       </div>
                   </div>
                   <div className="about-event">
@@ -342,7 +340,13 @@ class DaySlot extends React.Component {
   _select = (...args) => {
     notify(this.props.onSelectEvent, args)
   };
+
+  hoverDialogActions(event, e, action) {
+    event.action = action;
+    this._select(event, e);
+  }
 }
+
 
 
 function minToDate(min, date){
