@@ -61,7 +61,7 @@ export default {
   renderSpan(props, len, key, content = ' ', left){
     let { slots } = props;
 
-    let customClass = `rbc-row-segment ${left}-custom-class`;
+    let customClass = `rbc-row-segment custom-class-${left}`;
     return (
       <div key={key} className={customClass} style={segStyle(Math.abs(len), slots)}>
         {content}

@@ -191,7 +191,7 @@ body{
   left: 100%;
   right: inherit;
 }
-.appointment_box.month_box::before {
+.appointment_box.month_box::before, .appointment_box.dayslot::before {
   border-bottom: 10px solid transparent;
   border-right: 15px solid #09a8dc;
   border-top: 10px solid transparent;
@@ -201,10 +201,35 @@ body{
   top: 5px;
   z-index: 11;
 }
-
+.custom-class-7 .appointment_box.month_box, .custom-class-6 .appointment_box.month_box,
+.custom-class-7 .appointment_box.dayslot, .custom-class-6 .appointment_box.dayslot {
+  left: auto;
+  right: 100%;
+}
+.custom-class-7 .appointment_box.month_box::before, .custom-class-6 .appointment_box.month_box:before,
+.custom-class-7 .appointment_box.dayslot::before, .custom-class-6 .appointment_box.dayslot:before {
+  left: auto;
+  right: -15px;
+  transform: rotate(180deg);
+}
 .rbc-row-content
 {
   z-index: inherit;
+}
+
+/*Day appointment*/
+.appointment_box.dayslot {
+  left: 100%;
+  right: inherit;
+  width: 268px;
+}
+.rbc-day-slot .rbc-event {
+  display: block !important;
+  height: auto !important;
+  left: 0 !important;
+  position: absolute;
+  width: 100% !important;
+  z-index: 2;
 }
 
 @import './toolbar.less';

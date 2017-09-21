@@ -187,7 +187,7 @@ class DaySlot extends React.Component {
                 : title
               }
             </div>
-            <div className="appointment_box">
+            <div className="appointment_box dayslot">
               <div className="topbar">
                 <div className="info-title">Appointment info</div>
                 <div className="icons">
