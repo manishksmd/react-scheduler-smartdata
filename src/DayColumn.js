@@ -101,6 +101,21 @@ class DaySlot extends React.Component {
       end: this.state.endDate
     };
 
+    let lastNodeOfWeek = document.getElementsByClassName('rbc-day-slot');
+    let len = lastNodeOfWeek.length;
+
+    // @Week add class to last column - for sat
+    let lastelement = len < 1 ? '' : lastNodeOfWeek[len-1];
+    if(lastelement.classList !== undefined) {
+      lastelement.classList.add('custom-class-sat')
+    }
+
+    // @Week add class to last column - for friday
+    let secondLastElement = len < 2 ? '' : lastNodeOfWeek[len-2];
+    if(secondLastElement.classList !== undefined) {
+      secondLastElement.classList.add('custom-class-sat')
+    }
+
     return (
       <TimeColumn
         {...props}
@@ -156,6 +171,7 @@ class DaySlot extends React.Component {
       let patientName = get(event, patientNameAccessor);
       let label = localizer.format({ start, end }, eventTimeRangeFormat, culture)
       let _isSelected = isSelected(event, selected)
+      let viewClass = this.props.view === 'week' ? 'appointment_box dayslot' : 'appointment_box';
 
       if (eventPropGetter)
         var { style: xStyle, className } = eventPropGetter(event, start, end, _isSelected)
@@ -187,7 +203,7 @@ class DaySlot extends React.Component {
                 : title
               }
             </div>
-            <div className="appointment_box dayslot">
+            <div className={viewClass}>
               <div className="topbar">
                 <div className="info-title">Appointment info</div>
                 <div className="icons">
@@ -205,7 +221,8 @@ class DaySlot extends React.Component {
                       <div className="info-p">
                         <div className="name">Dr {patientName}</div>
                         {/*<p><b>Phone: </b><span>897-876-6543</span></p>*/}
-                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view')}>View Pateint Profile</a>
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>View Pateint Profile</a>
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>View Pateint Profile</a>
                       </div>
                   </div>
                   <div className="about-event">

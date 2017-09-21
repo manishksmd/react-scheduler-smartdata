@@ -586,6 +586,7 @@ class Calendar extends React.Component {
          formats={undefined}
          events={events}
          date={current}
+         view={view}
          components={viewComponents}
          getDrilldownView={this.getDrilldownView}
          onNavigate={this.handleNavigate}

@@ -80,7 +80,8 @@ class EventCell extends React.Component {
                       <div className="info-p">
                         <div className="name">Dr Karan Kapoor</div>
                         {/*<p><b>Phone: </b><span>897-876-6543</span></p>*/}
-                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view')}>View Pateint Profile</a>
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>View Pateint Profile</a>
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>View Pateint Profile</a>
                       </div>
                   </div>
                   <div className="about-event">
