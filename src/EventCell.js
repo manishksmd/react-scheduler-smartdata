@@ -13,6 +13,15 @@ let propTypes = {
   selected: PropTypes.bool,
   eventPropGetter: PropTypes.func,
   titleAccessor: accessor,
+
+  // @Appointment field info declaration
+  patientNameAccessor: accessor,
+  clinicianImageAccessor: accessor,
+  clinicianNameAccessor: accessor,
+  appointmentTypeAccessor: accessor,
+  appointmentTimeAccessor: accessor,
+  coPayAccessor: accessor,
+
   allDayAccessor: accessor,
   startAccessor: accessor,
   endAccessor: accessor,
@@ -29,7 +38,15 @@ class EventCell extends React.Component {
       , event
       , selected
       , eventPropGetter
-      , startAccessor, endAccessor, titleAccessor
+      , startAccessor
+      , endAccessor
+      , titleAccessor
+      , patientNameAccessor
+      , clinicianImageAccessor
+      , clinicianNameAccessor
+      , appointmentTypeAccessor
+      , appointmentTimeAccessor
+      , coPayAccessor
       , slotStart
       , slotEnd
       , onSelect
@@ -38,6 +55,12 @@ class EventCell extends React.Component {
       , ...props } = this.props;
 
     let title = get(event, titleAccessor)
+      , patientName = get(event, patientNameAccessor)
+      , clinicianImage = get(event, clinicianImageAccessor)
+      , clinicianName = get(event, clinicianNameAccessor)
+      , appointmentType = get(event, appointmentTypeAccessor)
+      , appointmentTime = get(event, appointmentTimeAccessor)
+      , coPay = get(event, coPayAccessor)
       , end = get(event, endAccessor)
       , start = get(event, startAccessor)
       , isAllDay = get(event, props.allDayAccessor)
@@ -76,19 +99,19 @@ class EventCell extends React.Component {
               </div>
               <div className="info-content">
                   <div className="personal-info">
-                      <div className="info-pic"><img src={Img} width="80px" height="80px" /></div>
+                      <div className="info-pic"><img src={clinicianImage} width="80px" height="80px" /></div>
                       <div className="info-p">
-                        <div className="name">Dr Karan Kapoor</div>
-                        {/*<p><b>Phone: </b><span>897-876-6543</span></p>*/}
+                        <div className="name">{clinicianName}</div>
                         <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>View Pateint Profile</a>
-                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>View Pateint Profile</a>
+                        <br />
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>Soap note</a>
                       </div>
                   </div>
                   <div className="about-event">
                       <div className="info-p">
-                        <p><b>Appointment: </b><span>New Patient Consultation</span></p>
-                        <p><b>Time: </b><span>02:00-02:30 p.m</span></p>
-                        <p><b>Co-Pay: </b><span><i className="fa fa-usd" aria-hidden="true"></i> 00.00</span></p>
+                        <p><b>Appointment: </b><span>{appointmentType}</span></p>
+                        <p><b>Time: </b><span>{appointmentTime}</span></p>
+                        <p><b>Co-Pay: </b><span><i className="fa fa-usd" aria-hidden="true"></i> {coPay ? coPay : '0.00'}</span></p>
                       </div>
                   </div>
               </div>

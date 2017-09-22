@@ -48,7 +48,6 @@ const CustomToolbar = (toolbar) => {
 
 
 const DragAndDropCalendar = withDragAndDrop(BigCalendar);
-// console.log('--------------', resources);
 
 class Dnd extends React.Component {
   constructor (props) {

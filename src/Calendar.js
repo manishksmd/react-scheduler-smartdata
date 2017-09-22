@@ -271,6 +271,11 @@ class Calendar extends React.Component {
     */
    titleAccessor: accessor,
    patientNameAccessor: accessor,
+   clinicianImageAccessor: accessor,
+   clinicianNameAccessor: accessor,
+   appointmentTypeAccessor: accessor,
+   appointmentTimeAccessor: accessor,
+   coPayAccessor: accessor,
 
    /**
     * Determines whether the event should be considered an "all day" event and ignore time.
@@ -491,6 +496,11 @@ class Calendar extends React.Component {
 
    titleAccessor: 'title',
    patientNameAccessor: 'patientName',
+   clinicianImageAccessor: 'clinicianImage',
+   clinicianNameAccessor: 'clinicianName',
+   appointmentTypeAccessor: 'appointmentType',
+   appointmentTimeAccessor: 'appointmentTime',
+   coPayAccessor: 'coPay',
    allDayAccessor: 'allDay',
    startAccessor: 'start',
    endAccessor: 'end'

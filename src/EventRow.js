@@ -14,17 +14,6 @@ class EventRow extends React.Component {
     let { segments } = this.props
 
     let lastEnd = 1
-    
-    // if (segments.length < 7) {
-    //   // segments.push({            
-    //   //       'start': new Date(2017, 8, 4, 2, 30, 0, 0),
-    //   //       'end': new Date(2017, 8, 4, 4, 30, 0, 0),
-    //   //     });
-    //   segments.map((obj) => {
-    //     console.log(obj);
-    //   });
-    //   //console.log(segments)
-    // }
 
     return (
       <div className="rbc-row">
