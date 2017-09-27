@@ -44,6 +44,15 @@ let propTypes = {
   width: PropTypes.number,
 
   titleAccessor: accessor.isRequired,
+
+  // @Appointment field info declaration
+  patientNameAccessor: accessor,
+  clinicianImageAccessor: accessor,
+  clinicianNameAccessor: accessor,
+  appointmentTypeAccessor: accessor,
+  appointmentTimeAccessor: accessor,
+  coPayAccessor: accessor,
+
   allDayAccessor: accessor.isRequired,
   startAccessor: accessor.isRequired,
   endAccessor: accessor.isRequired,
@@ -150,6 +159,12 @@ class MonthView extends React.Component {
       components,
       selectable,
       titleAccessor,
+      patientNameAccessor,
+      clinicianImageAccessor,
+      clinicianNameAccessor,
+      appointmentTypeAccessor,
+      appointmentTimeAccessor,
+      coPayAccessor,
       startAccessor,
       endAccessor,
       allDayAccessor,
@@ -178,6 +193,12 @@ class MonthView extends React.Component {
         selectable={selectable}
         messages={messages}
         titleAccessor={titleAccessor}
+        patientNameAccessor={patientNameAccessor}
+        clinicianImageAccessor={clinicianImageAccessor}
+        clinicianNameAccessor={clinicianNameAccessor}
+        appointmentTypeAccessor={appointmentTypeAccessor}
+        appointmentTimeAccessor={appointmentTimeAccessor}
+        coPayAccessor={coPayAccessor}
         startAccessor={startAccessor}
         endAccessor={endAccessor}
         allDayAccessor={allDayAccessor}

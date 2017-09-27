@@ -74,6 +74,7 @@ class Toolbar extends React.Component {
         viewNames.map(name =>
           <button type='button' key={name}
             className={cn({'rbc-active': view === name})}
+            id={view}
             onClick={this.view.bind(null, name)}
           >
             {messages[name]}

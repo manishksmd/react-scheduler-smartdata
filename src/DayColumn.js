@@ -35,7 +35,15 @@ class DaySlot extends React.Component {
 
     rtl: PropTypes.bool,
     titleAccessor: accessor,
+
+    // @Appointment field info declaration
     patientNameAccessor: accessor,
+    clinicianImageAccessor: accessor,
+    clinicianNameAccessor: accessor,
+    appointmentTypeAccessor: accessor,
+    appointmentTimeAccessor: accessor,
+    coPayAccessor: accessor,
+
     allDayAccessor: accessor.isRequired,
     startAccessor: accessor.isRequired,
     endAccessor: accessor.isRequired,
@@ -101,6 +109,21 @@ class DaySlot extends React.Component {
       end: this.state.endDate
     };
 
+    let lastNodeOfWeek = document.getElementsByClassName('rbc-day-slot');
+    let len = lastNodeOfWeek.length;
+
+    // @Week add class to last column - for sat
+    let lastelement = len < 1 ? '' : lastNodeOfWeek[len-1];
+    if(lastelement.classList !== undefined) {
+      lastelement.classList.add('custom-class-sat')
+    }
+
+    // @Week add class to last column - for friday
+    let secondLastElement = len < 2 ? '' : lastNodeOfWeek[len-2];
+    if(secondLastElement.classList !== undefined) {
+      secondLastElement.classList.add('custom-class-sat')
+    }
+
     return (
       <TimeColumn
         {...props}
@@ -137,7 +160,16 @@ class DaySlot extends React.Component {
       , eventWrapperComponent: EventWrapper
       , rtl: isRtl
       , step
-      , startAccessor, endAccessor, titleAccessor, patientNameAccessor } = this.props;
+      , startAccessor
+      , endAccessor
+      , titleAccessor
+      , patientNameAccessor
+      , clinicianImageAccessor
+      , clinicianNameAccessor
+      , appointmentTypeAccessor
+      , appointmentTimeAccessor
+      , coPayAccessor } = this.props;
+
 
     let EventComponent = eventComponent
 
@@ -153,9 +185,18 @@ class DaySlot extends React.Component {
       let continuesAfter = startsAfter(end, max)
 
       let title = get(event, titleAccessor)
+
+      // @Appointment associate appointment data with the fields
       let patientName = get(event, patientNameAccessor);
+      let clinicianImage = get(event, clinicianImageAccessor);
+      let clinicianName = get(event, clinicianNameAccessor);
+      let appointmentType = get(event, appointmentTypeAccessor);
+      let appointmentTime = get(event, appointmentTimeAccessor);
+      let coPay = get(event, coPayAccessor);
+
       let label = localizer.format({ start, end }, eventTimeRangeFormat, culture)
       let _isSelected = isSelected(event, selected)
+      let viewClass = this.props.view === 'week' ? 'appointment_box dayslot' : 'appointment_box';
 
       if (eventPropGetter)
         var { style: xStyle, className } = eventPropGetter(event, start, end, _isSelected)
@@ -187,32 +228,41 @@ class DaySlot extends React.Component {
                 : title
               }
             </div>
-            <div className="appointment_box dayslot">
+            <div className={viewClass}>
               <div className="topbar">
                 <div className="info-title">Appointment info</div>
                 <div className="icons">
                     <ul>
-                      <li><a className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></a></li>
-                      <li><a className="trash" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'delete')}><i className="fa fa-trash-o" aria-hidden="true"></i></a></li>
+                      <li>
+                        <a className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}>
+                          <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a className="trash" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'delete')}>
+                          <i className="fa fa-trash-o" aria-hidden="true"></i>
+                        </a>
+                      </li>
                     </ul>
                 </div>
               </div>
               <div className="info-content">
                   <div className="personal-info">
                       <div className="info-pic">
-                        <img src={Img} width="80px" height="80px" />
+                        <img src={clinicianImage} width="80px" height="80px" />
                         </div>
                       <div className="info-p">
-                        <div className="name">Dr {patientName}</div>
-                        {/*<p><b>Phone: </b><span>897-876-6543</span></p>*/}
-                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view')}>View Pateint Profile</a>
+                        <div className="name">{clinicianName}</div>
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>View Pateint Profile</a>
+                        <br />
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>Soap note</a>
                       </div>
                   </div>
                   <div className="about-event">
                       <div className="info-p">
-                        <p><b>Appointment: </b><span>New Patient Consultation</span></p>
-                        <p><b>Time: </b><span>02:00-02:30 p.m</span></p>
-                        <p><b>Co-Pay: </b><span><i className="fa fa-usd" aria-hidden="true"></i> 00.00</span></p>
+                        <p><b>Appointment: </b><span>{appointmentType}</span></p>
+                        <p><b>Time: </b><span>{appointmentTime}</span></p>
+                        <p><b>Co-Pay: </b><span><i className="fa fa-usd" aria-hidden="true"></i> {coPay ? coPay : '0.00'}</span></p>
                       </div>
                   </div>
               </div>

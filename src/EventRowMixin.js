@@ -17,6 +17,14 @@ export default {
     selected: PropTypes.object,
     eventPropGetter: PropTypes.func,
     titleAccessor: accessor,
+    // @Appointment field info declaration
+    patientNameAccessor: accessor,
+    clinicianImageAccessor: accessor,
+    clinicianNameAccessor: accessor,
+    appointmentTypeAccessor: accessor,
+    appointmentTimeAccessor: accessor,
+    coPayAccessor: accessor,
+
     allDayAccessor: accessor,
     startAccessor: accessor,
     endAccessor: accessor,
@@ -35,7 +43,15 @@ export default {
   renderEvent(props, event) {
     let {
         eventPropGetter, selected, start, end
-      , startAccessor, endAccessor, titleAccessor
+      , startAccessor
+      , endAccessor
+      , titleAccessor
+      , patientNameAccessor
+      , clinicianImageAccessor
+      , clinicianNameAccessor
+      , appointmentTypeAccessor
+      , appointmentTimeAccessor
+      , coPayAccessor
       , allDayAccessor, eventComponent
       , eventWrapperComponent
       , onSelect } = props;
@@ -50,6 +66,12 @@ export default {
         startAccessor={startAccessor}
         endAccessor={endAccessor}
         titleAccessor={titleAccessor}
+        patientNameAccessor={patientNameAccessor}
+        clinicianImageAccessor={clinicianImageAccessor}
+        clinicianNameAccessor={clinicianNameAccessor}
+        appointmentTypeAccessor={appointmentTypeAccessor}
+        appointmentTimeAccessor={appointmentTimeAccessor}
+        coPayAccessor={coPayAccessor}
         allDayAccessor={allDayAccessor}
         slotStart={start}
         slotEnd={end}
