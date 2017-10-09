@@ -224,7 +224,7 @@ class DaySlot extends React.Component {
             <div className='rbc-event-label'>{label}</div>
             <div className='rbc-event-content'>
               { EventComponent
-                ? <EventComponent event={event} title={title}/>
+                ? <EventComponent event={event} />
                 : title
               }
             </div>
@@ -234,12 +234,17 @@ class DaySlot extends React.Component {
                 <div className="icons">
                     <ul>
                       <li>
-                        <a className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}>
+                        <a title="Edit recurrence" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit_recurrence')}>
                           <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
                       </li>
                       <li>
-                        <a className="trash" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'delete')}>
+                        <a title="Edit" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}>
+                          <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a title="Delete" className="trash" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'delete')}>
                           <i className="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
                       </li>
