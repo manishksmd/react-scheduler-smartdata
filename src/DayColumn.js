@@ -235,7 +235,7 @@ class DaySlot extends React.Component {
                     <ul>
                       <li>
                         <a title="Edit recurrence" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit_recurrence')}>
-                          <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+                          <i className="fa fa-repeat" aria-hidden="true"></i>
                         </a>
                       </li>
                       <li>
