@@ -43,6 +43,8 @@ class DaySlot extends React.Component {
     appointmentTypeAccessor: accessor,
     appointmentTimeAccessor: accessor,
     coPayAccessor: accessor,
+    soapNoteTitleAccessor: accessor,
+    isRecurrenceAccessor: accessor,
 
     allDayAccessor: accessor.isRequired,
     startAccessor: accessor.isRequired,
@@ -168,7 +170,9 @@ class DaySlot extends React.Component {
       , clinicianNameAccessor
       , appointmentTypeAccessor
       , appointmentTimeAccessor
-      , coPayAccessor } = this.props;
+      , coPayAccessor
+      , soapNoteTitleAccessor
+      , isRecurrenceAccessor } = this.props;
 
 
     let EventComponent = eventComponent
@@ -193,6 +197,8 @@ class DaySlot extends React.Component {
       let appointmentType = get(event, appointmentTypeAccessor);
       let appointmentTime = get(event, appointmentTimeAccessor);
       let coPay = get(event, coPayAccessor);
+      let soapNoteTitle = get(event, soapNoteTitleAccessor);
+      let isRecurrence = get(event, isRecurrenceAccessor);
 
       let label = localizer.format({ start, end }, eventTimeRangeFormat, culture)
       let _isSelected = isSelected(event, selected)
@@ -223,6 +229,7 @@ class DaySlot extends React.Component {
           >
             <div className='rbc-event-label'>{label}</div>
             <div className='rbc-event-content'>
+              {isRecurrence ? <i className="fa fa-repeat" aria-hidden="true"></i> : ''}
               { EventComponent
                 ? <EventComponent event={event} />
                 : title
@@ -259,7 +266,7 @@ class DaySlot extends React.Component {
                       <div className="info-p">
                         <div className="name">{clinicianName}</div>
                         <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>View Pateint Profile</a>
-                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>Soap note</a>
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>{soapNoteTitle}</a>
                       </div>
                   </div>
                   <div className="about-event">
