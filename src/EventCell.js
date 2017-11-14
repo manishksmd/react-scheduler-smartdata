@@ -21,6 +21,8 @@ let propTypes = {
   appointmentTypeAccessor: accessor,
   appointmentTimeAccessor: accessor,
   coPayAccessor: accessor,
+  soapNoteTitleAccessor: accessor,
+  isRecurrenceAccessor: accessor,
 
   allDayAccessor: accessor,
   startAccessor: accessor,
@@ -47,6 +49,8 @@ class EventCell extends React.Component {
       , appointmentTypeAccessor
       , appointmentTimeAccessor
       , coPayAccessor
+      , soapNoteTitleAccessor
+      , isRecurrenceAccessor
       , slotStart
       , slotEnd
       , onSelect
@@ -61,6 +65,8 @@ class EventCell extends React.Component {
       , appointmentType = get(event, appointmentTypeAccessor)
       , appointmentTime = get(event, appointmentTimeAccessor)
       , coPay = get(event, coPayAccessor)
+      , soapNoteTitle = get(event, soapNoteTitleAccessor)
+      , isRecurrence = get(event, isRecurrenceAccessor)
       , end = get(event, endAccessor)
       , start = get(event, startAccessor)
       , isAllDay = get(event, props.allDayAccessor)
@@ -82,7 +88,8 @@ class EventCell extends React.Component {
           })}
           // onClick={(e) => onSelect(event, e)}
         >
-          <div className='rbc-event-content'>
+          <div className='rbc-event-content'>{alert(isRecurrence)}
+            {isRecurrence === true ? <i className="fa fa-repeat" aria-hidden="true"></i> : ''}
             { Event
               ? <Event event={event} title={title}/>
               : title
@@ -103,8 +110,8 @@ class EventCell extends React.Component {
                       <div className="info-pic"><img src={clinicianImage} width="80px" height="80px" /></div>
                       <div className="info-p">
                         <div className="name">{clinicianName}</div>
-                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>View Patient Profile</a>
-                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>Soap note</a>
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>View Pateint Profile</a>
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>{soapNoteTitle}</a>
                       </div>
                   </div>
                   <div className="about-event">

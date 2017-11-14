@@ -276,6 +276,8 @@ class Calendar extends React.Component {
    appointmentTypeAccessor: accessor,
    appointmentTimeAccessor: accessor,
    coPayAccessor: accessor,
+   soapNoteTitleAccessor: accessor,
+   isRecurrenceAccessor: accessor,
 
    /**
     * Determines whether the event should be considered an "all day" event and ignore time.
@@ -501,6 +503,8 @@ class Calendar extends React.Component {
    appointmentTypeAccessor: 'appointmentType',
    appointmentTimeAccessor: 'appointmentTime',
    coPayAccessor: 'coPay',
+   soapNoteTitleAccessor: 'soapNoteTitle',
+   isRecurrenceAccessor: 'isRecurrence',
    allDayAccessor: 'allDay',
    startAccessor: 'start',
    endAccessor: 'end'

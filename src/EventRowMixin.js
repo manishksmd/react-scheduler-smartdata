@@ -24,6 +24,8 @@ export default {
     appointmentTypeAccessor: accessor,
     appointmentTimeAccessor: accessor,
     coPayAccessor: accessor,
+    soapNoteTitleAccessor: accessor,
+    isRecurrenceAccessor: accessor,
 
     allDayAccessor: accessor,
     startAccessor: accessor,
@@ -52,6 +54,8 @@ export default {
       , appointmentTypeAccessor
       , appointmentTimeAccessor
       , coPayAccessor
+      , soapNoteTitleAccessor
+      , isRecurrenceAccessor
       , allDayAccessor, eventComponent
       , eventWrapperComponent
       , onSelect } = props;
@@ -72,6 +76,8 @@ export default {
         appointmentTypeAccessor={appointmentTypeAccessor}
         appointmentTimeAccessor={appointmentTimeAccessor}
         coPayAccessor={coPayAccessor}
+        soapNoteTitleAccessor={soapNoteTitleAccessor}
+        isRecurrenceAccessor={isRecurrenceAccessor}
         allDayAccessor={allDayAccessor}
         slotStart={start}
         slotEnd={end}
