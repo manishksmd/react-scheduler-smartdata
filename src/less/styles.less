@@ -228,7 +228,7 @@ body{
 }
 .rbc-day-slot .rbc-event {
   display: block !important;
-  height: auto !important;
+  height: auto;
   left: 0 !important;
   position: absolute;
   width: 100% !important;
@@ -236,7 +236,18 @@ body{
 }
 /*for appointment box show*/
 .rbc-time-content{overflow-y: inherit !important;}
+/*Custom Media*/
+@media (max-width: 575px)
+{
+.appointment_box {
+  width:180px;
+}
+.topbar{padding: 5px;}
+.info-title, .icons ul li a.edit, .icons ul li a.trash{font-size: 13px;}
+.icons ul li a{padding: 0px 3px 0px;}
+.info-p{white-space: normal;}
 
+}
 @import './toolbar.less';
 @import './event.less';
 @import './month.less';
