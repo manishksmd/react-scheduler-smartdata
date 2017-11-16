@@ -68,8 +68,17 @@ class Toolbar extends React.Component {
   viewNamesGroup(messages) {
     let viewNames = this.props.views
     const view = this.props.view
+    let width = window.innerWidth
+                || document.documentElement.clientWidth
+                || document.body.clientWidth;
+
+    let viewType = (width < 768) ? 'day' : 'month';    
 
     if (viewNames.length > 1) {
+    
+      if (viewType === 'day') {
+        viewNames = ['day'];
+      }
       return (
         viewNames.map(name =>
           <button type='button' key={name}
