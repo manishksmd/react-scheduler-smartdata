@@ -266,7 +266,7 @@ class DaySlot extends React.Component {
                         </div>
                       <div className="info-p">
                         <div className="name">{clinicianName}</div>
-                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>View Pateint Profile</a>
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>View Client Profile</a>
                         <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>{soapNoteTitle}</a>
                       </div>
                   </div>
@@ -274,7 +274,7 @@ class DaySlot extends React.Component {
                       <div className="info-p">
                         <p><b>Appointment: </b><span>{appointmentType}</span></p>
                         <p><b>Time: </b><span>{appointmentTime}</span></p>
-                        <p><b>Co-Pay: </b><span><i className="fa fa-usd" aria-hidden="true"></i> {coPay ? coPay : '0.00'}</span></p>
+                        {/*<p><b>Co-Pay: </b><span><i className="fa fa-usd" aria-hidden="true"></i> {coPay ? coPay : '0.00'}</span></p>*/}
                       </div>
                   </div>
               </div>
