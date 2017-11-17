@@ -117,13 +117,13 @@ class DaySlot extends React.Component {
     // @Week add class to last column - for sat
     let lastelement = len < 1 ? '' : lastNodeOfWeek[len-1];
     if(lastelement.classList !== undefined) {
-      lastelement.classList.add('custom-class-sat colwrap')
+      lastelement.classList.add('custom-class-sat')
     }
 
     // @Week add class to last column - for friday
     let secondLastElement = len < 2 ? '' : lastNodeOfWeek[len-2];
     if(secondLastElement.classList !== undefined) {
-      secondLastElement.classList.add('custom-class-sat colwrap')
+      secondLastElement.classList.add('custom-class-sat')
     }
 
     return (
@@ -203,6 +203,7 @@ class DaySlot extends React.Component {
       let label = localizer.format({ start, end }, eventTimeRangeFormat, culture)
       let _isSelected = isSelected(event, selected)
       let viewClass = this.props.view === 'week' ? 'appointment_box dayslot' : 'appointment_box';
+      let dayClass = this.props.view === 'day' ? 'colwrap' : '';
 
       if (eventPropGetter)
         var { style: xStyle, className } = eventPropGetter(event, start, end, _isSelected)
@@ -221,7 +222,7 @@ class DaySlot extends React.Component {
             }}
             title={label + ': ' + title }
             //onClick={(e) => this._select(event, e)}
-            className={cn('rbc-event', className, {
+            className={cn(`rbc-event ${dayClass}`, className, {
               'rbc-selected': _isSelected,
               'rbc-event-continues-earlier': continuesPrior,
               'rbc-event-continues-later': continuesAfter
