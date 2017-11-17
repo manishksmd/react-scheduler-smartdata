@@ -37,8 +37,8 @@ export default {
     'coPay': '',
     'soapNoteTitle': 'View Soap Note',
     'resourceId': 'c',
-    'start': new Date(2017, 8, 5, 2, 30, 0, 0),
-    'end': new Date(2017, 8, 5, 4, 30, 0, 0),
+    'start': new Date(2017, 8, 6, 2, 30, 0, 0),
+    'end': new Date(2017, 8, 6, 4, 30, 0, 0),
   }, {
     'title': 'Meeting',
     'isRecurrence': true,
