@@ -117,13 +117,13 @@ class DaySlot extends React.Component {
     // @Week add class to last column - for sat
     let lastelement = len < 1 ? '' : lastNodeOfWeek[len-1];
     if(lastelement.classList !== undefined) {
-      lastelement.classList.add('custom-class-sat')
+      lastelement.classList.add('custom-class-sat colwrap')
     }
 
     // @Week add class to last column - for friday
     let secondLastElement = len < 2 ? '' : lastNodeOfWeek[len-2];
     if(secondLastElement.classList !== undefined) {
-      secondLastElement.classList.add('custom-class-sat')
+      secondLastElement.classList.add('custom-class-sat colwrap')
     }
 
     return (
@@ -229,7 +229,7 @@ class DaySlot extends React.Component {
           >
             <div className='rbc-event-label'>{label}</div>
             <div className='rbc-event-content'>
-              {isRecurrence ? <i className="fa fa-repeat" aria-hidden="true"></i> : ''}
+              {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
               { EventComponent
                 ? <EventComponent event={event} />
                 : title
