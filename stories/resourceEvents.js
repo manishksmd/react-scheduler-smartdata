@@ -128,8 +128,8 @@ export default {
     'appointmentTime': '8:00 - 8:30',
     'coPay': '',
     'resourceId': 'c',
-    'start': new Date(2017, 8, 18, 2, 30, 0, 0),
-    'end': new Date(2017, 8, 18, 4, 30, 0, 0),
+    'start': new Date(2017, 8, 26, 2, 30, 0, 0),
+    'end': new Date(2017, 8, 26, 4, 30, 0, 0),
   }
   ],
 
