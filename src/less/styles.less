@@ -220,6 +220,19 @@ body{
   z-index: inherit;
 }
 .rbc-date-cell{min-height: 55px;}
+.rbc-month-view:last-child(1) .rbc-month-row .rbc-row-content .rbc-row .rbc-row-segment .rbc-event-content .appointment_box.month_box,
+.rbc-month-view:last-child(2) .rbc-month-row .rbc-row-content .rbc-row .rbc-row-segment .rbc-event-content .appointment_box.month_box,
+.rbc-month-view:last-child(3) .rbc-month-row .rbc-row-content .rbc-row .rbc-row-segment .rbc-event-content .appointment_box.month_box {
+    top: inherit;
+    bottom: 0px;
+}
+.rbc-month-view:last-child(1) .rbc-month-row .rbc-row-content .rbc-row .rbc-row-segment .rbc-event-content .appointment_box.month_box::before,
+.rbc-month-view:last-child(2) .rbc-month-row .rbc-row-content .rbc-row .rbc-row-segment .rbc-event-content .appointment_box.month_box::before,
+.rbc-month-view:last-child(3) .rbc-month-row .rbc-row-content .rbc-row .rbc-row-segment .rbc-event-content .appointment_box.month_box::before {
+    top: inherit;
+    bottom: 0px;
+    border-right-color: #fff;
+}
 /*Day appointment*/
 .appointment_box.dayslot {
   left: 100%;
