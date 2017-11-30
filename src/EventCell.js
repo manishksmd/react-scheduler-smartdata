@@ -88,7 +88,7 @@ class EventCell extends React.Component {
           })}
           // onClick={(e) => onSelect(event, e)}
         >
-          <div className='rbc-event-content'>
+          <div className='rbc-event-content'>{alert(isRecurrence)}
             {isRecurrence === true ? <i className="fa fa-repeat" aria-hidden="true"></i> : ''}
             { Event
               ? <Event event={event} title={title}/>

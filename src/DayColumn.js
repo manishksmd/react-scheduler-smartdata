@@ -229,7 +229,7 @@ class DaySlot extends React.Component {
             })}
           >
             <div className='rbc-event-label'>{label}</div>
-            <div className='rbc-event-content'>
+            <div className='rbc-event-content'>{alert(isRecurrence)}
               {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
               { EventComponent
                 ? <EventComponent event={event} />
