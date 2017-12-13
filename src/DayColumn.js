@@ -229,7 +229,7 @@ class DaySlot extends React.Component {
             })}
           >
             <div className='rbc-event-label'>{label}</div>
-            <div className='rbc-event-content'>{alert(isRecurrence)}
+            <div className='rbc-event-content'>
               {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
               { EventComponent
                 ? <EventComponent event={event} />
@@ -241,11 +241,12 @@ class DaySlot extends React.Component {
                 <div className="info-title">Appointment info</div>
                 <div className="icons">
                     <ul>
+                    {isRecurrence ? 
                       <li>
                         <a title="Edit recurrence" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit_recurrence')}>
                           <i className="fa fa-repeat" aria-hidden="true"></i>
                         </a>
-                      </li>
+                      </li>:''}
                       <li>
                         <a title="Edit" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}>
                           <i className="fa fa-pencil-square-o" aria-hidden="true"></i>

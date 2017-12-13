@@ -88,7 +88,7 @@ class EventCell extends React.Component {
           })}
           // onClick={(e) => onSelect(event, e)}
         >
-          <div className='rbc-event-content'>{alert(isRecurrence)}
+          <div className='rbc-event-content'>
             {isRecurrence === true ? <i className="fa fa-repeat" aria-hidden="true"></i> : ''}
             { Event
               ? <Event event={event} title={title}/>
@@ -99,7 +99,7 @@ class EventCell extends React.Component {
                 <div className="info-title">Appointment info</div>
                 <div className="icons">
                     <ul>
-                      <li><a title="Edit recurrence" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit_recurrence')}><i className="fa fa-repeat" aria-hidden="true"></i></a></li>
+                    {isRecurrence ? <li><a title="Edit recurrence" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit_recurrence')}><i className="fa fa-repeat" aria-hidden="true"></i></a></li> : ''}
                       <li><a title="Edit" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></a></li>
                       <li><a title="Delete" className="trash" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'delete')}><i className="fa fa-trash-o" aria-hidden="true"></i></a></li>
                     </ul>
