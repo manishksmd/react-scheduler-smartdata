@@ -22,7 +22,11 @@ let propTypes = {
   appointmentTimeAccessor: accessor,
   coPayAccessor: accessor,
   soapNoteTitleAccessor: accessor,
+  setProfileTitleAccessor: accessor,
   isRecurrenceAccessor: accessor,
+  isRecurrenceEditAccessor: accessor,
+  isEditAccessor: accessor,
+  isDeleteAccessor: accessor,
 
   allDayAccessor: accessor,
   startAccessor: accessor,
@@ -50,7 +54,11 @@ class EventCell extends React.Component {
       , appointmentTimeAccessor
       , coPayAccessor
       , soapNoteTitleAccessor
+      , setProfileTitleAccessor
       , isRecurrenceAccessor
+      , isRecurrenceEditAccessor
+      , isEditAccessor
+      , isDeleteAccessor
       , slotStart
       , slotEnd
       , onSelect
@@ -66,7 +74,11 @@ class EventCell extends React.Component {
       , appointmentTime = get(event, appointmentTimeAccessor)
       , coPay = get(event, coPayAccessor)
       , soapNoteTitle = get(event, soapNoteTitleAccessor)
+      , setProfileTitle = get(event, setProfileTitleAccessor)
       , isRecurrence = get(event, isRecurrenceAccessor)
+      , isRecurrenceEdit = get(event, isRecurrenceEditAccessor)
+      , isEdit = get(event, isEditAccessor)
+      , isDelete = get(event, isDeleteAccessor)
       , end = get(event, endAccessor)
       , start = get(event, startAccessor)
       , isAllDay = get(event, props.allDayAccessor)
@@ -99,9 +111,9 @@ class EventCell extends React.Component {
                 <div className="info-title">Appointment info</div>
                 <div className="icons">
                     <ul>
-                    {isRecurrence ? <li><a title="Edit recurrence" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit_recurrence')}><i className="fa fa-repeat" aria-hidden="true"></i></a></li> : ''}
-                      <li><a title="Edit" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></a></li>
-                      <li><a title="Delete" className="trash" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'delete')}><i className="fa fa-trash-o" aria-hidden="true"></i></a></li>
+                    {isRecurrenceEdit ? <li><a title="Edit recurrence" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit_recurrence')}><i className="fa fa-repeat" aria-hidden="true"></i></a></li> : ''}
+                    {isEdit ? <li><a title="Edit" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></a></li> : ''}
+                    {isDelete ? <li><a title="Delete" className="trash" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'delete')}><i className="fa fa-trash-o" aria-hidden="true"></i></a></li> : ''}
                     </ul>
                 </div>
               </div>
@@ -110,7 +122,7 @@ class EventCell extends React.Component {
                       <div className="info-pic"><img src={clinicianImage} width="80px" height="80px" /></div>
                       <div className="info-p">
                         <div className="name">{clinicianName}</div>
-                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>View Client Profile</a>
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{setProfileTitle}</a>
                         <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>{soapNoteTitle}</a>
                       </div>
                   </div>

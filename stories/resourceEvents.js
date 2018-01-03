@@ -10,9 +10,13 @@ export default {
     'appointmentTime': '8:00 - 8:30',
     'coPay': '4000',
     'soapNoteTitle': 'View Soap Note',
+    'setProfileTitle': 'setProfileTitleAccessor',
     'resourceId': 'a',
     'start': new Date(2017, 8, 3, 5, 30, 0, 0),
     'end': new Date(2017, 8, 3, 10, 30, 0, 0),
+    'isRecurrenceEdit': false,
+    'isEdit': true,
+    'isDelete': true,
   }, {
     'title': 'Smartdata Events',
     'isRecurrence': true,
@@ -26,6 +30,9 @@ export default {
     'resourceId': 'a',
     'start': new Date(2017, 8, 4, 5, 30, 0, 0),
     'end': new Date(2017, 8, 4, 10, 30, 0, 0),
+    'isRecurrenceEdit': true,
+    'isEdit': false,
+    'isDelete': true,
   }, {
     'title': 'Another Meeting',
     'isRecurrence': false,
@@ -39,6 +46,9 @@ export default {
     'resourceId': 'c',
     'start': new Date(2017, 8, 6, 2, 30, 0, 0),
     'end': new Date(2017, 8, 6, 4, 30, 0, 0),
+    'isRecurrenceEdit': true,
+    'isEdit': true,
+    'isDelete': false,
   }, {
     'title': 'Meeting',
     'isRecurrence': true,

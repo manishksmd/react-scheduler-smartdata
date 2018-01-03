@@ -44,7 +44,11 @@ class DaySlot extends React.Component {
     appointmentTimeAccessor: accessor,
     coPayAccessor: accessor,
     soapNoteTitleAccessor: accessor,
+    setProfileTitleAccessor: accessor,
     isRecurrenceAccessor: accessor,
+    isRecurrenceEditAccessor: accessor,
+    isEditAccessor: accessor,
+    isDeleteAccessor: accessor,
 
     allDayAccessor: accessor.isRequired,
     startAccessor: accessor.isRequired,
@@ -172,7 +176,11 @@ class DaySlot extends React.Component {
       , appointmentTimeAccessor
       , coPayAccessor
       , soapNoteTitleAccessor
-      , isRecurrenceAccessor } = this.props;
+      , setProfileTitleAccessor
+      , isRecurrenceAccessor
+      , isRecurrenceEditAccessor
+      , isEditAccessor
+      , isDeleteAccessor } = this.props;
 
 
     let EventComponent = eventComponent
@@ -198,7 +206,11 @@ class DaySlot extends React.Component {
       let appointmentTime = get(event, appointmentTimeAccessor);
       let coPay = get(event, coPayAccessor);
       let soapNoteTitle = get(event, soapNoteTitleAccessor);
+      let setProfileTitle = get(event, setProfileTitleAccessor);
       let isRecurrence = get(event, isRecurrenceAccessor);
+      let isRecurrenceEdit = get(event, isRecurrenceEditAccessor);
+      let isEdit = get(event, isEditAccessor);
+      let isDelete = get(event, isDeleteAccessor);
 
       let label = localizer.format({ start, end }, eventTimeRangeFormat, culture)
       let _isSelected = isSelected(event, selected)
@@ -241,22 +253,24 @@ class DaySlot extends React.Component {
                 <div className="info-title">Appointment info</div>
                 <div className="icons">
                     <ul>
-                    {isRecurrence ? 
+                    {isRecurrenceEdit ?
                       <li>
                         <a title="Edit recurrence" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit_recurrence')}>
                           <i className="fa fa-repeat" aria-hidden="true"></i>
                         </a>
                       </li>:''}
+                      {isEdit ?
                       <li>
                         <a title="Edit" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}>
                           <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
-                      </li>
+                      </li>:''}
+                      {isDelete ?
                       <li>
                         <a title="Delete" className="trash" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'delete')}>
                           <i className="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
-                      </li>
+                      </li>:''}
                     </ul>
                 </div>
               </div>
@@ -267,7 +281,7 @@ class DaySlot extends React.Component {
                         </div>
                       <div className="info-p">
                         <div className="name">{clinicianName}</div>
-                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>View Client Profile</a>
+                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{setProfileTitle}</a>
                         <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>{soapNoteTitle}</a>
                       </div>
                   </div>

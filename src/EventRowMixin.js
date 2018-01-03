@@ -25,7 +25,11 @@ export default {
     appointmentTimeAccessor: accessor,
     coPayAccessor: accessor,
     soapNoteTitleAccessor: accessor,
+    setProfileTitleAccessor: accessor,
     isRecurrenceAccessor: accessor,
+    isRecurrenceEditAccessor: accessor,
+    isEditAccessor: accessor,
+    isDeleteAccessor: accessor,
 
     allDayAccessor: accessor,
     startAccessor: accessor,
@@ -55,7 +59,11 @@ export default {
       , appointmentTimeAccessor
       , coPayAccessor
       , soapNoteTitleAccessor
+      , setProfileTitleAccessor
       , isRecurrenceAccessor
+      , isRecurrenceEditAccessor
+      , isEditAccessor
+      , isDeleteAccessor
       , allDayAccessor, eventComponent
       , eventWrapperComponent
       , onSelect } = props;
@@ -77,7 +85,11 @@ export default {
         appointmentTimeAccessor={appointmentTimeAccessor}
         coPayAccessor={coPayAccessor}
         soapNoteTitleAccessor={soapNoteTitleAccessor}
+        setProfileTitleAccessor={setProfileTitleAccessor}
         isRecurrenceAccessor={isRecurrenceAccessor}
+        isRecurrenceEditAccessor={isRecurrenceEditAccessor}
+        isEditAccessor={isEditAccessor}
+        isDeleteAccessor={isDeleteAccessor}
         allDayAccessor={allDayAccessor}
         slotStart={start}
         slotEnd={end}
