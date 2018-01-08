@@ -34,21 +34,16 @@ class Toolbar extends React.Component {
           >
             {messages.today}
           </button>
-          <button
-            type='button'
-            onClick={this.navigate.bind(null, navigate.PREVIOUS)}
-          >
-            {messages.previous}
-          </button>
-          <button
-            type='button'
-            onClick={this.navigate.bind(null, navigate.NEXT)}
-          >
-            {messages.next}
-          </button>
         {
           this.viewNamesGroup(messages)
         }
+
+        <button type='button' onClick={this.navigate.bind(null, navigate.PREVIOUS)}>
+            {messages.previous}
+          </button>
+          <button type='button' onClick={this.navigate.bind(null, navigate.NEXT)}>
+            {messages.next}
+          </button>
         </span>
       </div>
     );
