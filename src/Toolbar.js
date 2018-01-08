@@ -39,11 +39,11 @@ class Toolbar extends React.Component {
         }
 
         <button type='button' onClick={this.navigate.bind(null, navigate.PREVIOUS)}>
-            {messages.previous}
-          </button>
-          <button type='button' onClick={this.navigate.bind(null, navigate.NEXT)}>
-            {messages.next}
-          </button>
+          <i className="fa fa-chevron-circle-left" aria-hidden="true"></i>
+        </button>
+        <button type='button' onClick={this.navigate.bind(null, navigate.NEXT)}>
+            <i className="fa fa-chevron-circle-left" aria-hidden="true"></i>
+        </button>
         </span>
       </div>
     );
