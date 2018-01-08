@@ -23,7 +23,11 @@ class Toolbar extends React.Component {
 
     return (
       <div className='rbc-toolbar'>
-        <span className='rbc-btn-group todaybtn'>
+      <span className='rbc-toolbar-label monthlabel'>
+        { label }
+      </span>
+        {/*<span className='rbc-btn-group todaybtn'>*/}
+        <span className='rbc-btn-group monthweekbtn'>
           <button
             type='button'
             onClick={this.navigate.bind(null, navigate.TODAY)}
@@ -42,13 +46,6 @@ class Toolbar extends React.Component {
           >
             {messages.next}
           </button>
-        </span>
-
-        <span className='rbc-toolbar-label monthlabel'>
-          { label }
-        </span>
-
-        <span className='rbc-btn-group monthweekbtn'>
         {
           this.viewNamesGroup(messages)
         }
