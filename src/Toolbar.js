@@ -46,6 +46,7 @@ class Toolbar extends React.Component {
           >
             {messages.next}
           </button>
+      
         {
           this.viewNamesGroup(messages)
         }
