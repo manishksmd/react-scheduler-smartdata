@@ -26,6 +26,14 @@ class Toolbar extends React.Component {
       <span className='rbc-toolbar-label monthlabel'>
         { label }
       </span>
+      <span className="next_pri-btn">
+          <button type='button' onClick={this.navigate.bind(null, navigate.PREVIOUS)}>
+            <i className="fa fa-chevron-circle-left" aria-hidden="true"></i>
+          </button>
+          <button type='button' onClick={this.navigate.bind(null, navigate.NEXT)}>
+              <i className="fa fa-chevron-circle-right" aria-hidden="true"></i>
+          </button>
+      </span>
         {/*<span className='rbc-btn-group todaybtn'>*/}
         <span className='rbc-btn-group monthweekbtn'>
           <button
@@ -37,18 +45,8 @@ class Toolbar extends React.Component {
         {
           this.viewNamesGroup(messages)
         }
-
-        <button type='button' onClick={this.navigate.bind(null, navigate.PREVIOUS)}>
-            {messages.previous}
-          </button>
-          <button type='button' onClick={this.navigate.bind(null, navigate.NEXT)}>
-            {messages.next}
-          </button>
-
-        {
-          this.viewNamesGroup(messages)
-        }
         </span>
+
       </div>
     );
   }
