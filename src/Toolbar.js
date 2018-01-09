@@ -28,10 +28,10 @@ class Toolbar extends React.Component {
       </span>
       <span className="next_pri-btn">
           <button type='button' onClick={this.navigate.bind(null, navigate.PREVIOUS)}>
-            <i className="fa fa-chevron-circle-left" aria-hidden="true"></i>
+            <i className="fa fa-angle-left" aria-hidden="true"></i>
           </button>
           <button type='button' onClick={this.navigate.bind(null, navigate.NEXT)}>
-              <i className="fa fa-chevron-circle-right" aria-hidden="true"></i>
+              <i className="fa fa-angle-right" aria-hidden="true"></i>
           </button>
       </span>
         {/*<span className='rbc-btn-group todaybtn'>*/}
