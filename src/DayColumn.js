@@ -214,10 +214,10 @@ class DaySlot extends React.Component {
 
       let label = localizer.format({ start, end }, eventTimeRangeFormat, culture)
       let _isSelected = isSelected(event, selected)
-      let appointmentTimeFlag = label.substring(12, 10);
-      let appointmentTimeFlagPM = label.substring(18, 16);
       let viewClass = '';
-      if ((parseInt(appointmentTimeFlag) > 4) && (appointmentTimeFlagPM === 'pm')) {
+      let getEndHour = end.getHours();
+
+      if (getEndHour > 16) {
         viewClass = this.props.view === 'week' ? 'appointment_box dayslot hoverup' : 'appointment_box hoverup';
       } else {
         viewClass = this.props.view === 'week' ? 'appointment_box dayslot' : 'appointment_box';
