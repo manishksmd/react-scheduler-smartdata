@@ -42,6 +42,7 @@ class DaySlot extends React.Component {
     clinicianNameAccessor: accessor,
     appointmentTypeAccessor: accessor,
     appointmentTimeAccessor: accessor,
+    appointmentAddressAccessor: accessor,
     coPayAccessor: accessor,
     soapNoteTitleAccessor: accessor,
     setProfileTitleAccessor: accessor,
@@ -174,6 +175,7 @@ class DaySlot extends React.Component {
       , clinicianNameAccessor
       , appointmentTypeAccessor
       , appointmentTimeAccessor
+      , appointmentAddressAccessor
       , coPayAccessor
       , soapNoteTitleAccessor
       , setProfileTitleAccessor
@@ -204,6 +206,7 @@ class DaySlot extends React.Component {
       let clinicianName = get(event, clinicianNameAccessor);
       let appointmentType = get(event, appointmentTypeAccessor);
       let appointmentTime = get(event, appointmentTimeAccessor);
+      let appointmentAddress = get(event, appointmentAddressAccessor);
       let coPay = get(event, coPayAccessor);
       let soapNoteTitle = get(event, soapNoteTitleAccessor);
       let setProfileTitle = get(event, setProfileTitleAccessor);
@@ -288,15 +291,18 @@ class DaySlot extends React.Component {
                         <img src={clinicianImage} width="80px" height="80px" />
                         </div>
                       <div className="info-p">
-                        <div className="name">{clinicianName}</div>
+                        <div className="name" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{clinicianName}</div>
+                        {/*
                         <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{setProfileTitle}</a>
+                        */}
                         <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>{soapNoteTitle}</a>
                       </div>
                   </div>
                   <div className="about-event">
                       <div className="info-p">
-                        <p><b>Appointment: </b><span>{appointmentType}</span></p>
                         <p><b>Time: </b><span>{appointmentTime}</span></p>
+                        <p><b>Appointment: </b><span>{appointmentType}</span></p>
+                        <p><b>Address: </b><span>{appointmentAddress}</span></p>
                         {/*<p><b>Co-Pay: </b><span><i className="fa fa-usd" aria-hidden="true"></i> {coPay ? coPay : '0.00'}</span></p>*/}
                       </div>
                   </div>

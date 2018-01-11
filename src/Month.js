@@ -51,6 +51,7 @@ let propTypes = {
   clinicianNameAccessor: accessor,
   appointmentTypeAccessor: accessor,
   appointmentTimeAccessor: accessor,
+  appointmentAddressAccessor: accessor,
   coPayAccessor: accessor,
   soapNoteTitleAccessor: accessor,
   setProfileTitleAccessor: accessor,
@@ -170,6 +171,7 @@ class MonthView extends React.Component {
       clinicianNameAccessor,
       appointmentTypeAccessor,
       appointmentTimeAccessor,
+      appointmentAddressAccessor,
       coPayAccessor,
       soapNoteTitleAccessor,
       setProfileTitleAccessor,
@@ -210,6 +212,7 @@ class MonthView extends React.Component {
         clinicianNameAccessor={clinicianNameAccessor}
         appointmentTypeAccessor={appointmentTypeAccessor}
         appointmentTimeAccessor={appointmentTimeAccessor}
+        appointmentAddressAccessor={appointmentAddressAccessor}
         coPayAccessor={coPayAccessor}
         soapNoteTitleAccessor={soapNoteTitleAccessor}
         setProfileTitleAccessor={setProfileTitleAccessor}
