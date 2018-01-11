@@ -240,7 +240,7 @@ class DaySlot extends React.Component {
               [isRtl ? 'right' : 'left']: `${Math.max(0, xOffset)}%`,
               width: `${width}%`
             }}
-            title={label + ': ' + title }
+            // title={label + ': ' + title }
             //onClick={(e) => this._select(event, e)}
             className={cn(`rbc-event ${dayClass}`, className, {
               'rbc-selected': _isSelected,
@@ -248,8 +248,8 @@ class DaySlot extends React.Component {
               'rbc-event-continues-later': continuesAfter
             })}
           >
-            <div className='rbc-event-label'>{label}</div>
-            <div className='rbc-event-content'>
+            <div className='rbc-event-label rbc-event-content textoverflow'>
+              {label}
               {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
               { EventComponent
                 ? <EventComponent event={event} />
