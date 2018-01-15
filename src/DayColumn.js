@@ -253,7 +253,7 @@ class DaySlot extends React.Component {
           >
             <div className='rbc-event-label rbc-event-content textoverflow'>
               {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
-              {label}
+              {label}&nbsp;
               { EventComponent
                 ? <EventComponent event={event} />
                 : title
