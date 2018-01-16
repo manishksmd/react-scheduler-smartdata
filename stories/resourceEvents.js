@@ -12,6 +12,22 @@ export default {
     'coPay': '4000',
     'soapNoteTitle': 'View Soap Note',
     'setProfileTitle': 'setProfileTitleAccessor',
+    'staffs': [{
+        'staffName': 'Morgan',
+        'image': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+        'link': ''
+      },
+      {
+        'staffName': 'Jason',
+        'image': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+        'link': ''
+      },
+      {
+        'staffName': 'Charlee',
+        'image': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+        'link': ''
+      }
+    ],
     'resourceId': 'a',
     'start': new Date(2017, 8, 3, 20, 0, 0, 0),
     'end': new Date(2017, 8, 3, 21, 0, 0, 0),

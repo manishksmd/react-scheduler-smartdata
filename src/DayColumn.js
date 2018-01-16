@@ -26,6 +26,25 @@ function startsAfter(date, max) {
 }
 
 class DaySlot extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.renderStaffs = this.renderStaffs.bind(this);
+  }
+
+  renderStaffs(staffs) {console.log(staffs)
+    if (staffs) {
+      return staffs.map((obj, index) => {
+        return (
+          <div className="info-p">            
+            <img src={obj.image} width="35px" height="35px" />
+            <p>{obj.staffName}</p>
+          </div>
+        );
+      });
+    }
+  }
+
   static propTypes = {
     events: PropTypes.array.isRequired,
     step: PropTypes.number.isRequired,
@@ -46,6 +65,7 @@ class DaySlot extends React.Component {
     coPayAccessor: accessor,
     soapNoteTitleAccessor: accessor,
     setProfileTitleAccessor: accessor,
+    staffsAccessor: accessor,
     isRecurrenceAccessor: accessor,
     isRecurrenceEditAccessor: accessor,
     isEditAccessor: accessor,
@@ -179,6 +199,7 @@ class DaySlot extends React.Component {
       , coPayAccessor
       , soapNoteTitleAccessor
       , setProfileTitleAccessor
+      , staffsAccessor
       , isRecurrenceAccessor
       , isRecurrenceEditAccessor
       , isEditAccessor
@@ -210,6 +231,7 @@ class DaySlot extends React.Component {
       let coPay = get(event, coPayAccessor);
       let soapNoteTitle = get(event, soapNoteTitleAccessor);
       let setProfileTitle = get(event, setProfileTitleAccessor);
+      let staffs = get(event, staffsAccessor);
       let isRecurrence = get(event, isRecurrenceAccessor);
       let isRecurrenceEdit = get(event, isRecurrenceEditAccessor);
       let isEdit = get(event, isEditAccessor);
@@ -287,9 +309,11 @@ class DaySlot extends React.Component {
               </div>
               <div className="info-content">
                   <div className="personal-info">
+                  {staffs ? this.renderStaffs(staffs) :
+                    <div>
                       <div className="info-pic">
                         <img src={clinicianImage} width="80px" height="80px" />
-                        </div>
+                      </div>                  
                       <div className="info-p">
                         <div className="name" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{clinicianName}</div>
                         {/*
@@ -297,6 +321,8 @@ class DaySlot extends React.Component {
                         */}
                         <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>{soapNoteTitle}</a>
                       </div>
+                    </div>
+                  }
                   </div>
                   <div className="about-event">
                       <div className="info-p">

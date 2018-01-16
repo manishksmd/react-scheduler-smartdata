@@ -55,6 +55,7 @@ let propTypes = {
   coPayAccessor: accessor,
   soapNoteTitleAccessor: accessor,
   setProfileTitleAccessor: accessor,
+  staffsAccessor: accessor,
   isRecurrenceAccessor: accessor,
   isRecurrenceEditAccessor: accessor,
   isEditAccessor: accessor,
@@ -175,6 +176,7 @@ class MonthView extends React.Component {
       coPayAccessor,
       soapNoteTitleAccessor,
       setProfileTitleAccessor,
+      staffsAccessor,
       isRecurrenceAccessor,
       isRecurrenceEditAccessor,
       isEditAccessor,
@@ -216,6 +218,7 @@ class MonthView extends React.Component {
         coPayAccessor={coPayAccessor}
         soapNoteTitleAccessor={soapNoteTitleAccessor}
         setProfileTitleAccessor={setProfileTitleAccessor}
+        staffsAccessor={staffsAccessor}
         isRecurrenceAccessor={isRecurrenceAccessor}
         isRecurrenceEditAccessor={isRecurrenceEditAccessor}
         isEditAccessor={isEditAccessor}

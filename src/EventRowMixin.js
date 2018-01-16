@@ -27,6 +27,7 @@ export default {
     coPayAccessor: accessor,
     soapNoteTitleAccessor: accessor,
     setProfileTitleAccessor: accessor,
+    staffsAccessor: accessor,
     isRecurrenceAccessor: accessor,
     isRecurrenceEditAccessor: accessor,
     isEditAccessor: accessor,
@@ -62,6 +63,7 @@ export default {
       , coPayAccessor
       , soapNoteTitleAccessor
       , setProfileTitleAccessor
+      , staffsAccessor
       , isRecurrenceAccessor
       , isRecurrenceEditAccessor
       , isEditAccessor
@@ -89,6 +91,7 @@ export default {
         coPayAccessor={coPayAccessor}
         soapNoteTitleAccessor={soapNoteTitleAccessor}
         setProfileTitleAccessor={setProfileTitleAccessor}
+        staffsAccessor={staffsAccessor}
         isRecurrenceAccessor={isRecurrenceAccessor}
         isRecurrenceEditAccessor={isRecurrenceEditAccessor}
         isEditAccessor={isEditAccessor}

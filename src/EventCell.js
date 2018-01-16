@@ -24,6 +24,7 @@ let propTypes = {
   coPayAccessor: accessor,
   soapNoteTitleAccessor: accessor,
   setProfileTitleAccessor: accessor,
+  staffsAccessor: accessor,
   isRecurrenceAccessor: accessor,
   isRecurrenceEditAccessor: accessor,
   isEditAccessor: accessor,
@@ -39,6 +40,25 @@ let propTypes = {
 }
 
 class EventCell extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.renderStaffs = this.renderStaffs.bind(this);
+  }
+
+  renderStaffs(staffs) {console.log(staffs)
+    if (staffs) {
+      return staffs.map((obj, index) => {
+        return (
+          <div className="info-p">            
+            <img src={obj.image} width="35px" height="35px" />
+            <p>{obj.staffName}</p>
+          </div>
+        );
+      });
+    }
+  }
+
   render() {
     let {
         className
@@ -57,6 +77,7 @@ class EventCell extends React.Component {
       , coPayAccessor
       , soapNoteTitleAccessor
       , setProfileTitleAccessor
+      , staffsAccessor
       , isRecurrenceAccessor
       , isRecurrenceEditAccessor
       , isEditAccessor
@@ -78,6 +99,7 @@ class EventCell extends React.Component {
       , coPay = get(event, coPayAccessor)
       , soapNoteTitle = get(event, soapNoteTitleAccessor)
       , setProfileTitle = get(event, setProfileTitleAccessor)
+      , staffs = get(event, staffsAccessor)
       , isRecurrence = get(event, isRecurrenceAccessor)
       , isRecurrenceEdit = get(event, isRecurrenceEditAccessor)
       , isEdit = get(event, isEditAccessor)
@@ -122,14 +144,18 @@ class EventCell extends React.Component {
               </div>
               <div className="info-content">
                   <div className="personal-info">
-                      <div className="info-pic"><img src={clinicianImage} width="80px" height="80px" /></div>
-                      <div className="info-p">
-                        <div className="name" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{clinicianName}</div>
-                        {/*
-                          <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{setProfileTitle}</a>
-                        */}
-                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>{soapNoteTitle}</a>
+                    {staffs ? this.renderStaffs(staffs) :
+                      <div>
+                        <div className="info-pic"><img src={clinicianImage} width="80px" height="80px" /></div>                    
+                        <div className="info-p">
+                          <div className="name" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{clinicianName}</div>
+                          {/*
+                            <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{setProfileTitle}</a>
+                          */}
+                          <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>{soapNoteTitle}</a>
+                        </div>
                       </div>
+                    }
                   </div>
                   <div className="about-event">
                       <div className="info-p">
