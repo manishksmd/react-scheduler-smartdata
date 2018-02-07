@@ -289,8 +289,8 @@ class DaySlot extends React.Component {
             <div className='rbc-event-label rbc-event-content textoverflow'>
               {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
               {isAppointmentRendered ? <i className="fa fa-edit pr5" aria-hidden="true"></i> : ''}
-              {isVideoCall ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
-              {isAppoinmentCancelled ? <i className="fa fa-copyright pr5" aria-hidden="true"></i> : ''}
+              {isVideoCall ? <i className="fa fa-video pr5" aria-hidden="true"></i> : ''}
+              {isAppoinmentCancelled ? <i className="fa fa-ban pr5" aria-hidden="true"></i> : ''}
               {/* {label}&nbsp; */}
               { EventComponent
                 ? <EventComponent event={event} />
@@ -330,13 +330,14 @@ class DaySlot extends React.Component {
                 </div>
               </div>
               <div className="info-content">
+              <div>
+                  {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
+                  {isAppointmentRendered ? <i className="fa fa-edit pr5" aria-hidden="true"></i> : ''}
+                  {isVideoCall ? <i className="fa fa-video pr5" aria-hidden="true"></i> : ''}
+                  {isAppoinmentCancelled ? <i className="fa fa-ban pr5" aria-hidden="true"></i> : ''}
+              </div>
                   <div className="personal-info">
-                  <div>
-                      {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
-                      {isAppointmentRendered ? <i className="fa fa-edit pr5" aria-hidden="true"></i> : ''}
-                      {isVideoCall ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
-                      {isAppoinmentCancelled ? <i className="fa fa-copyright pr5" aria-hidden="true"></i> : ''}
-                  </div>
+
                   {staffs ? this.renderStaffs(staffs) :
                     <div>
                       <div className="info-pic">

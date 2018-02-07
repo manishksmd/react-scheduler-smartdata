@@ -44,7 +44,7 @@ let propTypes = {
 }
 
 class EventCell extends React.Component {
-  
+
   constructor(props) {
     super(props);
     this.renderStaffs = this.renderStaffs.bind(this);
@@ -54,7 +54,7 @@ class EventCell extends React.Component {
     if (staffs) {
       return staffs.map((obj, index) => {
         return (
-          <div className="info-p">            
+          <div className="info-p">
             <img src={obj.image} width="35px" height="35px" />
             <p>{obj.staffName}</p>
           </div>
@@ -140,8 +140,8 @@ class EventCell extends React.Component {
           <div className='rbc-event-content'>
             {isRecurrence === true ? <i className="fa fa-repeat" aria-hidden="true"></i> : ''}
             {isAppointmentRendered ? <i className="fa fa-edit pr5" aria-hidden="true"></i> : ''}
-            {isVideoCall ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
-            {isAppoinmentCancelled ? <i className="fa fa-copyright pr5" aria-hidden="true"></i> : ''}
+            {isVideoCall ? <i className="fa fa-video pr5" aria-hidden="true"></i> : ''}
+            {isAppoinmentCancelled ? <i className="fa fa-ban pr5" aria-hidden="true"></i> : ''}
             { Event
               ? <Event event={event} title={title}/>
               : title
@@ -163,12 +163,12 @@ class EventCell extends React.Component {
                   <div>
                       {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
                       {isAppointmentRendered ? <i className="fa fa-edit pr5" aria-hidden="true"></i> : ''}
-                      {isVideoCall ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
-                      {isAppoinmentCancelled ? <i className="fa fa-copyright pr5" aria-hidden="true"></i> : ''}
+                      {isVideoCall ? <i className="fa fa-video pr5" aria-hidden="true"></i> : ''}
+                      {isAppoinmentCancelled ? <i className="fa fa-ban pr5" aria-hidden="true"></i> : ''}
                   </div>
                     {staffs ? this.renderStaffs(staffs) :
                       <div>
-                        <div className="info-pic"><img src={clinicianImage} width="80px" height="80px" /></div>                    
+                        <div className="info-pic"><img src={clinicianImage} width="80px" height="80px" /></div>
                         <div className="info-p">
                           <div className="name" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{clinicianName}</div>
                           {/*
