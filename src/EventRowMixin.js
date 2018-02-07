@@ -32,6 +32,10 @@ export default {
     isRecurrenceEditAccessor: accessor,
     isEditAccessor: accessor,
     isDeleteAccessor: accessor,
+    isCancelAccessor: accessor,
+    isAppointmentRenderedAccessor: accessor,
+    isVideoCallAccessor: accessor,
+    isAppoinmentCancelledAccessor: accessor,
 
     allDayAccessor: accessor,
     startAccessor: accessor,
@@ -68,6 +72,10 @@ export default {
       , isRecurrenceEditAccessor
       , isEditAccessor
       , isDeleteAccessor
+      , isCancelAccessor
+      , isAppointmentRenderedAccessor
+      , isVideoCallAccessor
+      , isAppoinmentCancelledAccessor
       , allDayAccessor, eventComponent
       , eventWrapperComponent
       , onSelect } = props;
@@ -96,6 +104,10 @@ export default {
         isRecurrenceEditAccessor={isRecurrenceEditAccessor}
         isEditAccessor={isEditAccessor}
         isDeleteAccessor={isDeleteAccessor}
+        isCancelAccessor={isCancelAccessor}
+        isAppointmentRenderedAccessor={isAppointmentRenderedAccessor}
+        isVideoCallAccessor={isVideoCallAccessor}
+        isAppoinmentCancelledAccessor={isAppoinmentCancelledAccessor}
         allDayAccessor={allDayAccessor}
         slotStart={start}
         slotEnd={end}

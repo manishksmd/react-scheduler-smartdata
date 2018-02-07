@@ -29,6 +29,10 @@ let propTypes = {
   isRecurrenceEditAccessor: accessor,
   isEditAccessor: accessor,
   isDeleteAccessor: accessor,
+  isCancelAccessor: accessor,
+  isAppointmentRenderedAccessor: accessor,
+  isVideoCallAccessor: accessor,
+  isAppoinmentCancelledAccessor: accessor,
 
   allDayAccessor: accessor,
   startAccessor: accessor,
@@ -46,7 +50,7 @@ class EventCell extends React.Component {
     this.renderStaffs = this.renderStaffs.bind(this);
   }
 
-  renderStaffs(staffs) {console.log(staffs)
+  renderStaffs(staffs) {
     if (staffs) {
       return staffs.map((obj, index) => {
         return (
@@ -82,6 +86,10 @@ class EventCell extends React.Component {
       , isRecurrenceEditAccessor
       , isEditAccessor
       , isDeleteAccessor
+      , isCancelAccessor
+      , isAppointmentRenderedAccessor
+      , isVideoCallAccessor
+      , isAppoinmentCancelledAccessor
       , slotStart
       , slotEnd
       , onSelect
@@ -104,6 +112,10 @@ class EventCell extends React.Component {
       , isRecurrenceEdit = get(event, isRecurrenceEditAccessor)
       , isEdit = get(event, isEditAccessor)
       , isDelete = get(event, isDeleteAccessor)
+      , isCancel = get(event, isCancelAccessor)
+      , isAppointmentRendered = get(event, isAppointmentRenderedAccessor)
+      , isVideoCall = get(event, isVideoCallAccessor)
+      , isAppoinmentCancelled = get(event, isAppoinmentCancelledAccessor)
       , end = get(event, endAccessor)
       , start = get(event, startAccessor)
       , isAllDay = get(event, props.allDayAccessor)
@@ -127,6 +139,9 @@ class EventCell extends React.Component {
         >
           <div className='rbc-event-content'>
             {isRecurrence === true ? <i className="fa fa-repeat" aria-hidden="true"></i> : ''}
+            {isAppointmentRendered ? <i className="fa fa-edit pr5" aria-hidden="true"></i> : ''}
+            {isVideoCall ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
+            {isAppoinmentCancelled ? <i className="fa fa-copyright pr5" aria-hidden="true"></i> : ''}
             { Event
               ? <Event event={event} title={title}/>
               : title
@@ -137,6 +152,7 @@ class EventCell extends React.Component {
                 <div className="icons">
                     <ul>
                     {isRecurrenceEdit ? <li><a title="Edit recurrence" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit_recurrence')}><i className="fa fa-repeat" aria-hidden="true"></i></a></li> : ''}
+                    {isCancel ? <li><a title="Cancel" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'cancel')}><i className="fa fa-ban" aria-hidden="true"></i></a></li> : ''}
                     {isEdit ? <li><a title="Edit" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></a></li> : ''}
                     {isDelete ? <li><a title="Delete" className="trash" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'delete')}><i className="fa fa-trash-o" aria-hidden="true"></i></a></li> : ''}
                     </ul>
@@ -144,6 +160,12 @@ class EventCell extends React.Component {
               </div>
               <div className="info-content">
                   <div className="personal-info">
+                  <div>
+                      {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
+                      {isAppointmentRendered ? <i className="fa fa-edit pr5" aria-hidden="true"></i> : ''}
+                      {isVideoCall ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
+                      {isAppoinmentCancelled ? <i className="fa fa-copyright pr5" aria-hidden="true"></i> : ''}
+                  </div>
                     {staffs ? this.renderStaffs(staffs) :
                       <div>
                         <div className="info-pic"><img src={clinicianImage} width="80px" height="80px" /></div>                    

@@ -60,6 +60,10 @@ let propTypes = {
   isRecurrenceEditAccessor: accessor,
   isEditAccessor: accessor,
   isDeleteAccessor: accessor,
+  isCancelAccessor: accessor,
+  isAppointmentRenderedAccessor: accessor,
+  isVideoCallAccessor: accessor,
+  isAppoinmentCancelledAccessor: accessor,
 
   allDayAccessor: accessor.isRequired,
   startAccessor: accessor.isRequired,
@@ -181,6 +185,10 @@ class MonthView extends React.Component {
       isRecurrenceEditAccessor,
       isEditAccessor,
       isDeleteAccessor,
+      isCancelAccessor,
+      isAppointmentRenderedAccessor,
+      isVideoCallAccessor,
+      isAppoinmentCancelledAccessor,
       startAccessor,
       endAccessor,
       allDayAccessor,
@@ -223,6 +231,10 @@ class MonthView extends React.Component {
         isRecurrenceEditAccessor={isRecurrenceEditAccessor}
         isEditAccessor={isEditAccessor}
         isDeleteAccessor={isDeleteAccessor}
+        isCancelAccessor={isCancelAccessor}
+        isAppointmentRenderedAccessor={isAppointmentRenderedAccessor}
+        isVideoCallAccessor={isVideoCallAccessor}
+        isAppoinmentCancelledAccessor={isAppoinmentCancelledAccessor}
         startAccessor={startAccessor}
         endAccessor={endAccessor}
         allDayAccessor={allDayAccessor}

@@ -284,6 +284,11 @@ class Calendar extends React.Component {
    isRecurrenceEditAccessor: accessor,
    isEditAccessor: accessor,
    isDeleteAccessor: accessor,
+   isCancelAccessor: accessor,
+   isAppointmentRenderedAccessor: accessor,
+   isVideoCallAccessor: accessor,
+   isAppoinmentCancelledAccessor: accessor,
+   
 
    /**
     * Determines whether the event should be considered an "all day" event and ignore time.
@@ -518,6 +523,10 @@ class Calendar extends React.Component {
    isRecurrenceEditAccessor: 'isRecurrenceEdit',
    isEditAccessor: 'isEdit',
    isDeleteAccessor: 'isDelete',
+   isCancelAccessor: 'isCancel',
+   isAppointmentRenderedAccessor: 'isAppointmentRendered',
+   isVideoCallAccessor: 'isVideoCall',
+   isAppoinmentCancelledAccessor: 'isAppoinmentCancelled',
    allDayAccessor: 'allDay',
    startAccessor: 'start',
    endAccessor: 'end'

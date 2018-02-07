@@ -36,7 +36,7 @@ class DaySlot extends React.Component {
     if (staffs) {
       return staffs.map((obj, index) => {
         return (
-          <div className="info-p">            
+          <div className="info-p">
             <img src={obj.image} width="35px" height="35px" />
             <p>{obj.staffName}</p>
           </div>
@@ -70,6 +70,11 @@ class DaySlot extends React.Component {
     isRecurrenceEditAccessor: accessor,
     isEditAccessor: accessor,
     isDeleteAccessor: accessor,
+    isCancelAccessor: accessor,
+    isAppointmentRenderedAccessor: accessor,
+    isVideoCallAccessor: accessor,
+    isAppoinmentCancelledAccessor: accessor,
+
 
     allDayAccessor: accessor.isRequired,
     startAccessor: accessor.isRequired,
@@ -203,7 +208,11 @@ class DaySlot extends React.Component {
       , isRecurrenceAccessor
       , isRecurrenceEditAccessor
       , isEditAccessor
-      , isDeleteAccessor } = this.props;
+      , isDeleteAccessor
+      , isCancelAccessor
+      , isAppointmentRenderedAccessor
+      , isVideoCallAccessor
+      , isAppoinmentCancelledAccessor } = this.props;
 
 
     let EventComponent = eventComponent
@@ -236,6 +245,10 @@ class DaySlot extends React.Component {
       let isRecurrenceEdit = get(event, isRecurrenceEditAccessor);
       let isEdit = get(event, isEditAccessor);
       let isDelete = get(event, isDeleteAccessor);
+      let isCancel = get(event, isCancelAccessor);
+      let isAppointmentRendered = get(event, isAppointmentRenderedAccessor);
+      let isVideoCall = get(event, isVideoCallAccessor);
+      let isAppoinmentCancelled = get(event, isAppoinmentCancelledAccessor);
 
       let label = localizer.format({ start, end }, eventTimeRangeFormat, culture)
       let _isSelected = isSelected(event, selected)
@@ -275,7 +288,10 @@ class DaySlot extends React.Component {
           >
             <div className='rbc-event-label rbc-event-content textoverflow'>
               {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
-              {label}&nbsp;
+              {isAppointmentRendered ? <i className="fa fa-edit pr5" aria-hidden="true"></i> : ''}
+              {isVideoCall ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
+              {isAppoinmentCancelled ? <i className="fa fa-copyright pr5" aria-hidden="true"></i> : ''}
+              {/* {label}&nbsp; */}
               { EventComponent
                 ? <EventComponent event={event} />
                 : title
@@ -290,6 +306,12 @@ class DaySlot extends React.Component {
                       <li>
                         <a title="Edit recurrence" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit_recurrence')}>
                           <i className="fa fa-repeat" aria-hidden="true"></i>
+                        </a>
+                      </li>:''}
+                      {isCancel ?
+                      <li>
+                        <a title="Cancel" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'cancel')}>
+                          <i className="fa fa-ban" aria-hidden="true"></i>
                         </a>
                       </li>:''}
                       {isEdit ?
@@ -309,11 +331,17 @@ class DaySlot extends React.Component {
               </div>
               <div className="info-content">
                   <div className="personal-info">
+                  <div>
+                      {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
+                      {isAppointmentRendered ? <i className="fa fa-edit pr5" aria-hidden="true"></i> : ''}
+                      {isVideoCall ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
+                      {isAppoinmentCancelled ? <i className="fa fa-copyright pr5" aria-hidden="true"></i> : ''}
+                  </div>
                   {staffs ? this.renderStaffs(staffs) :
                     <div>
                       <div className="info-pic">
                         <img src={clinicianImage} width="80px" height="80px" />
-                      </div>                  
+                      </div>
                       <div className="info-p">
                         <div className="name" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{clinicianName}</div>
                         {/*

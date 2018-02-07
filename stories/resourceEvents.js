@@ -48,9 +48,13 @@ export default {
     'resourceId': 'a',
     'start': new Date(2017, 9, 4, 5, 30, 0, 0),
     'end': new Date(2017, 9, 4, 6, 30, 0, 0),
-    'isRecurrenceEdit': true,
+    'isRecurrenceEdit': false,
     'isEdit': false,
     'isDelete': true,
+    'isCancel': true,
+    'isAppointmentRendered': true,
+    'isVideoCall': true,
+    'isAppoinmentCancelled': true
   }, {
     'title': 'Aaaaaaaaa',
     'isRecurrence': false,
@@ -65,9 +69,13 @@ export default {
     'resourceId': 'c',
     'start': new Date(2017, 9, 4, 6, 0, 0, 0),
     'end': new Date(2017, 9, 4, 6, 30, 0, 0),
-    'isRecurrenceEdit': true,
+    'isRecurrenceEdit': false,
     'isEdit': true,
-    'isDelete': false,
+    'isDelete': true,
+    'isCancel': true,
+    'isAppointmentRendered': true,
+    'isVideoCall': true,
+    'isAppoinmentCancelled': true
   }, {
     'title': 'Ccccccccccccc',
     'isRecurrence': true,
