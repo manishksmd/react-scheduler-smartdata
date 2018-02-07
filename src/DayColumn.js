@@ -288,8 +288,8 @@ class DaySlot extends React.Component {
           >
             <div className='rbc-event-label rbc-event-content textoverflow'>
               {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
-              {isAppointmentRendered ? <i className="fa fa-check-circle pr5" aria-hidden="true"></i> : ''}
-              {isVideoCall ? <i className="fa fa-video pr5" aria-hidden="true"></i> : ''}
+              {isAppointmentRendered ? <i className="fa fa-check-circle-o pr5" aria-hidden="true"></i> : ''}
+              {isVideoCall ? <i className="fa fa-video-camera pr5" aria-hidden="true"></i> : ''}
               {isAppoinmentCancelled ? <i className="fa fa-ban pr5" aria-hidden="true"></i> : ''}
               {/* {label}&nbsp; */}
               { EventComponent
@@ -330,13 +330,13 @@ class DaySlot extends React.Component {
                 </div>
               </div>
               <div className="info-content">
-              <div>
-                  {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
-                  {isAppointmentRendered ? <i className="fa fa-check-circle pr5" aria-hidden="true"></i> : ''}
-                  {isVideoCall ? <i className="fa fa-video pr5" aria-hidden="true"></i> : ''}
-                  {isAppoinmentCancelled ? <i className="fa fa-ban pr5" aria-hidden="true"></i> : ''}
-              </div>
                   <div className="personal-info">
+                  <div className="boxicon">
+                  {isRecurrence ? <i title="Recurrence Appointment" className="fa fa-repeat" aria-hidden="true"></i> : ''}
+                  {isAppointmentRendered ? <i title="Rendered Appointment" className="fa fa-check-circle-o" aria-hidden="true"></i> : ''}
+                  {isVideoCall ? <i title="Video Call Appointment" className="fa fa-video-camera" aria-hidden="true"></i> : ''}
+                  {isAppoinmentCancelled ? <i title="Cancelled Appointment" className="fa fa-ban" aria-hidden="true"></i> : ''}
+              </div>
 
                   {staffs ? this.renderStaffs(staffs) :
                     <div>

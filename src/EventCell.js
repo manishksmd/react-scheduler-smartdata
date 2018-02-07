@@ -138,10 +138,12 @@ class EventCell extends React.Component {
           // onClick={(e) => onSelect(event, e)}
         >
           <div className='rbc-event-content'>
-            {isRecurrence === true ? <i className="fa fa-repeat" aria-hidden="true"></i> : ''}
-            {isAppointmentRendered ? <i className="fa fa-check-circle pr5" aria-hidden="true"></i> : ''}
-            {isVideoCall ? <i className="fa fa-video pr5" aria-hidden="true"></i> : ''}
-            {isAppoinmentCancelled ? <i className="fa fa-ban pr5" aria-hidden="true"></i> : ''}
+          <ul className="quickview">
+            {isRecurrence === true ? <li><i className="fa fa-repeat" aria-hidden="true"></i></li> : ''}
+            {isAppointmentRendered ? <li><i className="fa fa-check-circle-o" aria-hidden="true"></i></li> : ''}
+            {isVideoCall ? <li><i className="fa fa-video-camera" aria-hidden="true"></i></li> : ''}
+            {isAppoinmentCancelled ? <li><i className="fa fa-ban" aria-hidden="true"></i></li> : ''}
+            </ul>
             { Event
               ? <Event event={event} title={title}/>
               : title
@@ -160,11 +162,11 @@ class EventCell extends React.Component {
               </div>
               <div className="info-content">
                   <div className="personal-info">
-                  <div>
-                      {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
-                      {isAppointmentRendered ? <i className="fa fa-check-circle pr5" aria-hidden="true"></i> : ''}
-                      {isVideoCall ? <i className="fa fa-video pr5" aria-hidden="true"></i> : ''}
-                      {isAppoinmentCancelled ? <i className="fa fa-ban pr5" aria-hidden="true"></i> : ''}
+                  <div className="boxicon">
+                  {isRecurrence ? <i title="Recurrence Appointment" className="fa fa-repeat" aria-hidden="true"></i> : ''}
+                  {isAppointmentRendered ? <i title="Rendered Appointment" className="fa fa-check-circle-o" aria-hidden="true"></i> : ''}
+                  {isVideoCall ? <i title="Video Call in Appointment" className="fa fa-video-camera" aria-hidden="true"></i> : ''}
+                  {isAppoinmentCancelled ? <i title="Cancelled Appointment" className="fa fa-ban" aria-hidden="true"></i> : ''}
                   </div>
                     {staffs ? this.renderStaffs(staffs) :
                       <div>
