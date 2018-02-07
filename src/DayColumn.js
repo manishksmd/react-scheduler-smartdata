@@ -26,6 +26,25 @@ function startsAfter(date, max) {
 }
 
 class DaySlot extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.renderStaffs = this.renderStaffs.bind(this);
+  }
+
+  renderStaffs(staffs) {console.log(staffs)
+    if (staffs) {
+      return staffs.map((obj, index) => {
+        return (
+          <div className="info-p">            
+            <img src={obj.image} width="35px" height="35px" />
+            <p>{obj.staffName}</p>
+          </div>
+        );
+      });
+    }
+  }
+
   static propTypes = {
     events: PropTypes.array.isRequired,
     step: PropTypes.number.isRequired,
@@ -42,9 +61,11 @@ class DaySlot extends React.Component {
     clinicianNameAccessor: accessor,
     appointmentTypeAccessor: accessor,
     appointmentTimeAccessor: accessor,
+    appointmentAddressAccessor: accessor,
     coPayAccessor: accessor,
     soapNoteTitleAccessor: accessor,
     setProfileTitleAccessor: accessor,
+    staffsAccessor: accessor,
     isRecurrenceAccessor: accessor,
     isRecurrenceEditAccessor: accessor,
     isEditAccessor: accessor,
@@ -174,9 +195,11 @@ class DaySlot extends React.Component {
       , clinicianNameAccessor
       , appointmentTypeAccessor
       , appointmentTimeAccessor
+      , appointmentAddressAccessor
       , coPayAccessor
       , soapNoteTitleAccessor
       , setProfileTitleAccessor
+      , staffsAccessor
       , isRecurrenceAccessor
       , isRecurrenceEditAccessor
       , isEditAccessor
@@ -204,9 +227,11 @@ class DaySlot extends React.Component {
       let clinicianName = get(event, clinicianNameAccessor);
       let appointmentType = get(event, appointmentTypeAccessor);
       let appointmentTime = get(event, appointmentTimeAccessor);
+      let appointmentAddress = get(event, appointmentAddressAccessor);
       let coPay = get(event, coPayAccessor);
       let soapNoteTitle = get(event, soapNoteTitleAccessor);
       let setProfileTitle = get(event, setProfileTitleAccessor);
+      let staffs = get(event, staffsAccessor);
       let isRecurrence = get(event, isRecurrenceAccessor);
       let isRecurrenceEdit = get(event, isRecurrenceEditAccessor);
       let isEdit = get(event, isEditAccessor);
@@ -240,7 +265,7 @@ class DaySlot extends React.Component {
               [isRtl ? 'right' : 'left']: `${Math.max(0, xOffset)}%`,
               width: `${width}%`
             }}
-            title={label + ': ' + title }
+            // title={label + ': ' + title }
             //onClick={(e) => this._select(event, e)}
             className={cn(`rbc-event ${dayClass}`, className, {
               'rbc-selected': _isSelected,
@@ -248,9 +273,9 @@ class DaySlot extends React.Component {
               'rbc-event-continues-later': continuesAfter
             })}
           >
-            <div className='rbc-event-label'>{label}</div>
-            <div className='rbc-event-content'>
+            <div className='rbc-event-label rbc-event-content textoverflow'>
               {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
+              {label}&nbsp;
               { EventComponent
                 ? <EventComponent event={event} />
                 : title
@@ -284,19 +309,26 @@ class DaySlot extends React.Component {
               </div>
               <div className="info-content">
                   <div className="personal-info">
+                  {staffs ? this.renderStaffs(staffs) :
+                    <div>
                       <div className="info-pic">
                         <img src={clinicianImage} width="80px" height="80px" />
-                        </div>
+                      </div>                  
                       <div className="info-p">
-                        <div className="name">{clinicianName}</div>
+                        <div className="name" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{clinicianName}</div>
+                        {/*
                         <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{setProfileTitle}</a>
+                        */}
                         <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>{soapNoteTitle}</a>
                       </div>
+                    </div>
+                  }
                   </div>
                   <div className="about-event">
                       <div className="info-p">
-                        <p><b>Appointment: </b><span>{appointmentType}</span></p>
                         <p><b>Time: </b><span>{appointmentTime}</span></p>
+                        <p><b>Appointment: </b><span>{appointmentType}</span></p>
+                        <p><b>Address: </b><span>{appointmentAddress}</span></p>
                         {/*<p><b>Co-Pay: </b><span><i className="fa fa-usd" aria-hidden="true"></i> {coPay ? coPay : '0.00'}</span></p>*/}
                       </div>
                   </div>

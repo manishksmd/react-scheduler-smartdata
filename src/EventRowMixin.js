@@ -23,9 +23,11 @@ export default {
     clinicianNameAccessor: accessor,
     appointmentTypeAccessor: accessor,
     appointmentTimeAccessor: accessor,
+    appointmentAddressAccessor: accessor,
     coPayAccessor: accessor,
     soapNoteTitleAccessor: accessor,
     setProfileTitleAccessor: accessor,
+    staffsAccessor: accessor,
     isRecurrenceAccessor: accessor,
     isRecurrenceEditAccessor: accessor,
     isEditAccessor: accessor,
@@ -57,9 +59,11 @@ export default {
       , clinicianNameAccessor
       , appointmentTypeAccessor
       , appointmentTimeAccessor
+      , appointmentAddressAccessor
       , coPayAccessor
       , soapNoteTitleAccessor
       , setProfileTitleAccessor
+      , staffsAccessor
       , isRecurrenceAccessor
       , isRecurrenceEditAccessor
       , isEditAccessor
@@ -83,9 +87,11 @@ export default {
         clinicianNameAccessor={clinicianNameAccessor}
         appointmentTypeAccessor={appointmentTypeAccessor}
         appointmentTimeAccessor={appointmentTimeAccessor}
+        appointmentAddressAccessor={appointmentAddressAccessor}
         coPayAccessor={coPayAccessor}
         soapNoteTitleAccessor={soapNoteTitleAccessor}
         setProfileTitleAccessor={setProfileTitleAccessor}
+        staffsAccessor={staffsAccessor}
         isRecurrenceAccessor={isRecurrenceAccessor}
         isRecurrenceEditAccessor={isRecurrenceEditAccessor}
         isEditAccessor={isEditAccessor}
