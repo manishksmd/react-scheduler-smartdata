@@ -288,7 +288,7 @@ class DaySlot extends React.Component {
           >
             <div className='rbc-event-label rbc-event-content textoverflow'>
               {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
-              {isAppointmentRendered ? <i className="fa fa-edit pr5" aria-hidden="true"></i> : ''}
+              {isAppointmentRendered ? <i className="fa fa-check-circle pr5" aria-hidden="true"></i> : ''}
               {isVideoCall ? <i className="fa fa-video pr5" aria-hidden="true"></i> : ''}
               {isAppoinmentCancelled ? <i className="fa fa-ban pr5" aria-hidden="true"></i> : ''}
               {/* {label}&nbsp; */}
@@ -332,7 +332,7 @@ class DaySlot extends React.Component {
               <div className="info-content">
               <div>
                   {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
-                  {isAppointmentRendered ? <i className="fa fa-edit pr5" aria-hidden="true"></i> : ''}
+                  {isAppointmentRendered ? <i className="fa fa-check-circle pr5" aria-hidden="true"></i> : ''}
                   {isVideoCall ? <i className="fa fa-video pr5" aria-hidden="true"></i> : ''}
                   {isAppoinmentCancelled ? <i className="fa fa-ban pr5" aria-hidden="true"></i> : ''}
               </div>
