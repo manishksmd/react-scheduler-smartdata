@@ -186,11 +186,11 @@ class EventCell extends React.Component {
                   </div>
                   <div className="about-event">
                       <div className="info-p">
-                        <p><b>Time: </b><span>{appointmentTime}</span></p>
-                        { practitionerName ? <p><b>Practitioner: </b><span>{practitionerName}</span></p> : ''}
-                        <p><b>Appointment: </b><span>{appointmentType}</span></p>
-                        <p><b>Address: </b><span>{appointmentAddress}</span></p>
-                        {/*<p><b>Co-Pay: </b><span><i className="fa fa-usd" aria-hidden="true"></i> {coPay ? coPay : '0.00'}</span></p>*/}
+                      <p><i className="fa fa-clock-o" aria-hidden="true"></i><span>{appointmentTime}</span></p>
+                      { practitionerName ? <p><i className="fa fa-user-md" aria-hidden="true"></i><span>{practitionerName}</span></p> : ''}
+                      <p><i className="fa fa-calendar-o" aria-hidden="true"></i><span>{appointmentType}</span></p>
+                      <p><i className="fa fa-map-marker" aria-hidden="true"></i><span>{appointmentAddress}</span></p>
+                      {/*<p>Co-Pay: <span><i className="fa fa-usd" aria-hidden="true"></i> {coPay ? coPay : '0.00'}</span></p>*/}
                       </div>
                   </div>
               </div>
