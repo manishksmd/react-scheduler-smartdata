@@ -33,6 +33,7 @@ let propTypes = {
   isAppointmentRenderedAccessor: accessor,
   isVideoCallAccessor: accessor,
   isAppoinmentCancelledAccessor: accessor,
+  practitionerNameAccessor: accessor,
 
   allDayAccessor: accessor,
   startAccessor: accessor,
@@ -90,6 +91,7 @@ class EventCell extends React.Component {
       , isAppointmentRenderedAccessor
       , isVideoCallAccessor
       , isAppoinmentCancelledAccessor
+      , practitionerNameAccessor
       , slotStart
       , slotEnd
       , onSelect
@@ -116,6 +118,7 @@ class EventCell extends React.Component {
       , isAppointmentRendered = get(event, isAppointmentRenderedAccessor)
       , isVideoCall = get(event, isVideoCallAccessor)
       , isAppoinmentCancelled = get(event, isAppoinmentCancelledAccessor)
+      , practitionerName = get(event, practitionerNameAccessor)
       , end = get(event, endAccessor)
       , start = get(event, startAccessor)
       , isAllDay = get(event, props.allDayAccessor)
@@ -184,6 +187,7 @@ class EventCell extends React.Component {
                   <div className="about-event">
                       <div className="info-p">
                         <p><b>Time: </b><span>{appointmentTime}</span></p>
+                        { practitionerName ? <p><b>Practitioner: </b><span>{practitionerName}</span></p> : ''}
                         <p><b>Appointment: </b><span>{appointmentType}</span></p>
                         <p><b>Address: </b><span>{appointmentAddress}</span></p>
                         {/*<p><b>Co-Pay: </b><span><i className="fa fa-usd" aria-hidden="true"></i> {coPay ? coPay : '0.00'}</span></p>*/}

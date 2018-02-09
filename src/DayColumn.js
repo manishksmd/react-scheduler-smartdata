@@ -74,6 +74,7 @@ class DaySlot extends React.Component {
     isAppointmentRenderedAccessor: accessor,
     isVideoCallAccessor: accessor,
     isAppoinmentCancelledAccessor: accessor,
+    practitionerNameAccessor: accessor,
 
 
     allDayAccessor: accessor.isRequired,
@@ -212,7 +213,8 @@ class DaySlot extends React.Component {
       , isCancelAccessor
       , isAppointmentRenderedAccessor
       , isVideoCallAccessor
-      , isAppoinmentCancelledAccessor } = this.props;
+      , isAppoinmentCancelledAccessor
+      , practitionerNameAccessor } = this.props;
 
 
     let EventComponent = eventComponent
@@ -249,6 +251,7 @@ class DaySlot extends React.Component {
       let isAppointmentRendered = get(event, isAppointmentRenderedAccessor);
       let isVideoCall = get(event, isVideoCallAccessor);
       let isAppoinmentCancelled = get(event, isAppoinmentCancelledAccessor);
+      let practitionerName = get(event, practitionerNameAccessor);
 
       let label = localizer.format({ start, end }, eventTimeRangeFormat, culture)
       let _isSelected = isSelected(event, selected)
@@ -356,8 +359,9 @@ class DaySlot extends React.Component {
                   <div className="about-event">
                       <div className="info-p">
                         <p><b>Time: </b><span>{appointmentTime}</span></p>
+                        { practitionerName ? <p><b>Practitioner: </b><span>{practitionerName}</span></p> : ''}
                         <p><b>Appointment: </b><span>{appointmentType}</span></p>
-                        <p><b>Address: </b><span>{appointmentAddress}</span></p>
+                        <p><b>Service Address: </b><span>{appointmentAddress}</span></p>
                         {/*<p><b>Co-Pay: </b><span><i className="fa fa-usd" aria-hidden="true"></i> {coPay ? coPay : '0.00'}</span></p>*/}
                       </div>
                   </div>

@@ -36,6 +36,7 @@ export default {
     isAppointmentRenderedAccessor: accessor,
     isVideoCallAccessor: accessor,
     isAppoinmentCancelledAccessor: accessor,
+    practitionerNameAccessor: accessor,
 
     allDayAccessor: accessor,
     startAccessor: accessor,
@@ -76,6 +77,7 @@ export default {
       , isAppointmentRenderedAccessor
       , isVideoCallAccessor
       , isAppoinmentCancelledAccessor
+      , practitionerNameAccessor
       , allDayAccessor, eventComponent
       , eventWrapperComponent
       , onSelect } = props;
@@ -108,6 +110,7 @@ export default {
         isAppointmentRenderedAccessor={isAppointmentRenderedAccessor}
         isVideoCallAccessor={isVideoCallAccessor}
         isAppoinmentCancelledAccessor={isAppoinmentCancelledAccessor}
+        practitionerNameAccessor={practitionerNameAccessor}
         allDayAccessor={allDayAccessor}
         slotStart={start}
         slotEnd={end}

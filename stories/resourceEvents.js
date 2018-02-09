@@ -54,7 +54,8 @@ export default {
     'isCancel': true,
     'isAppointmentRendered': true,
     'isVideoCall': true,
-    'isAppoinmentCancelled': true
+    'isAppoinmentCancelled': true,
+    'practitionerName': 'Bbbb singh'
   }, {
     'title': 'Aaaaaaaaa',
     'isRecurrence': false,
@@ -75,7 +76,8 @@ export default {
     'isCancel': true,
     'isAppointmentRendered': true,
     'isVideoCall': true,
-    'isAppoinmentCancelled': true
+    'isAppoinmentCancelled': true,
+    'practitionerName': 'Aaaa singh'
   }, {
     'title': 'Ccccccccccccc',
     'isRecurrence': true,

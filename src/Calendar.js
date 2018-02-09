@@ -288,6 +288,7 @@ class Calendar extends React.Component {
    isAppointmentRenderedAccessor: accessor,
    isVideoCallAccessor: accessor,
    isAppoinmentCancelledAccessor: accessor,
+   practitionerNameAccessor: accessor,
    
 
    /**
@@ -527,6 +528,7 @@ class Calendar extends React.Component {
    isAppointmentRenderedAccessor: 'isAppointmentRendered',
    isVideoCallAccessor: 'isVideoCall',
    isAppoinmentCancelledAccessor: 'isAppoinmentCancelled',
+   practitionerNameAccessor: 'practitionerName',
    allDayAccessor: 'allDay',
    startAccessor: 'start',
    endAccessor: 'end'
