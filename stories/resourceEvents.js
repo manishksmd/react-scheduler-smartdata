@@ -51,11 +51,13 @@ export default {
     'isRecurrenceEdit': false,
     'isEdit': false,
     'isDelete': true,
-    'isCancel': true,
+    'isCancel': false,
     'isAppointmentRendered': true,
     'isVideoCall': true,
     'isAppoinmentCancelled': true,
-    'practitionerName': 'Bbbb singh'
+    'practitionerName': 'Bbbb singh',
+    'isUnCancel': true,
+    'cancellationReason': 'not defined',
   }, {
     'title': 'Aaaaaaaaa',
     'isRecurrence': false,
@@ -73,11 +75,13 @@ export default {
     'isRecurrenceEdit': false,
     'isEdit': true,
     'isDelete': true,
-    'isCancel': true,
+    'isCancel': false,
     'isAppointmentRendered': true,
     'isVideoCall': true,
     'isAppoinmentCancelled': true,
-    'practitionerName': 'Aaaa singh'
+    'practitionerName': 'Aaaa singh',
+    'isUnCancel': true,
+    'cancellationReason': 'Text is available under the Creative Commons Attribution-ShareAlike License; additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy',
   }, {
     'title': 'Ccccccccccccc',
     'isRecurrence': true,

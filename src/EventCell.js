@@ -30,6 +30,8 @@ let propTypes = {
   isEditAccessor: accessor,
   isDeleteAccessor: accessor,
   isCancelAccessor: accessor,
+  isUnCancelAccessor: accessor,
+  cancellationReasonAccessor: accessor,
   isAppointmentRenderedAccessor: accessor,
   isVideoCallAccessor: accessor,
   isAppoinmentCancelledAccessor: accessor,
@@ -88,6 +90,8 @@ class EventCell extends React.Component {
       , isEditAccessor
       , isDeleteAccessor
       , isCancelAccessor
+      , isUnCancelAccessor
+      , cancellationReasonAccessor
       , isAppointmentRenderedAccessor
       , isVideoCallAccessor
       , isAppoinmentCancelledAccessor
@@ -115,6 +119,8 @@ class EventCell extends React.Component {
       , isEdit = get(event, isEditAccessor)
       , isDelete = get(event, isDeleteAccessor)
       , isCancel = get(event, isCancelAccessor)
+      , isUnCancel = get(event, isUnCancelAccessor)
+      , cancellationReason = get(event, cancellationReasonAccessor)
       , isAppointmentRendered = get(event, isAppointmentRenderedAccessor)
       , isVideoCall = get(event, isVideoCallAccessor)
       , isAppoinmentCancelled = get(event, isAppoinmentCancelledAccessor)
@@ -157,7 +163,19 @@ class EventCell extends React.Component {
                 <div className="icons">
                     <ul>
                     {isRecurrenceEdit ? <li><a title="Edit recurrence" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit_recurrence')}><i className="fa fa-repeat" aria-hidden="true"></i></a></li> : ''}
-                    {isCancel ? <li><a title="Cancel" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'cancel')}><i className="fa fa-ban" aria-hidden="true"></i></a></li> : ''}
+                    {isCancel ?
+                      <li>
+                        <a title="Cancel" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'cancel')}>
+                          <i className="fa fa-ban" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      : isUnCancel ?
+                      <li>
+                      <a title="Undo Cancel" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'uncancel')}>
+                        <i className="fa fa-undo" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    : ''}
                     {isEdit ? <li><a title="Edit" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></a></li> : ''}
                     {isDelete ? <li><a title="Delete" className="trash" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'delete')}><i className="fa fa-trash-o" aria-hidden="true"></i></a></li> : ''}
                     </ul>
@@ -169,7 +187,7 @@ class EventCell extends React.Component {
                   {isRecurrence ? <i title="Recurrence Appointment" className="fa fa-repeat" aria-hidden="true"></i> : ''}
                   {isAppointmentRendered ? <i title="Rendered Appointment" className="fa fa-check-circle-o" aria-hidden="true"></i> : ''}
                   {isVideoCall ? <i title="Video Call in Appointment" className="fa fa-video-camera" aria-hidden="true"></i> : ''}
-                  {isAppoinmentCancelled ? <i title="Cancelled Appointment" className="fa fa-ban" aria-hidden="true"></i> : ''}
+                  {isAppoinmentCancelled ? <i title={`Cancellation Reason: ${cancellationReason}`} className="fa fa-ban" aria-hidden="true"></i> : ''}
                   </div>
                     {staffs ? this.renderStaffs(staffs) :
                       <div>
@@ -187,7 +205,7 @@ class EventCell extends React.Component {
                   <div className="about-event">
                       <div className="info-p">
                       <p><i className="fa fa-clock-o" aria-hidden="true"></i><span>{appointmentTime}</span></p>
-                      { practitionerName ? <p><i className="fa fa-user-md" aria-hidden="true"></i><span>{practitionerName}</span></p> : ''}
+                      { practitionerName ? <p><i className="fa fa-user" aria-hidden="true"></i><span>{practitionerName}</span></p> : ''}
                       <p><i className="fa fa-calendar-o" aria-hidden="true"></i><span>{appointmentType}</span></p>
                       <p><i className="fa fa-map-marker" aria-hidden="true"></i><span>{appointmentAddress}</span></p>
                       {/*<p>Co-Pay: <span><i className="fa fa-usd" aria-hidden="true"></i> {coPay ? coPay : '0.00'}</span></p>*/}

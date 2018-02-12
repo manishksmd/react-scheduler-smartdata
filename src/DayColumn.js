@@ -71,6 +71,8 @@ class DaySlot extends React.Component {
     isEditAccessor: accessor,
     isDeleteAccessor: accessor,
     isCancelAccessor: accessor,
+    isUnCancelAccessor: accessor,
+    cancellationReasonAccessor: accessor,
     isAppointmentRenderedAccessor: accessor,
     isVideoCallAccessor: accessor,
     isAppoinmentCancelledAccessor: accessor,
@@ -211,6 +213,8 @@ class DaySlot extends React.Component {
       , isEditAccessor
       , isDeleteAccessor
       , isCancelAccessor
+      , isUnCancelAccessor
+      , cancellationReasonAccessor
       , isAppointmentRenderedAccessor
       , isVideoCallAccessor
       , isAppoinmentCancelledAccessor
@@ -248,6 +252,8 @@ class DaySlot extends React.Component {
       let isEdit = get(event, isEditAccessor);
       let isDelete = get(event, isDeleteAccessor);
       let isCancel = get(event, isCancelAccessor);
+      let isUnCancel = get(event, isUnCancelAccessor);
+      let cancellationReason = get(event, cancellationReasonAccessor);
       let isAppointmentRendered = get(event, isAppointmentRenderedAccessor);
       let isVideoCall = get(event, isVideoCallAccessor);
       let isAppoinmentCancelled = get(event, isAppoinmentCancelledAccessor);
@@ -294,11 +300,10 @@ class DaySlot extends React.Component {
               {isAppointmentRendered ? <i className="fa fa-check-circle-o pr5" aria-hidden="true"></i> : ''}
               {isVideoCall ? <i className="fa fa-video-camera pr5" aria-hidden="true"></i> : ''}
               {isAppoinmentCancelled ? <i className="fa fa-ban pr5" aria-hidden="true"></i> : ''}
-              {/* {label}&nbsp; */}
               { EventComponent
                 ? <EventComponent event={event} />
                 : title
-              }
+              } {label}
             </div>
             <div className={viewClass}>
               <div className="topbar">
@@ -316,7 +321,14 @@ class DaySlot extends React.Component {
                         <a title="Cancel" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'cancel')}>
                           <i className="fa fa-ban" aria-hidden="true"></i>
                         </a>
-                      </li>:''}
+                      </li>
+                      : isUnCancel ?
+                      <li>
+                      <a title="Undo Cancel" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'uncancel')}>
+                        <i className="fa fa-undo" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    : ''}
                       {isEdit ?
                       <li>
                         <a title="Edit" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}>
@@ -337,8 +349,8 @@ class DaySlot extends React.Component {
                   <div className="boxicon">
                   {isRecurrence ? <i title="Recurrence Appointment" className="fa fa-repeat" aria-hidden="true"></i> : ''}
                   {isAppointmentRendered ? <i title="Rendered Appointment" className="fa fa-check-circle-o" aria-hidden="true"></i> : ''}
-                  {isVideoCall ? <i title="Video Call Appointment" className="fa fa-video-camera" aria-hidden="true"></i> : ''}
-                  {isAppoinmentCancelled ? <i title="Cancelled Appointment" className="fa fa-ban" aria-hidden="true"></i> : ''}
+                  {isVideoCall ? <i title="Video Call in Appointment" className="fa fa-video-camera" aria-hidden="true"></i> : ''}
+                  {isAppoinmentCancelled ? <i title={`Cancellation Reason: ${cancellationReason}`} className="fa fa-ban" aria-hidden="true"></i> : ''}
               </div>
 
                   {staffs ? this.renderStaffs(staffs) :
@@ -359,7 +371,7 @@ class DaySlot extends React.Component {
                   <div className="about-event">
                       <div className="info-p">
                         <p><i className="fa fa-clock-o" aria-hidden="true"></i><span>{appointmentTime}</span></p>
-                        { practitionerName ? <p><i className="fa fa-user-md" aria-hidden="true"></i><span>{practitionerName}</span></p> : ''}
+                        { practitionerName ? <p><i className="fa fa-user" aria-hidden="true"></i><span>{practitionerName}</span></p> : ''}
                         <p><i className="fa fa-calendar-o" aria-hidden="true"></i><span>{appointmentType}</span></p>
                         <p><i className="fa fa-map-marker" aria-hidden="true"></i><span>{appointmentAddress}</span></p>
                         {/*<p>Co-Pay: <span><i className="fa fa-usd" aria-hidden="true"></i> {coPay ? coPay : '0.00'}</span></p>*/}
