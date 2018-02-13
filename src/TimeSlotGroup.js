@@ -54,8 +54,13 @@ export default class TimeSlotGroup extends Component {
     return ret
   }
   render() {
+    let { slotPropGetter } = this.props;
+
+    if (slotPropGetter)
+        var { style: xStyle } = slotPropGetter(date)
+    // console.log('this.props time Slot Group ...',xStyle, this.props)
     return (
-      <div className="rbc-timeslot-group">
+      <div className="rbc-timeslot-group" style={xStyle} >
         {this.renderSlices()}
       </div>
     )

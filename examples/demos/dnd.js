@@ -75,6 +75,19 @@ class Dnd extends React.Component {
     alert(`${event.title} was dropped onto ${event.start}`);
   }
 
+
+  slotPropGetter(date) { // , start, end, isSelected
+    // console.log('date.getDate()...', date)
+    let style = {
+      backgroundColor: '#ccc',
+    };
+    // if (date.getDate() === 7 || date.getDate() === 15) {
+    return {
+      style: style,
+    };
+  // } else { return {} }
+  }
+
   render(){
     return (
       <DragAndDropCalendar
@@ -82,6 +95,8 @@ class Dnd extends React.Component {
         // events={this.state.events}
         events={resources.events}
         resources={resources.list}
+        // slotProp={this.slotPropGetter(date)}
+        slotPropGetter={(date) => this.slotPropGetter(date) }
         onEventDrop={this.moveEvent}
         defaultView='month'
         defaultDate={new Date(2017, 8, 1)}
