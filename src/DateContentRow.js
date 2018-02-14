@@ -40,6 +40,8 @@ const propTypes = {
   eventWrapperComponent: elementType.isRequired,
   minRows: PropTypes.number.isRequired,
   maxRows: PropTypes.number.isRequired,
+
+  usersAvailability: PropTypes.array,
 };
 
 const defaultProps = {
@@ -150,6 +152,7 @@ class DateContentRow extends React.Component {
       eventWrapperComponent,
       onSelectStart,
       onSelectEnd,
+      usersAvailability,
       ...props
     } = this.props;
 
@@ -177,6 +180,7 @@ class DateContentRow extends React.Component {
           onSelectEnd={onSelectEnd}
           onSelectSlot={this.handleSelectSlot}
           cellWrapperComponent={dateCellWrapper}
+          usersAvailability={usersAvailability}
         />
 
         <div className='rbc-row-content'>

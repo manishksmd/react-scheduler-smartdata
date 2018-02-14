@@ -53,7 +53,129 @@ class Dnd extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      events: events
+      events: events,
+      usersAvailability: [
+        {
+          'staffID': 52,
+          'dayID': 1,
+          'isAvailable': true,
+          'startDateTime': '2018-01-29T07:00:00',
+          'endDateTime': '2018-01-29T18:00:00'
+      },
+      {
+          'staffID': 52,
+          'dayID': 1,
+          'isAvailable': true,
+          'startDateTime': '2018-02-05T07:00:00',
+          'endDateTime': '2018-02-05T18:00:00'
+      },
+        {
+            'staffID': 53,
+            'dayID': 1,
+            'isAvailable': true,
+            'startDateTime': '2018-01-29T03:00:00',
+            'endDateTime': '2018-01-29T22:00:00'
+        },
+        {
+            'staffID': 53,
+            'dayID': 1,
+            'isAvailable': true,
+            'startDateTime': '2018-02-05T03:00:00',
+            'endDateTime': '2018-02-05T22:00:00'
+        },
+        {
+            'staffID': 53,
+            'dayID': 1,
+            'isAvailable': true,
+            'startDateTime': '2018-02-12T03:00:00',
+            'endDateTime': '2018-02-12T22:00:00'
+        },
+        {
+            'staffID': 53,
+            'dayID': 1,
+            'isAvailable': true,
+            'startDateTime': '2018-02-19T03:00:00',
+            'endDateTime': '2018-02-19T22:00:00'
+        },
+        {
+            'staffID': 53,
+            'dayID': 1,
+            'isAvailable': true,
+            'startDateTime': '2018-02-26T03:00:00',
+            'endDateTime': '2018-02-26T22:00:00'
+        },
+        {
+            'staffID': 53,
+            'dayID': 2,
+            'isAvailable': true,
+            'startDateTime': '2018-01-30T03:00:00',
+            'endDateTime': '2018-01-30T22:00:00'
+        },
+        {
+            'staffID': 53,
+            'dayID': 2,
+            'isAvailable': true,
+            'startDateTime': '2018-02-06T03:00:00',
+            'endDateTime': '2018-02-06T22:00:00'
+        },
+        {
+            'staffID': 53,
+            'dayID': 2,
+            'isAvailable': true,
+            'startDateTime': '2018-02-13T03:00:00',
+            'endDateTime': '2018-02-13T22:00:00'
+        },
+        {
+            'staffID': 53,
+            'dayID': 2,
+            'isAvailable': true,
+            'startDateTime': '2018-02-20T03:00:00',
+            'endDateTime': '2018-02-20T22:00:00'
+        },
+        {
+            'staffID': 53,
+            'dayID': 2,
+            'isAvailable': true,
+            'startDateTime': '2018-02-27T03:00:00',
+            'endDateTime': '2018-02-27T22:00:00'
+        },
+        {
+            'staffID': 53,
+            'dayID': 3,
+            'isAvailable': true,
+            'startDateTime': '2018-01-31T03:00:00',
+            'endDateTime': '2018-01-31T23:00:00'
+        },
+        {
+            'staffID': 53,
+            'dayID': 3,
+            'isAvailable': true,
+            'startDateTime': '2018-02-07T03:00:00',
+            'endDateTime': '2018-02-07T23:00:00'
+        },
+        {
+            'staffID': 53,
+            'dayID': 3,
+            'isAvailable': true,
+            'startDateTime': '2018-02-14T03:00:00',
+            'endDateTime': '2018-02-14T23:00:00'
+        },
+        {
+            'staffID': 53,
+            'dayID': 3,
+            'isAvailable': true,
+            'startDateTime': '2018-02-21T03:00:00',
+            'endDateTime': '2018-02-21T23:00:00'
+        },
+        {
+            'staffID': 53,
+            'dayID': 3,
+            'isAvailable': true,
+            'startDateTime': '2018-02-28T03:00:00',
+            'endDateTime': '2018-02-28T23:00:00'
+        }
+    ],
+
     }
 
     this.moveEvent = this.moveEvent.bind(this)
@@ -77,16 +199,25 @@ class Dnd extends React.Component {
 
 
   slotPropGetter(date) { // , start, end, isSelected
-    // console.log('date.getDate()...', date)
+    // console.log('date.getDate()...', Object.prototype.toString.call(date))
+    if ( Object.prototype.toString.call(date) === '[object Date]' ) {
     let style = {
       backgroundColor: '#ccc',
     };
-    // if (date.getDate() === 7 || date.getDate() === 15) {
-    return {
-      style: style,
+    let style1 = {
+      backgroundColor: '#fff',
     };
-  // } else { return {} }
+    if (date.getDate() === 7) {
+      
+      return {
+        style: style,
+      };
+    } else { return {
+      style: style1,
+    } }
+    }
   }
+
 
   render(){
     return (
@@ -96,10 +227,11 @@ class Dnd extends React.Component {
         events={resources.events}
         resources={resources.list}
         // slotProp={this.slotPropGetter(date)}
-        slotPropGetter={(date) => this.slotPropGetter(date) }
+        // slotPropGetter={(date) => this.slotPropGetter(date) }
+        usersAvailability = {this.state.usersAvailability}
         onEventDrop={this.moveEvent}
         defaultView='month'
-        defaultDate={new Date(2017, 8, 1)}
+        defaultDate={new Date(2018, 1, 14)}
         onSelectEvent={event => console.log(event)}
         onSelectSlot={(slotInfo) => alert(
             `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +

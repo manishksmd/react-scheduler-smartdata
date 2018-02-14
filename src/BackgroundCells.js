@@ -21,6 +21,8 @@ class BackgroundCells extends React.Component {
     onSelectEnd: PropTypes.func,
     onSelectStart: PropTypes.func,
 
+    usersAvailability: PropTypes.array,
+
     range: PropTypes.arrayOf(
       PropTypes.instanceOf(Date)
     ),
@@ -54,13 +56,27 @@ class BackgroundCells extends React.Component {
   }
 
   render(){
-    let { range, cellWrapperComponent: Wrapper } = this.props;
+    let { range, cellWrapperComponent: Wrapper, usersAvailability } = this.props;
     let { selecting, startIdx, endIdx } = this.state;
-
+    // console.log('this.props background cells...', this.props)
     return (
       <div className='rbc-row-bg'>
         {range.map((date, index) => {
           let selected =  selecting && index >= startIdx && index <= endIdx;
+          let slot_bg_color = '';
+          if (usersAvailability && usersAvailability.length) {
+            let isAvailable = false;
+            for (let index = 0; index < usersAvailability.length; index++) {
+              let dateObj = usersAvailability[index];
+              let availableStartDateTime = new Date(dateObj.startDateTime);
+              let isAvailableDateTime = (availableStartDateTime.toDateString() === date.toDateString());
+              if (isAvailableDateTime) {
+                isAvailable = true;
+                break;
+              }
+            }
+            slot_bg_color = isAvailable ? 'available-slot-color' : '';
+          }
           return (
             <Wrapper
               key={index}
@@ -73,6 +89,7 @@ class BackgroundCells extends React.Component {
                   'rbc-day-bg',
                   selected && 'rbc-selected-cell',
                   dates.isToday(date) && 'rbc-today',
+                  slot_bg_color,
                 )}
               />
             </Wrapper>

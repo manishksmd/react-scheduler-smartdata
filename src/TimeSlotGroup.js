@@ -16,7 +16,9 @@ export default class TimeSlotGroup extends Component {
     slotPropGetter: PropTypes.func,
     timeGutterFormat: dateFormat,
     culture: PropTypes.string,
-    resource: PropTypes.string
+    resource: PropTypes.string,
+
+    usersAvailability: PropTypes.array,
   }
   static defaultProps = {
     timeslots: 2,
@@ -26,7 +28,7 @@ export default class TimeSlotGroup extends Component {
   }
 
   renderSlice(slotNumber, content, value) {
-    const { dayWrapperComponent, showLabels, isNow, culture, slotPropGetter, resource } = this.props;
+    const { dayWrapperComponent, showLabels, isNow, culture, slotPropGetter, resource, usersAvailability } = this.props;
     return (
       <TimeSlot
         key={slotNumber}
@@ -54,13 +56,33 @@ export default class TimeSlotGroup extends Component {
     return ret
   }
   render() {
-    let { slotPropGetter } = this.props;
+    let { value, usersAvailability, resource } = this.props;
 
-    if (slotPropGetter)
-        var { style: xStyle } = slotPropGetter(date)
-    // console.log('this.props time Slot Group ...',xStyle, this.props)
+    // if (slotPropGetter)
+    //     var { style: xStyle } = (slotPropGetter && slotPropGetter(date)) || {};
+        // console.log('this.props time Slot Group ...', this.props)
+    let slot_bg_color = '';
+
+    if (usersAvailability && usersAvailability.length) {
+      let slotDate = value;
+      let isAvailable = false;
+        for (let index = 0; index < usersAvailability.length; index++) {
+          let dateObj = usersAvailability[index];
+            let availableStartDateTime = new Date(dateObj.startDateTime);
+            let availableEndDateTime = new Date(dateObj.endDateTime);
+            let isAvailableDateTime = (availableStartDateTime <= slotDate && availableEndDateTime >= slotDate);
+            let isResourceId = (resource ? (resource === dateObj.staffID) : true);
+            if (isAvailableDateTime && isResourceId) {
+              isAvailable = true;
+              break;
+            }
+        }
+      slot_bg_color = isAvailable ? 'available-slot-color' : '';
+
+    }
+
     return (
-      <div className="rbc-timeslot-group" style={xStyle} >
+      <div className={`rbc-timeslot-group ${slot_bg_color}`}>
         {this.renderSlices()}
       </div>
     )

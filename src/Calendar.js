@@ -293,6 +293,8 @@ class Calendar extends React.Component {
    practitionerNameAccessor: accessor,
    
 
+   usersAvailability: PropTypes.array,
+
    /**
     * Determines whether the event should be considered an "all day" event and ignore time.
     * Must resolve to a `boolean` value.
@@ -535,7 +537,9 @@ class Calendar extends React.Component {
    practitionerNameAccessor: 'practitionerName',
    allDayAccessor: 'allDay',
    startAccessor: 'start',
-   endAccessor: 'end'
+   endAccessor: 'end',
+
+   usersAvailability: 'usersAvailability',
  };
 
  getViews = () => {
