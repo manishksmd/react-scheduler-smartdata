@@ -60,9 +60,7 @@ class BackgroundCells extends React.Component {
       tempArray = availibilityArray;
 
     let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    let SlotStartDate = new Date(slotInfo.start).toLocaleDateString(),
-      slotStartTime = new Date('2018-01-01T' + new Date(slotInfo.start).toLocaleTimeString()),
-      slotEndTime = new Date('2018-01-01T' + new Date(slotInfo.end).toLocaleTimeString()),
+    let SlotStartDate = new Date(slotInfo.start).toDateString(),
       SlotDayName = days[new Date(slotInfo.start).getDay()];
 
     for (let index = 0;index < tempArray.length;index++) {
@@ -71,14 +69,10 @@ class BackgroundCells extends React.Component {
         let availableDayName = tempArray[index].dayName || '';
         isValidDay = (SlotDayName.toLowerCase() === availableDayName.toLowerCase());
       } else {
-        let availableDate = new Date(tempArray[index].date).toLocaleDateString();
+        let availableDate = new Date(tempArray[index].date).toDateString();
         isValidDay = availableDate === SlotStartDate;
       }
-      let startTime = new Date('2018-01-01T' + new Date(tempArray[index].startTime).toLocaleTimeString().substring(0, 5)),
-        endTime = new Date('2018-01-01T' + new Date(tempArray[index].endTime).toLocaleTimeString().substring(0, 5));
-
-      let isValidTime = (startTime <= slotStartTime && endTime >= slotEndTime);
-      if (isValidDay && (isMonthView || isValidTime)) {
+      if (isValidDay && (isMonthView)) {
         isValidDateTime = true;
         break;
       }
