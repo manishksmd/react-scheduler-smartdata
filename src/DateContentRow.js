@@ -41,7 +41,7 @@ const propTypes = {
   minRows: PropTypes.number.isRequired,
   maxRows: PropTypes.number.isRequired,
 
-  usersAvailability: PropTypes.array,
+  usersAvailability: PropTypes.object,
 };
 
 const defaultProps = {

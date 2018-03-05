@@ -293,7 +293,7 @@ class Calendar extends React.Component {
    practitionerNameAccessor: accessor,
    
 
-   usersAvailability: PropTypes.array,
+   usersAvailability: PropTypes.object,
 
    /**
     * Determines whether the event should be considered an "all day" event and ignore time.

@@ -18,7 +18,7 @@ export default class TimeSlotGroup extends Component {
     culture: PropTypes.string,
     resource: PropTypes.string,
 
-    usersAvailability: PropTypes.array,
+    usersAvailability: PropTypes.object,
   }
   static defaultProps = {
     timeslots: 2,
@@ -55,6 +55,38 @@ export default class TimeSlotGroup extends Component {
     }
     return ret
   }
+
+
+  isAvailableDateTime(availibilityArray, slotInfo, isDayAvailibility, resource) {
+    let isValidDateTime = false,
+      tempArray = availibilityArray;
+    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let SlotStartDate = new Date(slotInfo.start).toLocaleDateString(),
+      slotStartTime = new Date('2018-01-01T' + new Date(slotInfo.start).toLocaleTimeString()),
+      SlotDayName = days[new Date(slotInfo.start).getDay()];
+
+    for (let index = 0;index < tempArray.length;index++) {
+      let isValidDay = false;
+      if (isDayAvailibility) {
+        let availableDayName = tempArray[index].dayName || '';
+        isValidDay = (SlotDayName.toLowerCase() === availableDayName.toLowerCase());
+      } else {
+        let availableDate = new Date(tempArray[index].date).toLocaleDateString();
+        isValidDay = availableDate === SlotStartDate;
+      }
+      let startTime = new Date('2018-01-01T' + new Date(tempArray[index].startTime).toLocaleTimeString().substring(0, 5)),
+        endTime = new Date('2018-01-01T' + new Date(tempArray[index].endTime).toLocaleTimeString().substring(0, 5));
+
+      let isResourceId = (resource ? (resource === (tempArray[index].staffID) || '') : true);
+      let isValidTime = (startTime <= slotStartTime && endTime > slotStartTime);
+    if (isResourceId && isValidDay && isValidTime) {
+        isValidDateTime = true;
+        break;
+      }
+    }
+    return isValidDateTime;
+  }
+
   render() {
     let { value, usersAvailability, resource } = this.props;
 
@@ -62,22 +94,30 @@ export default class TimeSlotGroup extends Component {
     //     var { style: xStyle } = (slotPropGetter && slotPropGetter(date)) || {};
         // console.log('this.props time Slot Group ...', this.props)
     let slot_bg_color = '';
-
-    if (usersAvailability && usersAvailability.length) {
-      let slotDate = value;
+    if (usersAvailability) {
       let isAvailable = false;
-        for (let index = 0; index < usersAvailability.length; index++) {
-          let dateObj = usersAvailability[index];
-            let availableStartDateTime = new Date(dateObj.startDateTime);
-            let availableEndDateTime = new Date(dateObj.endDateTime);
-            let isAvailableDateTime = (availableStartDateTime <= slotDate && availableEndDateTime >= slotDate);
-            let isResourceId = (resource ? (resource === dateObj.staffID) : true);
-            if (isAvailableDateTime && isResourceId) {
-              isAvailable = true;
-              break;
-            }
+      let isUnavailable = false;
+      let slotInfo = {
+        'start': value,
+      }
+        let availableArray = usersAvailability;
+        if (availableArray.unavailable && availableArray.unavailable.length) {
+          let isDayAvailibility = false;
+          isUnavailable = this.isAvailableDateTime(availableArray.unavailable, slotInfo, isDayAvailibility, resource);
         }
-      slot_bg_color = isAvailable ? 'available-slot-color' : '';
+        if (isUnavailable) {
+          isAvailable = false;
+        } else {
+          if (availableArray.available && availableArray.available.length) {
+            let isDayAvailibility = false;
+            isAvailable = this.isAvailableDateTime(availableArray.available, slotInfo, isDayAvailibility, resource);
+          }
+          if (!isAvailable && availableArray.days && availableArray.days.length) {
+            let isDayAvailibility = true;
+            isAvailable = this.isAvailableDateTime(availableArray.days, slotInfo, isDayAvailibility, resource);
+          }
+        }
+        slot_bg_color = isAvailable ? 'available-slot-color' : '';
 
     }
 

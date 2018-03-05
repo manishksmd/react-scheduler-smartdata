@@ -40,7 +40,7 @@ export default {
     isAppoinmentCancelledAccessor: accessor,
     practitionerNameAccessor: accessor,
 
-    usersAvailability: accessor,
+    usersAvailability: PropTypes.object,
 
     allDayAccessor: accessor,
     startAccessor: accessor,

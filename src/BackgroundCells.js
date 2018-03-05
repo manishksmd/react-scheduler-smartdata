@@ -21,7 +21,7 @@ class BackgroundCells extends React.Component {
     onSelectEnd: PropTypes.func,
     onSelectStart: PropTypes.func,
 
-    usersAvailability: PropTypes.array,
+    usersAvailability: PropTypes.object,
 
     range: PropTypes.arrayOf(
       PropTypes.instanceOf(Date)
@@ -55,6 +55,37 @@ class BackgroundCells extends React.Component {
       this._teardownSelectable();
   }
 
+  isAvailableDateTime(availibilityArray, slotInfo, isDayAvailibility, isMonthView) {
+    let isValidDateTime = false,
+      tempArray = availibilityArray;
+
+    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let SlotStartDate = new Date(slotInfo.start).toLocaleDateString(),
+      slotStartTime = new Date('2018-01-01T' + new Date(slotInfo.start).toLocaleTimeString()),
+      slotEndTime = new Date('2018-01-01T' + new Date(slotInfo.end).toLocaleTimeString()),
+      SlotDayName = days[new Date(slotInfo.start).getDay()];
+
+    for (let index = 0;index < tempArray.length;index++) {
+      let isValidDay = false;
+      if (isDayAvailibility) {
+        let availableDayName = tempArray[index].dayName || '';
+        isValidDay = (SlotDayName.toLowerCase() === availableDayName.toLowerCase());
+      } else {
+        let availableDate = new Date(tempArray[index].date).toLocaleDateString();
+        isValidDay = availableDate === SlotStartDate;
+      }
+      let startTime = new Date('2018-01-01T' + new Date(tempArray[index].startTime).toLocaleTimeString().substring(0, 5)),
+        endTime = new Date('2018-01-01T' + new Date(tempArray[index].endTime).toLocaleTimeString().substring(0, 5));
+
+      let isValidTime = (startTime <= slotStartTime && endTime >= slotEndTime);
+      if (isValidDay && (isMonthView || isValidTime)) {
+        isValidDateTime = true;
+        break;
+      }
+    }
+    return isValidDateTime;
+  }
+
   render(){
     let { range, cellWrapperComponent: Wrapper, usersAvailability } = this.props;
     let { selecting, startIdx, endIdx } = this.state;
@@ -64,19 +95,38 @@ class BackgroundCells extends React.Component {
         {range.map((date, index) => {
           let selected =  selecting && index >= startIdx && index <= endIdx;
           let slot_bg_color = '';
-          if (usersAvailability && usersAvailability.length) {
+          if (usersAvailability) {
             let isAvailable = false;
-            for (let index = 0; index < usersAvailability.length; index++) {
-              let dateObj = usersAvailability[index];
-              let availableStartDateTime = new Date(dateObj.startDateTime);
-              let isAvailableDateTime = (availableStartDateTime.toDateString() === date.toDateString());
-              if (isAvailableDateTime) {
-                isAvailable = true;
-                break;
-              }
+            let isUnavailable = false;
+            let slotInfo = {
+              'start': date,
+              'end': date,
             }
-            slot_bg_color = isAvailable ? 'available-slot-color' : '';
-          }
+              let availableArray = usersAvailability;
+              if (availableArray.unavailable && availableArray.unavailable.length) {
+                let isDayAvailibility = false,
+                  isMonthView = true;
+                isUnavailable = this.isAvailableDateTime(availableArray.unavailable, slotInfo, isDayAvailibility, isMonthView);
+              }
+        
+              if (isUnavailable) {
+                isAvailable = false;
+              } else {
+                if (availableArray.available && availableArray.available.length) {
+                  let isDayAvailibility = false,
+                    isMonthView = true;
+                  isAvailable = this.isAvailableDateTime(availableArray.available, slotInfo, isDayAvailibility, isMonthView);
+                }
+        
+                if (!isAvailable && availableArray.days && availableArray.days.length) {
+                  let isDayAvailibility = true,
+                    isMonthView = true;
+                  isAvailable = this.isAvailableDateTime(availableArray.days, slotInfo, isDayAvailibility, isMonthView);
+                }
+        
+              }
+              slot_bg_color = isAvailable ? 'available-slot-color' : '';
+            }
           return (
             <Wrapper
               key={index}

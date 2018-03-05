@@ -68,7 +68,7 @@ let propTypes = {
   isAppoinmentCancelledAccessor: accessor,
   practitionerNameAccessor: accessor,
 
-  usersAvailability: accessor,
+  usersAvailability: PropTypes.object,
 
   allDayAccessor: accessor.isRequired,
   startAccessor: accessor.isRequired,

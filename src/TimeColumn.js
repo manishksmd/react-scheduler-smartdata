@@ -24,7 +24,7 @@ export default class TimeColumn extends Component {
     slotPropGetter: PropTypes.func,
     dayWrapperComponent: elementType,
 
-    usersAvailability: PropTypes.array,
+    usersAvailability: PropTypes.object,
   }
   static defaultProps = {
     step: 30,

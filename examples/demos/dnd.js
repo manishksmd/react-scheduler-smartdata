@@ -54,127 +54,46 @@ class Dnd extends React.Component {
     super(props)
     this.state = {
       events: events,
-      usersAvailability: [
-        {
-          'staffID': 52,
-          'dayID': 1,
-          'isAvailable': true,
-          'startDateTime': '2018-01-29T07:00:00',
-          'endDateTime': '2018-01-29T18:00:00'
-      },
-      {
-          'staffID': 52,
-          'dayID': 1,
-          'isAvailable': true,
-          'startDateTime': '2018-02-05T07:00:00',
-          'endDateTime': '2018-02-05T18:00:00'
-      },
-        {
-            'staffID': 53,
-            'dayID': 1,
-            'isAvailable': true,
-            'startDateTime': '2018-01-29T03:00:00',
-            'endDateTime': '2018-01-29T22:00:00'
-        },
-        {
-            'staffID': 53,
-            'dayID': 1,
-            'isAvailable': true,
-            'startDateTime': '2018-02-05T03:00:00',
-            'endDateTime': '2018-02-05T22:00:00'
-        },
-        {
-            'staffID': 53,
-            'dayID': 1,
-            'isAvailable': true,
-            'startDateTime': '2018-02-12T03:00:00',
-            'endDateTime': '2018-02-12T22:00:00'
-        },
-        {
-            'staffID': 53,
-            'dayID': 1,
-            'isAvailable': true,
-            'startDateTime': '2018-02-19T03:00:00',
-            'endDateTime': '2018-02-19T22:00:00'
-        },
-        {
-            'staffID': 53,
-            'dayID': 1,
-            'isAvailable': true,
-            'startDateTime': '2018-02-26T03:00:00',
-            'endDateTime': '2018-02-26T22:00:00'
-        },
-        {
-            'staffID': 53,
-            'dayID': 2,
-            'isAvailable': true,
-            'startDateTime': '2018-01-30T03:00:00',
-            'endDateTime': '2018-01-30T22:00:00'
-        },
-        {
-            'staffID': 53,
-            'dayID': 2,
-            'isAvailable': true,
-            'startDateTime': '2018-02-06T03:00:00',
-            'endDateTime': '2018-02-06T22:00:00'
-        },
-        {
-            'staffID': 53,
-            'dayID': 2,
-            'isAvailable': true,
-            'startDateTime': '2018-02-13T03:00:00',
-            'endDateTime': '2018-02-13T22:00:00'
-        },
-        {
-            'staffID': 53,
-            'dayID': 2,
-            'isAvailable': true,
-            'startDateTime': '2018-02-20T03:00:00',
-            'endDateTime': '2018-02-20T22:00:00'
-        },
-        {
-            'staffID': 53,
-            'dayID': 2,
-            'isAvailable': true,
-            'startDateTime': '2018-02-27T03:00:00',
-            'endDateTime': '2018-02-27T22:00:00'
-        },
-        {
-            'staffID': 53,
-            'dayID': 3,
-            'isAvailable': true,
-            'startDateTime': '2018-01-31T03:00:00',
-            'endDateTime': '2018-01-31T23:00:00'
-        },
-        {
-            'staffID': 53,
-            'dayID': 3,
-            'isAvailable': true,
-            'startDateTime': '2018-02-07T03:00:00',
-            'endDateTime': '2018-02-07T23:00:00'
-        },
-        {
-            'staffID': 53,
-            'dayID': 3,
-            'isAvailable': true,
-            'startDateTime': '2018-02-14T03:00:00',
-            'endDateTime': '2018-02-14T23:00:00'
-        },
-        {
-            'staffID': 53,
-            'dayID': 3,
-            'isAvailable': true,
-            'startDateTime': '2018-02-21T03:00:00',
-            'endDateTime': '2018-02-21T23:00:00'
-        },
-        {
-            'staffID': 53,
-            'dayID': 3,
-            'isAvailable': true,
-            'startDateTime': '2018-02-28T03:00:00',
-            'endDateTime': '2018-02-28T23:00:00'
-        }
-    ],
+      usersAvailability: {
+        'staffID': 0,
+        'days': [
+            {
+                'id': 715,
+                'dayId': 2,
+                'dayName': 'Monday',
+                'startTime': '2018-03-05T12:00:39',
+                'endTime': '2018-03-05T21:00:44',
+                'staffAvailabilityTypeID': 73,
+                'staffID': 115,
+                'isActive': false,
+                'isDeleted': false
+            },
+            {
+                'id': 716,
+                'dayId': 4,
+                'dayName': 'Wednesday',
+                'startTime': '2018-03-05T09:00:18',
+                'endTime': '2018-03-05T12:00:25',
+                'staffAvailabilityTypeID': 73,
+                'staffID': 115,
+                'isActive': false,
+                'isDeleted': false
+            }
+        ],
+        'available': [],
+        'unavailable': [
+            {
+                'id': 714,
+                'startTime': '2018-03-05T15:00:01',
+                'endTime': '2018-03-05T17:00:10',
+                'date': '2018-03-26T00:00:00',
+                'staffAvailabilityTypeID': 75,
+                'staffID': 115,
+                'isActive': false,
+                'isDeleted': false
+            }
+        ]
+    },
 
     }
 
@@ -208,7 +127,7 @@ class Dnd extends React.Component {
       backgroundColor: '#fff',
     };
     if (date.getDate() === 7) {
-      
+
       return {
         style: style,
       };
