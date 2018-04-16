@@ -356,7 +356,7 @@ class DaySlot extends React.Component {
                   {staffs ? this.renderStaffs(staffs) :
                     <div>
                       <div className="info-pic">
-                        <img src={clinicianImage} width="80px" height="80px" />
+                        <img src={clinicianImage} width="80px" height="80px" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')} />
                       </div>
                       <div className="info-p">
                         <div className="name" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{clinicianName}</div>
