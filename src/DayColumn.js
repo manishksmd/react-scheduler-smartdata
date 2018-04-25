@@ -350,7 +350,7 @@ class DaySlot extends React.Component {
                   {isRecurrence ? <i title="Recurrence Appointment" className="fa fa-repeat" aria-hidden="true"></i> : ''}
                   {isAppointmentRendered ? <i title="Rendered Appointment" className="fa fa-check-circle-o" aria-hidden="true"></i> : ''}
                   {isVideoCall ? <i title="Video Call in Appointment" className="fa fa-video-camera" aria-hidden="true"></i> : ''}
-                  {isAppoinmentCancelled ? <i title={`Cancellation Reason: ${cancellationReason}`} className="fa fa-ban" aria-hidden="true"></i> : ''}
+                  {isAppoinmentCancelled ? <i title={`${cancellationReason}`} className="fa fa-ban" aria-hidden="true"></i> : ''}
               </div>
 
                   {staffs ? this.renderStaffs(staffs) :
