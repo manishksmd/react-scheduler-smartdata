@@ -86,6 +86,11 @@ class Calendar extends React.Component {
    resources: PropTypes.arrayOf(PropTypes.object),
 
    /**
+     * An array of statusHeadings objects that map events to a specific statusHeadings
+     */
+    statusHeadings: PropTypes.arrayOf(PropTypes.object),
+
+   /**
     * Callback fired when the `date` value changes.
     *
     * @controllable date
@@ -506,7 +511,7 @@ class Calendar extends React.Component {
    popup: false,
    toolbar: true,
    view: views.MONTH,
-   views: [views.MONTH, views.WEEK, views.DAY, views.AGENDA, views.RESOURCE],
+   views: [views.MONTH, views.WEEK, views.DAY, views.AGENDA, views.RESOURCE, views.STATUS],
    date: now,
    step: 30,
 

@@ -122,6 +122,7 @@ export default {
     'coPay': '',
     'soapNoteTitle': 'Soap Note',
     'resourceId': 'c',
+    'statusId':1,
     'start': new Date(2017, 8, 8, 2, 30, 0, 0),
     'end': new Date(2017, 8, 8, 4, 30, 0, 0),
   },
@@ -136,6 +137,7 @@ export default {
     'appointmentAddress': 'ROOM NO 228-230, FIRST FLOOR, DISTRICT ADMINISTRATIVE COMPLEX, SECTOR 76, Sahibzada Ajit Singh Nagar, Chandigarh, 160055',
     'coPay': '',
     'resourceId': 'c',
+    'statusId':1,
     'start': new Date(2017, 8, 9, 4, 0, 0, 0),
     'end': new Date(2017, 8, 9, 4, 15, 0, 0),
   },
@@ -215,6 +217,7 @@ export default {
     'appointmentTime': '8:00 - 8:30',
     'coPay': '',
     'resourceId': 'c',
+    'statusId':1,
     'start': new Date(2017, 8, 26, 2, 30, 0, 0),
     'end': new Date(2017, 8, 26, 4, 30, 0, 0),
   }

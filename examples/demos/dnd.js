@@ -145,6 +145,7 @@ class Dnd extends React.Component {
         // events={this.state.events}
         events={resources.events}
         resources={resources.list}
+        statusHeadings={[{id:1, title: 'connected'}, {id:2, title: 'Confirmed'}]}
         // slotProp={this.slotPropGetter(date)}
         // slotPropGetter={(date) => this.slotPropGetter(date) }
         usersAvailability = {this.state.usersAvailability}
