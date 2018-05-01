@@ -24,6 +24,12 @@ import defaults from 'lodash/defaults';
 import transform from 'lodash/transform';
 import mapValues from 'lodash/mapValues';
 
+// changes for the dragging in calender ...
+import HTML5Backend from 'react-dnd-html5-backend'
+import { DragDropContext } from 'react-dnd'
+import withDragAndDrop from './addons/dragAndDrop';
+import './addons/dragAndDrop/styles.less';
+
 function viewNames(_views){
   return !Array.isArray(_views) ? Object.keys(_views) : _views
 }
@@ -680,7 +686,11 @@ class Calendar extends React.Component {
  };
 }
 
-export default uncontrollable(Calendar, {
+// changes for the dragging in calender ...
+const DragAndDropCalendar = withDragAndDrop(Calendar);
+const dndCalender =  DragDropContext(HTML5Backend)(DragAndDropCalendar);
+
+export default uncontrollable(dndCalender, {
   view: 'onView',
   date: 'onNavigate',
   selected: 'onSelectEvent'

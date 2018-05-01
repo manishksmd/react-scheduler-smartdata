@@ -29,9 +29,7 @@ export default class TimeSlot extends Component {
 
     return (
       <Wrapper value={value} resource={resource}>
-        <div>
-          <div
-            style={style}
+        <div style={style}
             className={cn(
               'rbc-time-slot',
               className,
@@ -42,8 +40,6 @@ export default class TimeSlot extends Component {
           {this.props.showLabel &&
             <span>{this.props.content}</span>
           }
-          </div>
-          {/* <div className="calender-custom-box">MKS----</div>*/}
         </div>
       </Wrapper>
     )

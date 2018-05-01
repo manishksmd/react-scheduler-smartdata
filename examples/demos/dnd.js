@@ -1,9 +1,10 @@
 import React from 'react'
 import events from '../events'
-import HTML5Backend from 'react-dnd-html5-backend'
-import { DragDropContext } from 'react-dnd'
-import BigCalendar from 'react-big-calendar'
-import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
+// import HTML5Backend from 'react-dnd-html5-backend'
+// import { DragDropContext } from 'react-dnd'
+// import BigCalendar from 'react-big-calendar'
+import DragAndDropCalendar from '../../src/index'
+// import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import resources from './../../stories/resourceEvents';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.less';
 
@@ -47,13 +48,13 @@ const CustomToolbar = (toolbar) => {
 };
 
 
-const DragAndDropCalendar = withDragAndDrop(BigCalendar);
+// const DragAndDropCalendar = withDragAndDrop(BigCalendar);
 
 class Dnd extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      events: events,
+      events: resources.events,
       usersAvailability: {
         'staffID': 0,
         'days': [
@@ -142,8 +143,8 @@ class Dnd extends React.Component {
     return (
       <DragAndDropCalendar
         selectable
-        // events={this.state.events}
-        events={resources.events}
+        events={this.state.events}
+        // events={resources.events}
         resources={resources.list}
         statusHeadings={[{id:1, title: 'connected'}, {id:2, title: 'Confirmed'}]}
         // slotProp={this.slotPropGetter(date)}
@@ -162,4 +163,5 @@ class Dnd extends React.Component {
   }
 }
 
-export default DragDropContext(HTML5Backend)(Dnd)
+// export default DragDropContext(HTML5Backend)(Dnd)
+export default Dnd
