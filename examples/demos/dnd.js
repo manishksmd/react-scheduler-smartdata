@@ -6,7 +6,7 @@ import { DragDropContext } from 'react-dnd'
 import BigCalendar from '../../src/index'
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import resources from './../../stories/resourceEvents';
-import 'react-big-calendar/lib/addons/dragAndDrop/styles.less';
+// import '../../lib/addons/dragAndDrop/styles.less';
 
 
 const CustomToolbar = (toolbar) => {
