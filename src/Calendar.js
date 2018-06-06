@@ -24,9 +24,6 @@ import defaults from 'lodash/defaults';
 import transform from 'lodash/transform';
 import mapValues from 'lodash/mapValues';
 
-// added addon css for the drag and drop selection ...
-import './addons/dragAndDrop/styles.less';
-
 function viewNames(_views){
   return !Array.isArray(_views) ? Object.keys(_views) : _views
 }

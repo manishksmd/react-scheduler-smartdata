@@ -73,7 +73,7 @@ class Dnd extends React.Component {
                 'id': 716,
                 'dayId': 4,
                 'dayName': 'Wednesday',
-                'startTime': '2018-03-05T09:00:18',
+                'startTime': '2018-03-05T09:30:18',
                 'endTime': '2018-03-05T12:00:25',
                 'staffAvailabilityTypeID': 73,
                 'staffID': 115,
@@ -86,7 +86,7 @@ class Dnd extends React.Component {
             {
                 'id': 714,
                 'startTime': '2018-03-05T15:00:01',
-                'endTime': '2018-03-05T17:00:10',
+                'endTime': '2018-03-05T17:30:10',
                 'date': '2018-03-26T00:00:00',
                 'staffAvailabilityTypeID': 75,
                 'staffID': 115,
@@ -101,11 +101,12 @@ class Dnd extends React.Component {
     this.moveEvent = this.moveEvent.bind(this)
   }
 
-  moveEvent({ event, start, end }) {
+  moveEvent({ event, start, end, ...rest }) {
     const { events } = this.state;
 
     const idx = events.indexOf(event);
-    const updatedEvent = { ...event, start, end };
+    const resourceId = rest.resource || event.resourceId;
+    const updatedEvent = { ...event, start, end, resourceId };
 
     const nextEvents = [...events]
     nextEvents.splice(idx, 1, updatedEvent)

@@ -4,7 +4,7 @@ export default {
     'title': 'Mmmmmmmmmmmmmmmmmm',
     'isRecurrence': true,
     'patientName': 'SSSSSSSSSSSSS',
-    'clinicianImage': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+    'clinicianImage': '../src/img/doctor.png',
     'clinicianName': 'Dr Emmaaaaaaaaa Anderson',
     'appointmentType': 'Regular appointment',
     'appointmentTime': '8:00 PM - 10:30 PM',
@@ -14,17 +14,17 @@ export default {
     'setProfileTitle': 'setProfileTitleAccessor',
     'staffs': [{
         'staffName': 'Morgan',
-        'image': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+        'image': '../src/img/doctor.png',
         'link': ''
       },
       {
         'staffName': 'Jason',
-        'image': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+        'image': '../src/img/doctor.png',
         'link': ''
       },
       {
         'staffName': 'Charlee',
-        'image': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+        'image': '../src/img/doctor.png',
         'link': ''
       }
     ],
@@ -38,7 +38,7 @@ export default {
     'title': 'Bbbbbbbbbbbbbb',
     'isRecurrence': true,
     'patientName': 'SSSSSSSSSSSSS',
-    'clinicianImage': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+    'clinicianImage': '../src/img/doctor.png',
     'clinicianName': 'Dr Emma Anderson',
     'appointmentType': 'Regular appointment',
     'appointmentTime': '8:00 - 10:30',
@@ -62,7 +62,7 @@ export default {
     'title': 'Aaaaaaaaa',
     'isRecurrence': false,
     'patientName': 'SSSSSSSSSSSSS',
-    'clinicianImage': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+    'clinicianImage': '../src/img/doctor.png',
     'clinicianName': 'Dr Emma Anderson',
     'appointmentType': 'Regular appointment',
     'appointmentTime': '8:00 - 8:30',
@@ -86,7 +86,7 @@ export default {
     'title': 'Ccccccccccccc',
     'isRecurrence': true,
     'patientName': 'SSSSSSSSSSSSS',
-    'clinicianImage': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+    'clinicianImage': '../src/img/doctor.png',
     'clinicianName': 'Dr Emma Anderson',
     'appointmentType': 'Regular appointment',
     'appointmentTime': '8:00 - 8:30',
@@ -100,7 +100,7 @@ export default {
     'title': 'Smartdata Events',
     'isRecurrence': false,
     'patientName': 'SSSSSSSSSSSSS',
-    'clinicianImage': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+    'clinicianImage': '../src/img/doctor.png',
     'clinicianName': 'Dr Emma Anderson',
     'appointmentType': 'Regular appointment',
     'appointmentTime': '8:00 - 8:30',
@@ -114,7 +114,7 @@ export default {
     'title': 'Another Meeting',
     'isRecurrence': true,
     'patientName': 'SSSSSSSSSSSSS',
-    'clinicianImage': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+    'clinicianImage': '../src/img/doctor.png',
     'clinicianName': 'Dr Emma Anderson',
     'appointmentType': 'Regular appointment',
     'appointmentTime': '8:00 - 8:30',
@@ -130,7 +130,7 @@ export default {
     'title': 'Another Meeting 1',
     'isRecurrence': false,
     'patientName': 'SSSSSSSSSSSSS',
-    'clinicianImage': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+    'clinicianImage': '../src/img/doctor.png',
     'clinicianName': 'Dr Emma Anderson',
     'appointmentType': 'Regular appointment',
     'appointmentTime': '8:00 PM - 8:30 PM',
@@ -145,7 +145,7 @@ export default {
     'title': 'Another Meeting 2',
     'isRecurrence': true,
     'patientName': 'SSSSSSSSSSSSS',
-    'clinicianImage': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+    'clinicianImage': '../src/img/doctor.png',
     'clinicianName': 'Dr Emma Anderson',
     'appointmentType': 'Regular appointment',
     'appointmentTime': '8:00 PM - 8:30 PM',
@@ -159,7 +159,7 @@ export default {
     'title': 'Another Meeting 3',
     'isRecurrence': false,
     'patientName': 'SSSSSSSSSSSSS',
-    'clinicianImage': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+    'clinicianImage': '../src/img/doctor.png',
     'clinicianName': 'Dr Emma Anderson',
     'appointmentType': 'Regular appointment',
     'appointmentTime': '8:00 - 8:30',
@@ -172,7 +172,7 @@ export default {
     'title': 'Another Meeting 4',
     'isRecurrence': false,
     'patientName': 'SSSSSSSSSSSSS',
-    'clinicianImage': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+    'clinicianImage': '../src/img/doctor.png',
     'clinicianName': 'Dr Emma Anderson',
     'appointmentType': 'Regular appointment',
     'appointmentTime': '8:00 - 8:30',
@@ -185,7 +185,7 @@ export default {
     'title': 'Another Meeting 5',
     'isRecurrence': false,
     'patientName': 'SSSSSSSSSSSSS',
-    'clinicianImage': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+    'clinicianImage': '../src/img/doctor.png',
     'clinicianName': 'Dr Emma Anderson',
     'appointmentType': 'Regular appointment',
     'appointmentTime': '8:00 - 8:30',
@@ -198,7 +198,7 @@ export default {
     'title': 'Another Meeting 6',
     'isRecurrence': false,
     'patientName': 'SSSSSSSSSSSSS',
-    'clinicianImage': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+    'clinicianImage': '../src/img/doctor.png',
     'clinicianName': 'Dr Emma Anderson',
     'appointmentType': 'Regular appointment',
     'appointmentTime': '8:00 - 8:30',
@@ -211,7 +211,7 @@ export default {
     'title': 'Another Meeting',
     'isRecurrence': true,
     'patientName': 'SSSSSSSSSSSSS',
-    'clinicianImage': 'https://pbs.twimg.com/profile_images/378800000740775432/9f1501a967b89c2a2cdeb5f7eaaf9787.jpeg',
+    'clinicianImage': '../src/img/doctor.png',
     'clinicianName': 'Dr Emma Anderson',
     'appointmentType': 'Regular appointment',
     'appointmentTime': '8:00 - 8:30',
@@ -224,13 +224,13 @@ export default {
   ],
 
   list: [{
-    id: 115,
+    id: 'a',
     title: 'Room A'
   }, {
-    id: 52,
+    id: 'b',
     title: 'Room B'
   }, {
-    id: 53,
+    id: 'c',
     title: 'Room C'
   }]
 }

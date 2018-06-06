@@ -57,7 +57,7 @@ class EventCell extends React.Component {
     if (staffs) {
       return staffs.map((obj, index) => {
         return (
-          <div className="info-p">
+          <div className="info-p" key={index}>
             <img src={obj.image} width="35px" height="35px" />
             <p>{obj.staffName}</p>
           </div>
