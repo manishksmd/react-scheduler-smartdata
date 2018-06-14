@@ -34,6 +34,7 @@ export default {
     'isRecurrenceEdit': false,
     'isEdit': true,
     'isDelete': true,
+    'isDragable': true,
   }, {
     'title': 'Bbbbbbbbbbbbbb',
     'isRecurrence': true,
@@ -58,6 +59,7 @@ export default {
     'practitionerName': 'Bbbb singh',
     'isUnCancel': true,
     'cancellationReason': 'not defined',
+    'isDragable': true,
   }, {
     'title': 'Aaaaaaaaa',
     'isRecurrence': false,
@@ -82,6 +84,7 @@ export default {
     'practitionerName': 'Aaaa singh',
     'isUnCancel': true,
     'cancellationReason': 'Text is available under the Creative Commons Attribution-ShareAlike License; additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy',
+    'isDragable': false,
   }, {
     'title': 'Ccccccccccccc',
     'isRecurrence': true,
@@ -96,6 +99,7 @@ export default {
     'resourceId': 'a',
     'start': new Date(2017, 9, 4, 6, 0, 0, 0),
     'end': new Date(2017, 9, 4, 7, 30, 0, 0),
+    'isDragable': false,
   }, {
     'title': 'Smartdata Events',
     'isRecurrence': false,
@@ -110,6 +114,7 @@ export default {
     'resourceId': 'a',
     'start': new Date(2017, 8, 7, 5, 30, 0, 0),
     'end': new Date(2017, 8, 7, 10, 30, 0, 0),
+    'isDragable': false,
   }, {
     'title': 'Another Meeting',
     'isRecurrence': true,
@@ -125,6 +130,7 @@ export default {
     'statusId':1,
     'start': new Date(2017, 8, 8, 2, 30, 0, 0),
     'end': new Date(2017, 8, 8, 4, 30, 0, 0),
+    'isDragable': false,
   },
   {
     'title': 'Another Meeting 1',
@@ -140,6 +146,7 @@ export default {
     'statusId':1,
     'start': new Date(2017, 8, 9, 4, 0, 0, 0),
     'end': new Date(2017, 8, 9, 4, 15, 0, 0),
+    'isDragable': false,
   },
   {
     'title': 'Another Meeting 2',
@@ -154,6 +161,7 @@ export default {
     'resourceId': 'c',
     'start': new Date(2017, 8, 9, 4, 0, 0, 0),
     'end': new Date(2017, 8, 9, 4, 15, 0, 0),
+    'isDragable': false,
   },
   {
     'title': 'Another Meeting 3',
@@ -167,6 +175,7 @@ export default {
     'resourceId': 'c',
     'start': new Date(2017, 8, 9, 4, 0, 0, 0),
     'end': new Date(2017, 8, 9, 4, 15, 0, 0),
+    'isDragable': false,
   },
   {
     'title': 'Another Meeting 4',
@@ -180,6 +189,7 @@ export default {
     'resourceId': 'c',
     'start': new Date(2017, 8, 9, 3, 45, 0, 0),
     'end': new Date(2017, 8, 9, 4, 15, 0, 0),
+    'isDragable': false,
   },
   {
     'title': 'Another Meeting 5',
@@ -193,6 +203,7 @@ export default {
     'resourceId': 'c',
     'start': new Date(2017, 8, 9, 2, 10, 0, 0),
     'end': new Date(2017, 8, 9, 6, 30, 0, 0),
+    'isDragable': false,
   },
   {
     'title': 'Another Meeting 6',
@@ -206,6 +217,7 @@ export default {
     'resourceId': 'c',
     'start': new Date(2017, 8, 9, 1, 50, 0, 0),
     'end': new Date(2017, 8, 9, 5, 0, 0, 0),
+    'isDragable': false,
   },
   {
     'title': 'Another Meeting',
@@ -220,6 +232,7 @@ export default {
     'statusId':1,
     'start': new Date(2017, 8, 26, 2, 30, 0, 0),
     'end': new Date(2017, 8, 26, 4, 30, 0, 0),
+    'isDragable': false,
   }
   ],
 

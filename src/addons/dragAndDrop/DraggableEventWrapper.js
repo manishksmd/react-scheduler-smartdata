@@ -34,13 +34,14 @@ class DraggableEventWrapper extends React.Component {
     children = React.cloneElement(children, {
       className: cn(
         children.props.className,
-        isDragging && 'rbc-addons-dnd-dragging'
+        isDragging && 'rbc-addons-dnd-dragging',
       )
     })
 
+    let draggableEvent = (event.isDragable && connectDragSource(children)) || children; // disable drag for specific events
     return (
       <EventWrapper event={event}>
-        {connectDragSource(children)}
+        {draggableEvent}
       </EventWrapper>
     );
   }
