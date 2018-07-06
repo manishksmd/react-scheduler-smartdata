@@ -34,6 +34,7 @@ export default {
     isDeleteAccessor: accessor,
     isCancelAccessor: accessor,
     isUnCancelAccessor: accessor,
+    isApproveAccessor: accessor,
     cancellationReasonAccessor: accessor,
     isAppointmentRenderedAccessor: accessor,
     isVideoCallAccessor: accessor,
@@ -78,6 +79,7 @@ export default {
       , isEditAccessor
       , isDeleteAccessor
       , isCancelAccessor
+      , isApproveAccessor
       , isUnCancelAccessor
       , cancellationReasonAccessor
       , isAppointmentRenderedAccessor
@@ -115,6 +117,7 @@ export default {
         isDeleteAccessor={isDeleteAccessor}
         isCancelAccessor={isCancelAccessor}
         isUnCancelAccessor={isUnCancelAccessor}
+        isApproveAccessor={isApproveAccessor}
         cancellationReasonAccessor={cancellationReasonAccessor}
         isAppointmentRenderedAccessor={isAppointmentRenderedAccessor}
         isVideoCallAccessor={isVideoCallAccessor}
