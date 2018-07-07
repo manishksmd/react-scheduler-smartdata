@@ -52,6 +52,7 @@ class EventCell extends React.Component {
 
   constructor(props) {
     super(props);
+    this.hoverDialogActions = this.hoverDialogActions.bind(this);
   }
 
   render() {

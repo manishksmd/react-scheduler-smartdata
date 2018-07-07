@@ -68,7 +68,7 @@ let propTypes = {
   isVideoCallAccessor: accessor,
   isAppoinmentCancelledAccessor: accessor,
   practitionerNameAccessor: accessor,
-
+  statusNameAccessor: accessor,
   usersAvailability: PropTypes.object,
 
   allDayAccessor: accessor.isRequired,
@@ -198,6 +198,7 @@ class MonthView extends React.Component {
       isAppointmentRenderedAccessor,
       isVideoCallAccessor,
       isAppoinmentCancelledAccessor,
+      statusNameAccessor,
       practitionerNameAccessor,
       usersAvailability,
       startAccessor,
@@ -250,6 +251,7 @@ class MonthView extends React.Component {
         isVideoCallAccessor={isVideoCallAccessor}
         isAppoinmentCancelledAccessor={isAppoinmentCancelledAccessor}
         practitionerNameAccessor={practitionerNameAccessor}
+        statusNameAccessor={statusNameAccessor}
         usersAvailability={usersAvailability}
         startAccessor={startAccessor}
         endAccessor={endAccessor}

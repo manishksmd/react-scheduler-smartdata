@@ -40,6 +40,7 @@ export default {
     isVideoCallAccessor: accessor,
     isAppoinmentCancelledAccessor: accessor,
     practitionerNameAccessor: accessor,
+    statusNameAccessor: accessor,
 
     usersAvailability: PropTypes.object,
 
@@ -86,6 +87,7 @@ export default {
       , isVideoCallAccessor
       , isAppoinmentCancelledAccessor
       , practitionerNameAccessor
+      , statusNameAccessor
       , usersAvailability
       , allDayAccessor, eventComponent
       , eventWrapperComponent
@@ -123,6 +125,7 @@ export default {
         isVideoCallAccessor={isVideoCallAccessor}
         isAppoinmentCancelledAccessor={isAppoinmentCancelledAccessor}
         practitionerNameAccessor={practitionerNameAccessor}
+        statusNameAccessor={statusNameAccessor}
         allDayAccessor={allDayAccessor}
         usersAvailability={usersAvailability}
         slotStart={start}

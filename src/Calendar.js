@@ -299,9 +299,11 @@ class Calendar extends React.Component {
    isVideoCallAccessor: accessor,
    isAppoinmentCancelledAccessor: accessor,
    practitionerNameAccessor: accessor,
-   
+   statusNameAccessor: accessor,
 
    usersAvailability: PropTypes.object,
+
+   componentStatusNames: PropTypes.element,
 
    /**
     * Determines whether the event should be considered an "all day" event and ignore time.
@@ -544,11 +546,13 @@ class Calendar extends React.Component {
    isVideoCallAccessor: 'isVideoCall',
    isAppoinmentCancelledAccessor: 'isAppoinmentCancelled',
    practitionerNameAccessor: 'practitionerName',
+   statusNameAccessor: 'statusName',
    allDayAccessor: 'allDay',
    startAccessor: 'start',
    endAccessor: 'end',
 
    usersAvailability: 'usersAvailability',
+   componentStatusNames: null,
  };
 
  getViews = () => {
@@ -632,6 +636,7 @@ class Calendar extends React.Component {
            onNavigate={this.handleNavigate}
            customNavigate={this.customNavigate}
            messages={this.props.messages}
+           componentStatusNames={this.props.componentStatusNames}
          />
        }
        <View

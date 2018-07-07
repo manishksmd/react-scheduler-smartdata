@@ -14,10 +14,11 @@ class Toolbar extends React.Component {
     messages: PropTypes.object,
     onNavigate: PropTypes.func.isRequired,
     onViewChange: PropTypes.func.isRequired,
+    componentStatusNames: PropTypes.element,
   }
 
   render() {
-    let { messages, label } = this.props;
+    let { messages, label, componentStatusNames } = this.props;
 
     messages = message(messages)
 
@@ -46,7 +47,7 @@ class Toolbar extends React.Component {
           this.viewNamesGroup(messages)
         }
         </span>
-        
+        {componentStatusNames}
       </div>
     );
   }

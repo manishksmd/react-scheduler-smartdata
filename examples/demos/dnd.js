@@ -100,6 +100,7 @@ class Dnd extends React.Component {
 
     this.moveEvent = this.moveEvent.bind(this);
     this.resizeEvent = this.resizeEvent.bind(this);
+    this.eventStyleGetter = this.eventStyleGetter.bind(this);
   }
 
   moveEvent({ event, start, end, ...rest }) {
@@ -163,6 +164,17 @@ class Dnd extends React.Component {
     alert(`${event.title} was resized to ${start}-${end}`)
   }
 
+  eventStyleGetter(event, date, end, isSelected) { // , start, end, isSelected
+    // console.log('event, date, end, isSelected...', event, date, end, isSelected);
+    let style = {
+      backgroundColor: event.appointmentBackgroundColor,
+      color: event.appointmentFontColor,
+    };
+    return {
+      style: style,
+    };
+  }
+
   render(){
     return (
       <DragAndDropCalendar
@@ -177,9 +189,11 @@ class Dnd extends React.Component {
         resizable
         onEventResize={this.resizeEvent}
         onEventDrop={this.moveEvent}
+        eventPropGetter={(event, date, end, isSelected) => this.eventStyleGetter(event, date, end, isSelected)}
         defaultView='month'
         draggableAccessor= 'isDragable'
    resizableAccessor= 'isDragable'
+  //  componentStatusNames={<div><span>status: pending() rendered() approved() cancelled()</span></div>}
         defaultDate={new Date(2018, 1, 14)}
         onSelectEvent={event => console.log(event)}
         onSelectSlot={(slotInfo) => alert(

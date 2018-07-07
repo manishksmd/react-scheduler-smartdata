@@ -5,13 +5,6 @@ import { accessor as get } from './utils/accessors';
 
 let propTypes = {
     event: PropTypes.object.isRequired,
-    slotStart: PropTypes.instanceOf(Date),
-    slotEnd: PropTypes.instanceOf(Date),
-
-    selected: PropTypes.bool,
-    eventPropGetter: PropTypes.func,
-    titleAccessor: accessor,
-
     // @Appointment field info declaration
     patientNameAccessor: accessor,
     clinicianImageAccessor: accessor,
@@ -35,6 +28,7 @@ let propTypes = {
     isVideoCallAccessor: accessor,
     isAppoinmentCancelledAccessor: accessor,
     practitionerNameAccessor: accessor,
+    statusNameAccessor: accessor,
 
     allDayAccessor: accessor,
     startAccessor: accessor,
@@ -87,6 +81,7 @@ class AppointmentBox extends React.Component {
       , isAppointmentRenderedAccessor
       , isVideoCallAccessor
       , isAppoinmentCancelledAccessor
+      , statusNameAccessor
       , practitionerNameAccessor
       , hoverDialogActions
     } = this.props;
@@ -113,10 +108,29 @@ class AppointmentBox extends React.Component {
       , isAppointmentRendered = get(event, isAppointmentRenderedAccessor)
       , isVideoCall = get(event, isVideoCallAccessor)
       , isAppoinmentCancelled = get(event, isAppoinmentCancelledAccessor)
+      , statusName = get(event, statusNameAccessor)
+
+    let appointmentStatusClass = 'default_ap';
+    switch ((statusName || '').toUpperCase()) {
+      case 'PENDING':
+        appointmentStatusClass = 'pending_ap';
+        break;
+      case 'APPROVED':
+        appointmentStatusClass = 'approved_ap';
+        break;
+      case 'CANCELLED':
+        appointmentStatusClass = 'cancelled_ap';
+        break;
+      case 'RENDERED':
+        appointmentStatusClass = 'rendered_ap';
+        break;
+      default:
+        appointmentStatusClass = 'default_ap';
+    }
 
     return (
         <div className={popupClassName}>
-              <div className="topbar">
+              <div className={`topbar ${appointmentStatusClass}`}>
                 <div className="info-title">Appointment info</div>
                 <div className="icons">
                     <ul>
