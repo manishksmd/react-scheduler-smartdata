@@ -93,7 +93,7 @@ export default {
     'practitionerName': 'Aaaa singh',
     'isUnCancel': false,
     'cancellationReason': 'Text is available under the Creative Commons Attribution-ShareAlike License; additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy',
-    'isDragable': false,
+    'isDragable': true,
     'isApprove': true,
   }, {
     'title': 'Ccccccccccccc',
@@ -112,7 +112,7 @@ export default {
     'statusName': 'rendered',
     'appointmentBackgroundColor': '#e4044c',
     'appointmentFontColor': '#fff',
-    'isDragable': false,
+    'isDragable': true,
   }, {
     'title': 'Smartdata Events',
     'isRecurrence': false,
@@ -130,7 +130,7 @@ export default {
     'statusName': 'cancelled',
     'appointmentBackgroundColor': '#3f940a',
     'appointmentFontColor': '#fff',
-    'isDragable': false,
+    'isDragable': true,
     'isApprove': true,
   }, {
     'title': 'Another Meeting',
@@ -150,7 +150,7 @@ export default {
     'statusName': 'cancelled',
     'appointmentBackgroundColor': '#92940a',
     'appointmentFontColor': '#fff',
-    'isDragable': false,
+    'isDragable': true,
   },
   {
     'title': 'Another Meeting 1',
@@ -255,7 +255,7 @@ export default {
     'statusName': 'approved',
     'appointmentBackgroundColor': '#0a7521',
     'appointmentFontColor': '#fff',
-    'isDragable': false,
+    'isDragable': true,
   },
   {
     'title': 'Another Meeting',
@@ -273,7 +273,7 @@ export default {
     'statusName': 'approved',
     'appointmentBackgroundColor': '#0a7521',
     'appointmentFontColor': '#fff',
-    'isDragable': false,
+    'isDragable': true,
   }
   ],
 

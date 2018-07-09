@@ -89,7 +89,7 @@ class EventCell extends React.Component {
       var { style, className: xClassName } = eventPropGetter(event, start, end, selected);
 
     return (
-      <EventWrapper event={event}>
+      <EventWrapper event={event} isRow={true} isMonthView={true}>
         <div
           style={{...props.style, ...style}}
           className={cn('rbc-event', className, xClassName, {
