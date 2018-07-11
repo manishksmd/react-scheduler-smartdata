@@ -80,7 +80,7 @@ export default {
     'resourceId': 'c',
     'start': new Date(2017, 9, 4, 6, 0, 0, 0),
     'end': new Date(2017, 9, 4, 6, 30, 0, 0),
-    'statusName': 'rendered',
+    'statusName': 'pending',
     'appointmentBackgroundColor': '#e104e4',
     'appointmentFontColor': '#fff',
     'isRecurrenceEdit': false,

@@ -128,10 +128,12 @@ class AppointmentBox extends React.Component {
         appointmentStatusClass = 'default_ap';
     }
 
+    statusName = (statusName || '').toUpperCase() === 'PENDING' ? statusName.charAt(0).toUpperCase() + statusName.slice(1) : '';
+
     return (
         <div className={popupClassName}>
               <div className={`topbar ${appointmentStatusClass}`}>
-                <div className="info-title">Appointment info</div>
+                <div className="info-title">Appointment {!statusName && 'info'} {statusName && <small>({statusName})</small>}</div>
                 <div className="icons">
                     <ul>
                     {isRecurrenceEdit ? <li><a title="Edit recurrence" className="edit" href="#" onClick={(e) => hoverDialogActions(event, e, 'edit_recurrence')}><i className="fa fa-repeat" aria-hidden="true"></i></a></li> : ''}
