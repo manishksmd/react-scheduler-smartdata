@@ -178,6 +178,8 @@ class Dnd extends React.Component {
   render(){
     return (
       <DragAndDropCalendar
+        // min={new Date(2018, 6, 6, 8, 30, 0)}
+        // max={new Date(2018, 6, 6, 20, 30, 0)}
         selectable
         events={this.state.events}
         // events={resources.events}

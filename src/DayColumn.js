@@ -218,8 +218,9 @@ class DaySlot extends React.Component {
       let _isSelected = isSelected(event, selected)
       let viewClass = '';
       let getEndHour = end.getHours();
+      let maxEndHourForHoverup = max.getHours();
 
-      if (getEndHour > 17) {
+      if (getEndHour > (maxEndHourForHoverup - 6)) {
         viewClass = this.props.view === 'week' ? 'appointment_box dayslot hoverup' : 'appointment_box hoverup';
       } else {
         viewClass = this.props.view === 'week' ? 'appointment_box dayslot' : 'appointment_box';
@@ -250,6 +251,8 @@ class DaySlot extends React.Component {
               'rbc-event-continues-later': continuesAfter
             })}
           >
+                      {/* <div className="rbc-event-label">{label}</div> */}
+
             <div className='rbc-event-label rbc-event-content textoverflow'>
               {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
               {isAppointmentRendered ? <i className="fa fa-check-circle-o pr5" aria-hidden="true"></i> : ''}
