@@ -26,7 +26,8 @@ export let eventComponent = PropTypes.oneOfType([
     week: elementType,
     day: elementType,
     agenda: elementType,
-    resource: elementType
+    resource: elementType,
+    status: elementType,
   })
 ])
 

@@ -21,6 +21,8 @@ class BackgroundCells extends React.Component {
     onSelectEnd: PropTypes.func,
     onSelectStart: PropTypes.func,
 
+    usersAvailability: PropTypes.object,
+
     range: PropTypes.arrayOf(
       PropTypes.instanceOf(Date)
     ),
@@ -53,14 +55,72 @@ class BackgroundCells extends React.Component {
       this._teardownSelectable();
   }
 
-  render(){
-    let { range, cellWrapperComponent: Wrapper } = this.props;
-    let { selecting, startIdx, endIdx } = this.state;
+  isAvailableDateTime(availibilityArray, slotInfo, isDayAvailibility, isMonthView) {
+    let isValidDateTime = false,
+      tempArray = availibilityArray;
 
+    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let SlotStartDate = new Date(slotInfo.start).toDateString(),
+      SlotDayName = days[new Date(slotInfo.start).getDay()];
+
+    for (let index = 0;index < tempArray.length;index++) {
+      let isValidDay = false;
+      if (isDayAvailibility) {
+        let availableDayName = tempArray[index].dayName || '';
+        isValidDay = (SlotDayName.toLowerCase() === availableDayName.toLowerCase());
+      } else {
+        let availableDate = new Date(tempArray[index].date).toDateString();
+        isValidDay = availableDate === SlotStartDate;
+      }
+      if (isValidDay && (isMonthView)) {
+        isValidDateTime = true;
+        break;
+      }
+    }
+    return isValidDateTime;
+  }
+
+  render(){
+    let { range, cellWrapperComponent: Wrapper, usersAvailability } = this.props;
+    let { selecting, startIdx, endIdx } = this.state;
+    // console.log('this.props background cells...', this.props)
     return (
       <div className='rbc-row-bg'>
         {range.map((date, index) => {
           let selected =  selecting && index >= startIdx && index <= endIdx;
+          let slot_bg_color = '';
+          if (usersAvailability) {
+            let isAvailable = false;
+            let isUnavailable = false;
+            let slotInfo = {
+              'start': date,
+              'end': date,
+            }
+              let availableArray = usersAvailability;
+              if (availableArray.unavailable && availableArray.unavailable.length) {
+                let isDayAvailibility = false,
+                  isMonthView = true;
+                isUnavailable = this.isAvailableDateTime(availableArray.unavailable, slotInfo, isDayAvailibility, isMonthView);
+              }
+        
+              if (isUnavailable) {
+                isAvailable = false;
+              } else {
+                if (availableArray.available && availableArray.available.length) {
+                  let isDayAvailibility = false,
+                    isMonthView = true;
+                  isAvailable = this.isAvailableDateTime(availableArray.available, slotInfo, isDayAvailibility, isMonthView);
+                }
+        
+                if (!isAvailable && availableArray.days && availableArray.days.length) {
+                  let isDayAvailibility = true,
+                    isMonthView = true;
+                  isAvailable = this.isAvailableDateTime(availableArray.days, slotInfo, isDayAvailibility, isMonthView);
+                }
+        
+              }
+              slot_bg_color = isAvailable ? 'available-slot-color' : '';
+            }
           return (
             <Wrapper
               key={index}
@@ -73,6 +133,7 @@ class BackgroundCells extends React.Component {
                   'rbc-day-bg',
                   selected && 'rbc-selected-cell',
                   dates.isToday(date) && 'rbc-today',
+                  slot_bg_color,
                 )}
               />
             </Wrapper>

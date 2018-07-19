@@ -15,6 +15,7 @@ import Img from './img/doctor.png';
 import getStyledEvents, { positionFromDate, startsBefore } from './utils/dayViewLayout'
 
 import TimeColumn from './TimeColumn'
+import AppointmentBox from './AppointmentBox';
 
 function snapToSlot(date, step){
   var roundTo = 1000 * 60 * step;
@@ -29,20 +30,7 @@ class DaySlot extends React.Component {
 
   constructor(props) {
     super(props);
-    this.renderStaffs = this.renderStaffs.bind(this);
-  }
-
-  renderStaffs(staffs) {console.log(staffs)
-    if (staffs) {
-      return staffs.map((obj, index) => {
-        return (
-          <div className="info-p">            
-            <img src={obj.image} width="35px" height="35px" />
-            <p>{obj.staffName}</p>
-          </div>
-        );
-      });
-    }
+    this.hoverDialogActions = this.hoverDialogActions.bind(this);
   }
 
   static propTypes = {
@@ -70,6 +58,15 @@ class DaySlot extends React.Component {
     isRecurrenceEditAccessor: accessor,
     isEditAccessor: accessor,
     isDeleteAccessor: accessor,
+    isCancelAccessor: accessor,
+    isUnCancelAccessor: accessor,
+    isApproveAccessor: accessor,
+    cancellationReasonAccessor: accessor,
+    isAppointmentRenderedAccessor: accessor,
+    isVideoCallAccessor: accessor,
+    isAppoinmentCancelledAccessor: accessor,
+    practitionerNameAccessor: accessor,
+
 
     allDayAccessor: accessor.isRequired,
     startAccessor: accessor.isRequired,
@@ -190,20 +187,10 @@ class DaySlot extends React.Component {
       , startAccessor
       , endAccessor
       , titleAccessor
-      , patientNameAccessor
-      , clinicianImageAccessor
-      , clinicianNameAccessor
-      , appointmentTypeAccessor
-      , appointmentTimeAccessor
-      , appointmentAddressAccessor
-      , coPayAccessor
-      , soapNoteTitleAccessor
-      , setProfileTitleAccessor
-      , staffsAccessor
       , isRecurrenceAccessor
-      , isRecurrenceEditAccessor
-      , isEditAccessor
-      , isDeleteAccessor } = this.props;
+      , isAppointmentRenderedAccessor
+      , isVideoCallAccessor
+      , isAppoinmentCancelledAccessor } = this.props;
 
 
     let EventComponent = eventComponent
@@ -222,27 +209,18 @@ class DaySlot extends React.Component {
       let title = get(event, titleAccessor)
 
       // @Appointment associate appointment data with the fields
-      let patientName = get(event, patientNameAccessor);
-      let clinicianImage = get(event, clinicianImageAccessor);
-      let clinicianName = get(event, clinicianNameAccessor);
-      let appointmentType = get(event, appointmentTypeAccessor);
-      let appointmentTime = get(event, appointmentTimeAccessor);
-      let appointmentAddress = get(event, appointmentAddressAccessor);
-      let coPay = get(event, coPayAccessor);
-      let soapNoteTitle = get(event, soapNoteTitleAccessor);
-      let setProfileTitle = get(event, setProfileTitleAccessor);
-      let staffs = get(event, staffsAccessor);
-      let isRecurrence = get(event, isRecurrenceAccessor);
-      let isRecurrenceEdit = get(event, isRecurrenceEditAccessor);
-      let isEdit = get(event, isEditAccessor);
-      let isDelete = get(event, isDeleteAccessor);
+      , isRecurrence = get(event, isRecurrenceAccessor)
+      let isAppointmentRendered = get(event, isAppointmentRenderedAccessor);
+      let isVideoCall = get(event, isVideoCallAccessor);
+      let isAppoinmentCancelled = get(event, isAppoinmentCancelledAccessor);
 
       let label = localizer.format({ start, end }, eventTimeRangeFormat, culture)
       let _isSelected = isSelected(event, selected)
       let viewClass = '';
       let getEndHour = end.getHours();
+      let maxEndHourForHoverup = max.getHours();
 
-      if (getEndHour > 17) {
+      if (getEndHour > (maxEndHourForHoverup - 6)) {
         viewClass = this.props.view === 'week' ? 'appointment_box dayslot hoverup' : 'appointment_box hoverup';
       } else {
         viewClass = this.props.view === 'week' ? 'appointment_box dayslot' : 'appointment_box';
@@ -273,67 +251,24 @@ class DaySlot extends React.Component {
               'rbc-event-continues-later': continuesAfter
             })}
           >
+                      {/* <div className="rbc-event-label">{label}</div> */}
+
             <div className='rbc-event-label rbc-event-content textoverflow'>
               {isRecurrence ? <i className="fa fa-repeat pr5" aria-hidden="true"></i> : ''}
-              {label}&nbsp;
+              {isAppointmentRendered ? <i className="fa fa-check-circle-o pr5" aria-hidden="true"></i> : ''}
+              {isVideoCall ? <i className="fa fa-video-camera pr5" aria-hidden="true"></i> : ''}
+              {isAppoinmentCancelled ? <i className="fa fa-ban pr5" aria-hidden="true"></i> : ''}
               { EventComponent
                 ? <EventComponent event={event} />
                 : title
-              }
+              } {label}
             </div>
-            <div className={viewClass}>
-              <div className="topbar">
-                <div className="info-title">Appointment info</div>
-                <div className="icons">
-                    <ul>
-                    {isRecurrenceEdit ?
-                      <li>
-                        <a title="Edit recurrence" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit_recurrence')}>
-                          <i className="fa fa-repeat" aria-hidden="true"></i>
-                        </a>
-                      </li>:''}
-                      {isEdit ?
-                      <li>
-                        <a title="Edit" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}>
-                          <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </a>
-                      </li>:''}
-                      {isDelete ?
-                      <li>
-                        <a title="Delete" className="trash" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'delete')}>
-                          <i className="fa fa-trash-o" aria-hidden="true"></i>
-                        </a>
-                      </li>:''}
-                    </ul>
-                </div>
-              </div>
-              <div className="info-content">
-                  <div className="personal-info">
-                  {staffs ? this.renderStaffs(staffs) :
-                    <div>
-                      <div className="info-pic">
-                        <img src={clinicianImage} width="80px" height="80px" />
-                      </div>                  
-                      <div className="info-p">
-                        <div className="name" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{clinicianName}</div>
-                        {/*
-                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{setProfileTitle}</a>
-                        */}
-                        <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>{soapNoteTitle}</a>
-                      </div>
-                    </div>
-                  }
-                  </div>
-                  <div className="about-event">
-                      <div className="info-p">
-                        <p><b>Time: </b><span>{appointmentTime}</span></p>
-                        <p><b>Appointment: </b><span>{appointmentType}</span></p>
-                        <p><b>Address: </b><span>{appointmentAddress}</span></p>
-                        {/*<p><b>Co-Pay: </b><span><i className="fa fa-usd" aria-hidden="true"></i> {coPay ? coPay : '0.00'}</span></p>*/}
-                      </div>
-                  </div>
-              </div>
-            </div>
+            <AppointmentBox
+              {...this.props}
+              event={event}
+              popupClassName={viewClass}
+              hoverDialogActions={this.hoverDialogActions}
+            />
             </div>
         </EventWrapper>
       )

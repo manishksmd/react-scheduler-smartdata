@@ -16,7 +16,9 @@ export default class TimeSlotGroup extends Component {
     slotPropGetter: PropTypes.func,
     timeGutterFormat: dateFormat,
     culture: PropTypes.string,
-    resource: PropTypes.string
+    resource: PropTypes.string,
+
+    usersAvailability: PropTypes.object,
   }
   static defaultProps = {
     timeslots: 2,
@@ -26,7 +28,7 @@ export default class TimeSlotGroup extends Component {
   }
 
   renderSlice(slotNumber, content, value) {
-    const { dayWrapperComponent, showLabels, isNow, culture, slotPropGetter, resource } = this.props;
+    const { dayWrapperComponent, showLabels, isNow, culture, slotPropGetter, resource, usersAvailability } = this.props;
     return (
       <TimeSlot
         key={slotNumber}
@@ -37,6 +39,7 @@ export default class TimeSlotGroup extends Component {
         culture={culture}
         isNow={isNow}
         value={value}
+        usersAvailability={usersAvailability}
         resource={resource}
       />
     )
@@ -53,7 +56,9 @@ export default class TimeSlotGroup extends Component {
     }
     return ret
   }
+
   render() {
+    // let { value, usersAvailability, resource } = this.props;
     return (
       <div className="rbc-timeslot-group">
         {this.renderSlices()}

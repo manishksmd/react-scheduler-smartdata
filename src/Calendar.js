@@ -86,11 +86,18 @@ class Calendar extends React.Component {
    resources: PropTypes.arrayOf(PropTypes.object),
 
    /**
+     * An array of statusHeadings objects that map events to a specific statusHeadings
+     */
+    statusHeadings: PropTypes.arrayOf(PropTypes.object),
+
+   /**
     * Callback fired when the `date` value changes.
     *
     * @controllable date
     */
    onNavigate: PropTypes.func,
+
+   customNavigate: PropTypes.func,
 
    /**
     * Callback fired when the `view` value changes.
@@ -284,6 +291,19 @@ class Calendar extends React.Component {
    isRecurrenceEditAccessor: accessor,
    isEditAccessor: accessor,
    isDeleteAccessor: accessor,
+   isCancelAccessor: accessor,
+   isUnCancelAccessor: accessor,
+   isApproveAccessor: accessor,
+   cancellationReasonAccessor: accessor,
+   isAppointmentRenderedAccessor: accessor,
+   isVideoCallAccessor: accessor,
+   isAppoinmentCancelledAccessor: accessor,
+   practitionerNameAccessor: accessor,
+   statusNameAccessor: accessor,
+
+   usersAvailability: PropTypes.object,
+
+   componentStatusNames: PropTypes.element,
 
    /**
     * Determines whether the event should be considered an "all day" event and ignore time.
@@ -496,7 +516,7 @@ class Calendar extends React.Component {
    popup: false,
    toolbar: true,
    view: views.MONTH,
-   views: [views.MONTH, views.WEEK, views.DAY, views.AGENDA, views.RESOURCE],
+   views: [views.MONTH, views.WEEK, views.DAY, views.AGENDA, views.RESOURCE, views.STATUS],
    date: now,
    step: 30,
 
@@ -518,9 +538,21 @@ class Calendar extends React.Component {
    isRecurrenceEditAccessor: 'isRecurrenceEdit',
    isEditAccessor: 'isEdit',
    isDeleteAccessor: 'isDelete',
+   isCancelAccessor: 'isCancel',
+   isApproveAccessor: 'isApprove',
+   isUnCancelAccessor: 'isUnCancel',
+   cancellationReasonAccessor: 'cancellationReason',
+   isAppointmentRenderedAccessor: 'isAppointmentRendered',
+   isVideoCallAccessor: 'isVideoCall',
+   isAppoinmentCancelledAccessor: 'isAppoinmentCancelled',
+   practitionerNameAccessor: 'practitionerName',
+   statusNameAccessor: 'statusName',
    allDayAccessor: 'allDay',
    startAccessor: 'start',
-   endAccessor: 'end'
+   endAccessor: 'end',
+
+   usersAvailability: 'usersAvailability',
+   componentStatusNames: null,
  };
 
  getViews = () => {
@@ -602,7 +634,9 @@ class Calendar extends React.Component {
            label={viewLabel(current, view, formats, culture)}
            onViewChange={this.handleViewChange}
            onNavigate={this.handleNavigate}
+           customNavigate={this.customNavigate}
            messages={this.props.messages}
+           componentStatusNames={this.props.componentStatusNames}
          />
        }
        <View
@@ -624,6 +658,11 @@ class Calendar extends React.Component {
        />
      </div>
    );
+ }
+
+ customNavigate = () => {
+   let { customNavigate } = this.props;
+   customNavigate()
  }
 
  handleNavigate = (action, newDate) => {

@@ -32,6 +32,17 @@ export default {
     isRecurrenceEditAccessor: accessor,
     isEditAccessor: accessor,
     isDeleteAccessor: accessor,
+    isCancelAccessor: accessor,
+    isUnCancelAccessor: accessor,
+    isApproveAccessor: accessor,
+    cancellationReasonAccessor: accessor,
+    isAppointmentRenderedAccessor: accessor,
+    isVideoCallAccessor: accessor,
+    isAppoinmentCancelledAccessor: accessor,
+    practitionerNameAccessor: accessor,
+    statusNameAccessor: accessor,
+
+    usersAvailability: PropTypes.object,
 
     allDayAccessor: accessor,
     startAccessor: accessor,
@@ -68,6 +79,16 @@ export default {
       , isRecurrenceEditAccessor
       , isEditAccessor
       , isDeleteAccessor
+      , isCancelAccessor
+      , isApproveAccessor
+      , isUnCancelAccessor
+      , cancellationReasonAccessor
+      , isAppointmentRenderedAccessor
+      , isVideoCallAccessor
+      , isAppoinmentCancelledAccessor
+      , practitionerNameAccessor
+      , statusNameAccessor
+      , usersAvailability
       , allDayAccessor, eventComponent
       , eventWrapperComponent
       , onSelect } = props;
@@ -96,7 +117,17 @@ export default {
         isRecurrenceEditAccessor={isRecurrenceEditAccessor}
         isEditAccessor={isEditAccessor}
         isDeleteAccessor={isDeleteAccessor}
+        isCancelAccessor={isCancelAccessor}
+        isUnCancelAccessor={isUnCancelAccessor}
+        isApproveAccessor={isApproveAccessor}
+        cancellationReasonAccessor={cancellationReasonAccessor}
+        isAppointmentRenderedAccessor={isAppointmentRenderedAccessor}
+        isVideoCallAccessor={isVideoCallAccessor}
+        isAppoinmentCancelledAccessor={isAppoinmentCancelledAccessor}
+        practitionerNameAccessor={practitionerNameAccessor}
+        statusNameAccessor={statusNameAccessor}
         allDayAccessor={allDayAccessor}
+        usersAvailability={usersAvailability}
         slotStart={start}
         slotEnd={end}
         eventComponent={eventComponent}

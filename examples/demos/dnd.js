@@ -2,10 +2,11 @@ import React from 'react'
 import events from '../events'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
-import BigCalendar from 'react-big-calendar'
+// import BigCalendar from 'react-big-calendar'
+import BigCalendar from '../../src/index'
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import resources from './../../stories/resourceEvents';
-import 'react-big-calendar/lib/addons/dragAndDrop/styles.less';
+// import '../../lib/addons/dragAndDrop/styles.less';
 
 
 const CustomToolbar = (toolbar) => {
@@ -53,17 +54,61 @@ class Dnd extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      events: events
+      events: resources.events,
+      usersAvailability: {
+        'staffID': 0,
+        'days': [
+            {
+                'id': 715,
+                'dayId': 2,
+                'dayName': 'Monday',
+                'startTime': '2018-03-05T12:00:39',
+                'endTime': '2018-03-05T21:00:44',
+                'staffAvailabilityTypeID': 73,
+                'staffID': 115,
+                'isActive': false,
+                'isDeleted': false
+            },
+            {
+                'id': 716,
+                'dayId': 4,
+                'dayName': 'Wednesday',
+                'startTime': '2018-03-05T09:30:18',
+                'endTime': '2018-03-05T12:00:25',
+                'staffAvailabilityTypeID': 73,
+                'staffID': 115,
+                'isActive': false,
+                'isDeleted': false
+            }
+        ],
+        'available': [],
+        'unavailable': [
+            {
+                'id': 714,
+                'startTime': '2018-03-05T15:00:01',
+                'endTime': '2018-03-05T17:30:10',
+                'date': '2018-03-26T00:00:00',
+                'staffAvailabilityTypeID': 75,
+                'staffID': 115,
+                'isActive': false,
+                'isDeleted': false
+            }
+        ]
+    },
+
     }
 
-    this.moveEvent = this.moveEvent.bind(this)
+    this.moveEvent = this.moveEvent.bind(this);
+    this.resizeEvent = this.resizeEvent.bind(this);
+    this.eventStyleGetter = this.eventStyleGetter.bind(this);
   }
 
-  moveEvent({ event, start, end }) {
+  moveEvent({ event, start, end, ...rest }) {
     const { events } = this.state;
 
     const idx = events.indexOf(event);
-    const updatedEvent = { ...event, start, end };
+    const resourceId = rest.resource || event.resourceId;
+    const updatedEvent = { ...event, start, end, resourceId };
 
     const nextEvents = [...events]
     nextEvents.splice(idx, 1, updatedEvent)
@@ -75,16 +120,83 @@ class Dnd extends React.Component {
     alert(`${event.title} was dropped onto ${event.start}`);
   }
 
+
+  slotPropGetter(date) { // , start, end, isSelected
+    // console.log('date.getDate()...', Object.prototype.toString.call(date))
+    if ( Object.prototype.toString.call(date) === '[object Date]' ) {
+    let style = {
+      backgroundColor: '#ccc',
+    };
+    let style1 = {
+      backgroundColor: '#fff',
+    };
+    if (date.getDate() === 7) {
+
+      return {
+        style: style,
+      };
+    } else { return {
+      style: style1,
+    } }
+    }
+  }
+
+  resizeEvent = (resizeType, { event, start, end }) => {
+    const { events } = this.state
+
+    // const nextEvents = events.map(existingEvent => {
+    //   return existingEvent.id == event.id
+    //     ? { ...existingEvent, start, end }
+    //     : existingEvent
+    // })
+
+    const idx = events.indexOf(event);
+    // const resourceId = rest.resource || event.resourceId;
+    const updatedEvent = { ...event, start, end };
+
+    const nextEvents = [...events]
+    nextEvents.splice(idx, 1, updatedEvent)
+
+    this.setState({
+      events: nextEvents,
+    })
+
+    alert(`${event.title} was resized to ${start}-${end}`)
+  }
+
+  eventStyleGetter(event, date, end, isSelected) { // , start, end, isSelected
+    // console.log('event, date, end, isSelected...', event, date, end, isSelected);
+    let style = {
+      backgroundColor: event.appointmentBackgroundColor,
+      color: event.appointmentFontColor,
+    };
+    return {
+      style: style,
+    };
+  }
+
   render(){
     return (
       <DragAndDropCalendar
+        // min={new Date(2018, 6, 6, 8, 30, 0)}
+        // max={new Date(2018, 6, 6, 20, 30, 0)}
         selectable
-        // events={this.state.events}
-        events={resources.events}
+        events={this.state.events}
+        // events={resources.events}
         resources={resources.list}
+        statusHeadings={[{id:1, title: 'connected'}, {id:2, title: 'Confirmed'}]}
+        // slotProp={this.slotPropGetter(date)}
+        // slotPropGetter={(date) => this.slotPropGetter(date) }
+        usersAvailability = {this.state.usersAvailability}
+        resizable
+        onEventResize={this.resizeEvent}
         onEventDrop={this.moveEvent}
+        eventPropGetter={(event, date, end, isSelected) => this.eventStyleGetter(event, date, end, isSelected)}
         defaultView='month'
-        defaultDate={new Date(2017, 8, 1)}
+        draggableAccessor= 'isDragable'
+   resizableAccessor= 'isDragable'
+  //  componentStatusNames={<div><span>status: pending() rendered() approved() cancelled()</span></div>}
+        defaultDate={new Date(2018, 1, 14)}
         onSelectEvent={event => console.log(event)}
         onSelectSlot={(slotInfo) => alert(
             `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
@@ -96,3 +208,4 @@ class Dnd extends React.Component {
 }
 
 export default DragDropContext(HTML5Backend)(Dnd)
+// export default Dnd

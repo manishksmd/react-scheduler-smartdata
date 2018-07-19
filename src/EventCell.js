@@ -5,6 +5,7 @@ import dates from './utils/dates';
 import { accessor, elementType } from './utils/propTypes';
 import { accessor as get } from './utils/accessors';
 import Img from './img/doctor.png';
+import AppointmentBox from './AppointmentBox';
 let propTypes = {
   event: PropTypes.object.isRequired,
   slotStart: PropTypes.instanceOf(Date),
@@ -29,6 +30,14 @@ let propTypes = {
   isRecurrenceEditAccessor: accessor,
   isEditAccessor: accessor,
   isDeleteAccessor: accessor,
+  isCancelAccessor: accessor,
+  isUnCancelAccessor: accessor,
+  isApproveAccessor: accessor,
+  cancellationReasonAccessor: accessor,
+  isAppointmentRenderedAccessor: accessor,
+  isVideoCallAccessor: accessor,
+  isAppoinmentCancelledAccessor: accessor,
+  practitionerNameAccessor: accessor,
 
   allDayAccessor: accessor,
   startAccessor: accessor,
@@ -40,23 +49,10 @@ let propTypes = {
 }
 
 class EventCell extends React.Component {
-  
+
   constructor(props) {
     super(props);
-    this.renderStaffs = this.renderStaffs.bind(this);
-  }
-
-  renderStaffs(staffs) {console.log(staffs)
-    if (staffs) {
-      return staffs.map((obj, index) => {
-        return (
-          <div className="info-p">            
-            <img src={obj.image} width="35px" height="35px" />
-            <p>{obj.staffName}</p>
-          </div>
-        );
-      });
-    }
+    this.hoverDialogActions = this.hoverDialogActions.bind(this);
   }
 
   render() {
@@ -68,42 +64,21 @@ class EventCell extends React.Component {
       , startAccessor
       , endAccessor
       , titleAccessor
-      , patientNameAccessor
-      , clinicianImageAccessor
-      , clinicianNameAccessor
-      , appointmentTypeAccessor
-      , appointmentTimeAccessor
-      , appointmentAddressAccessor
-      , coPayAccessor
-      , soapNoteTitleAccessor
-      , setProfileTitleAccessor
-      , staffsAccessor
+      , isAppointmentRenderedAccessor
+      , isVideoCallAccessor
+      , isAppoinmentCancelledAccessor
       , isRecurrenceAccessor
-      , isRecurrenceEditAccessor
-      , isEditAccessor
-      , isDeleteAccessor
       , slotStart
       , slotEnd
-      , onSelect
       , eventComponent: Event
       , eventWrapperComponent: EventWrapper
       , ...props } = this.props;
 
     let title = get(event, titleAccessor)
-      , patientName = get(event, patientNameAccessor)
-      , clinicianImage = get(event, clinicianImageAccessor)
-      , clinicianName = get(event, clinicianNameAccessor)
-      , appointmentType = get(event, appointmentTypeAccessor)
-      , appointmentTime = get(event, appointmentTimeAccessor)
-      , appointmentAddress = get(event, appointmentAddressAccessor)
-      , coPay = get(event, coPayAccessor)
-      , soapNoteTitle = get(event, soapNoteTitleAccessor)
-      , setProfileTitle = get(event, setProfileTitleAccessor)
-      , staffs = get(event, staffsAccessor)
-      , isRecurrence = get(event, isRecurrenceAccessor)
-      , isRecurrenceEdit = get(event, isRecurrenceEditAccessor)
-      , isEdit = get(event, isEditAccessor)
-      , isDelete = get(event, isDeleteAccessor)
+    , isRecurrence = get(event, isRecurrenceAccessor)
+      , isAppointmentRendered = get(event, isAppointmentRenderedAccessor)
+      , isVideoCall = get(event, isVideoCallAccessor)
+      , isAppoinmentCancelled = get(event, isAppoinmentCancelledAccessor)
       , end = get(event, endAccessor)
       , start = get(event, startAccessor)
       , isAllDay = get(event, props.allDayAccessor)
@@ -114,7 +89,7 @@ class EventCell extends React.Component {
       var { style, className: xClassName } = eventPropGetter(event, start, end, selected);
 
     return (
-      <EventWrapper event={event}>
+      <EventWrapper event={event} isRow={true} isMonthView={true}>
         <div
           style={{...props.style, ...style}}
           className={cn('rbc-event', className, xClassName, {
@@ -126,47 +101,21 @@ class EventCell extends React.Component {
           // onClick={(e) => onSelect(event, e)}
         >
           <div className='rbc-event-content'>
-            {isRecurrence === true ? <i className="fa fa-repeat" aria-hidden="true"></i> : ''}
+          <ul className="quickview">
+            {isRecurrence === true ? <li><i className="fa fa-repeat" aria-hidden="true"></i></li> : ''}
+            {isAppointmentRendered ? <li><i className="fa fa-check-circle-o" aria-hidden="true"></i></li> : ''}
+            {isVideoCall ? <li><i className="fa fa-video-camera" aria-hidden="true"></i></li> : ''}
+            {isAppoinmentCancelled ? <li><i className="fa fa-ban" aria-hidden="true"></i></li> : ''}
+            </ul>
             { Event
               ? <Event event={event} title={title}/>
               : title
             }
-            <div className="appointment_box month_box">
-              <div className="topbar">
-                <div className="info-title">Appointment info</div>
-                <div className="icons">
-                    <ul>
-                    {isRecurrenceEdit ? <li><a title="Edit recurrence" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit_recurrence')}><i className="fa fa-repeat" aria-hidden="true"></i></a></li> : ''}
-                    {isEdit ? <li><a title="Edit" className="edit" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'edit')}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></a></li> : ''}
-                    {isDelete ? <li><a title="Delete" className="trash" href="#" onClick={(e) => this.hoverDialogActions(event, e, 'delete')}><i className="fa fa-trash-o" aria-hidden="true"></i></a></li> : ''}
-                    </ul>
-                </div>
-              </div>
-              <div className="info-content">
-                  <div className="personal-info">
-                    {staffs ? this.renderStaffs(staffs) :
-                      <div>
-                        <div className="info-pic"><img src={clinicianImage} width="80px" height="80px" /></div>                    
-                        <div className="info-p">
-                          <div className="name" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{clinicianName}</div>
-                          {/*
-                            <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'view_profile')}>{setProfileTitle}</a>
-                          */}
-                          <a href="#" onClick={(e) => this.hoverDialogActions(event, e, 'soap_note')}>{soapNoteTitle}</a>
-                        </div>
-                      </div>
-                    }
-                  </div>
-                  <div className="about-event">
-                      <div className="info-p">
-                        <p><b>Time: </b><span>{appointmentTime}</span></p>
-                        <p><b>Appointment: </b><span>{appointmentType}</span></p>
-                        <p><b>Address: </b><span>{appointmentAddress}</span></p>
-                        {/*<p><b>Co-Pay: </b><span><i className="fa fa-usd" aria-hidden="true"></i> {coPay ? coPay : '0.00'}</span></p>*/}
-                      </div>
-                  </div>
-              </div>
-            </div>
+            <AppointmentBox
+              {...this.props}
+              popupClassName="appointment_box month_box"
+              hoverDialogActions={this.hoverDialogActions}
+            />
           </div>
         </div>
       </EventWrapper>
