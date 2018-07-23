@@ -10,7 +10,7 @@ function displayObj(obj){
 let capitalize = str => str[0].toUpperCase() + str.substr(1);
 let cleanDocletValue = str => str.trim().replace(/^\{/, '').replace(/\}$/, '');
 
-let Api = React.createClass({
+class Api extends React.Component{
   render(){
     let calData = metadata.Calendar;
 
@@ -27,7 +27,7 @@ let Api = React.createClass({
         })}
       </div>
     )
-  },
+  }
 
   renderProp(data, name, Heading) {
     let typeInfo = this.renderType(data);
@@ -65,7 +65,7 @@ let Api = React.createClass({
 
       </section>
     )
-  },
+  }
 
   renderType(prop) {
     let type = prop.type || {};
@@ -117,12 +117,12 @@ let Api = React.createClass({
       default:
         return name;
     }
-  },
+  }
 
   renderEnum(enumType) {
     const enumValues = enumType.value || [];
     return <code>{enumValues.join(' | ')}</code>;
-  },
+  }
 
   renderControllableNote(prop, propName) {
     let controllable = prop.doclets && prop.doclets.controllable;
@@ -149,7 +149,7 @@ let Api = React.createClass({
       </div>
     );
   }
-})
+}
 
 function getDisplayTypeName(typeName) {
   if (typeName === 'func') {

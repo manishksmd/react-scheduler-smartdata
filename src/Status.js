@@ -2,10 +2,12 @@ import React from 'react';
 import dates from './utils/dates';
 import StatusGrid from './statusGrid';
 import { navigate } from './utils/constants';
-const Resource = React.createClass({
-  propTypes: {
-    date: React.PropTypes.instanceOf(Date).isRequired
-  },
+import PropTypes from 'prop-types';
+
+class Resource extends React.Component {
+  static propTypes = {
+    date: PropTypes.instanceOf(Date).isRequired
+  }
 
   render() {
     let { date, ...props } = this.props;
@@ -15,7 +17,7 @@ const Resource = React.createClass({
       <StatusGrid {...props} start={start} end={end} eventOffset={10} />
     );
   }
-});
+}
 
 Resource.navigate = (date, action) => {
   switch (action){

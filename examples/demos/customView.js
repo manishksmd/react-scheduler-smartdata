@@ -49,7 +49,7 @@ MyWeek.range = (date, { culture }) => {
 
 
 
-let CustomView = React.createClass({
+class CustomView extends React.Component{
   render(){
     return (
       <div>
@@ -62,6 +62,6 @@ let CustomView = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default CustomView;

@@ -21,7 +21,7 @@ function EventAgenda({ event }) {
 }
 
 
-let Rendering = React.createClass({
+class Rendering extends React.Component{
   render(){
     return (
       <div {...this.props}>
@@ -39,6 +39,6 @@ let Rendering = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default Rendering;

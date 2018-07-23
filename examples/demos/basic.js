@@ -4,7 +4,7 @@ import events from '../events';
 
 let allViews = Object.keys(BigCalendar.views).map(k => BigCalendar.views[k])
 
-let Basic = React.createClass({
+class Basic extends React.Component{
   render(){
     return (
       <BigCalendar
@@ -15,6 +15,6 @@ let Basic = React.createClass({
       />
     )
   }
-})
+}
 
 export default Basic;
