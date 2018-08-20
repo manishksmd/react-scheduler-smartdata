@@ -172,7 +172,9 @@ export default class TimeGrid extends Component {
 
     allDayEvents.sort((a, b) => sortEvents(a, b, this.props))
 
-    let gutterRef = ref => this._gutters[1] = ref && findDOMNode(ref);
+    // let gutterRef = ref => this._gutters[1] = ref && findDOMNode(ref);
+    // changed array to remove the all day section ...
+    let gutterRef = ref => this._gutters[0] = ref && findDOMNode(ref);
 
     return (
       <div className='rbc-time-view'>
@@ -249,7 +251,7 @@ export default class TimeGrid extends Component {
           />
           { this.renderHeaderCells(range) }
         </div>
-        <div className='rbc-row'>
+        {/* <div className='rbc-row'>
           <div
             ref={ref => this._gutters[0] = ref}
             className='rbc-label rbc-header-gutter'
@@ -277,7 +279,7 @@ export default class TimeGrid extends Component {
             selected={this.props.selected}
             onSelect={this.handleSelectEvent}
           />
-        </div>
+        </div> */}
       </div>
     )
   }
