@@ -167,7 +167,9 @@ class AppointmentBox extends React.Component {
                     {staffs ? this.renderStaffs(staffs) :
                       <div>
                         <div className="info-pic">
-                        <img src={clinicianImage} width="80px" height="80px" onClick={(e) => hoverDialogActions(event, e, 'view_profile')}/></div>
+                        {clinicianImage ? <img src={clinicianImage} width="80px" height="80px" onClick={(e) => hoverDialogActions(event, e, 'view_profile')}/> : clinicianName ? (clinicianName.split(' ').length > 1 ? <span className="userletter">{clinicianName.split(' ')[0][0].toUpperCase() + clinicianName.split(' ')[clinicianName.split(' ').length - 1][0].toUpperCase()}</span> : <span>{clinicianName[0].toUpperCase()}</span>) : ''}
+                        {/* <img src={clinicianImage} width="80px" height="80px" onClick={(e) => hoverDialogActions(event, e, 'view_profile')}/>*/}
+                      </div>
                         <div className="info-p">
                           <div className="name" onClick={(e) => hoverDialogActions(event, e, 'view_profile')}>{clinicianName}</div>
                           <a href="#" onClick={(e) => hoverDialogActions(event, e, 'soap_note')}>{soapNoteTitle}</a>
